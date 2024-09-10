@@ -15,12 +15,12 @@ driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())
 babya_server = "http://동바오.site"
 region = "104030"
 
-response1 = requests.get(f"{babya_server}/policy/site", params={"region": region})
-response_data = response1.json()
+site_url = requests.get(f"{babya_server}/policy/site", params={"region": region})
+response_data = site_url.json()
 base_url = response_data["data"]["policySiteUrl"]
 
-response2 = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
-old_list = [item["pageId"] for item in response2.json()["data"]]
+collected_site = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
+old_list = [item["pageId"] for item in collected_site.json()["data"]]
 
 url_data = [f"{base_url}?menu_id=00002309", f"{base_url}?menu_id=00002318"]
 current_list = list()
@@ -102,15 +102,20 @@ for page_id in page_list:
     # site 데이터
     data_dict["site"] = base_url
 
+    # 서버로 보낼 데이터 값 삽입
     result_data.append(data_dict)
 
-# 크롤링한 페이지 개수
-print(f"크롤링한 페이지 수: {len(result_data)}")
 
 if (len(result_data) > 0):
-    response3 = requests.post(f"{babya_server}/policy", json=result_data)
-    print(response3.status_code)
-    print(response3.text)
+    # 크롤링한 페이지 개수
+    print(f"크롤링한 페이지 수: [{len(result_data)}]")
+    policy = requests.post(f"{babya_server}/policy", json=result_data)
+    print(policy.status_code)
+    print(policy.text)
+    
+else:
+    print("아직 새로운 정책이 업데이트 되지 않았습니다.")
+
 
 driver.close()
 

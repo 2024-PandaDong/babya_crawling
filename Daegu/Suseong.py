@@ -88,6 +88,7 @@ if (len(result_data) > 0):
 else:
     print("아직 새로운 정책이 업데이트 되지 않았습니다.")
 
+
 driver.close()
 
 while True:
