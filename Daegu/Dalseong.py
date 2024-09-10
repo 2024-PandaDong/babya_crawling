@@ -114,5 +114,5 @@ if (len(result_data) > 0):
 
 driver.close()
 
-while (True):
+while True:
     pass
