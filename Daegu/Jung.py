@@ -22,8 +22,8 @@ response_data = site_url.json()
 base_url = response_data["data"]["policySiteUrl"]
 format_url = base_url.split("/main")[0]
 
-collected_site = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
-old_list = [item["pageId"] for item in collected_site.json()["data"]]
+collected_site_data = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
+old_list = [item["pageId"] for item in collected_site_data.json()["data"]]
 
 class_data = ["898", "903"]
 
@@ -55,6 +55,10 @@ for page_id in page_list:
         "pageId": None,
         "site": None
     }
+    
+    # HTML 코드 주석 삭제
+    for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
+        comment.extract()
     
     # title
     for title in soup.select("#content > div.cont_head > h1.cont_tit"):

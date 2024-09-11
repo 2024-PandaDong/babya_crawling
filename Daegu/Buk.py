@@ -22,8 +22,8 @@ site_url = requests.get(f"{babya_server}/policy/site", params={"region": region}
 response_data = site_url.json()
 base_url = response_data["data"]["policySiteUrl"]
 
-collected_site = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
-old_list = [item["pageId"] for item in collected_site.json()["data"]]
+collected_site_data = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
+old_list = [item["pageId"] for item in collected_site_data.json()["data"]]
 
 url = f"{base_url}?menu_id=00000621"
 driver.get(url)
@@ -58,6 +58,10 @@ for page_id in current_list:
         "site": None
     }
     
+    # HTML 코드 주석 삭제
+    for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
+        comment.extract()
+    
     for title in soup.select("#content-item > #page-title"):
         data_dict["title"] = title.get_text()
         
@@ -71,7 +75,9 @@ for page_id in current_list:
             a['href'] = urllib.parse.urljoin(base_url, file_url)
             
         data_dict["content"] = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
-        
+    
+    # 최근수정일 없음    
+    
     data_dict["pageId"] = page_id
     data_dict["site"] = base_url
     
