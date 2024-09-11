@@ -14,30 +14,36 @@ chrome_options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
 babya_server = "http://동바오.site"
-region = "104070"
+region = "104080"
 current_list = list()
 
 site_url = requests.get(f"{babya_server}/policy/site", params={"region": region})
 response_data = site_url.json()
 base_url = response_data["data"]["policySiteUrl"]
+format_url = base_url.split("/main")[0]
 
 collected_site = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
 old_list = [item["pageId"] for item in collected_site.json()["data"]]
 
-url = f"{base_url}?menu_id=00041260"
-driver.get(url)
-time.sleep(2)
-soup = BeautifulSoup(driver.page_source, 'html.parser')
+class_data = ["898", "903"]
 
-for i in soup.select("#side .snb > li.open > ul > li > a"):
-    id_item = i.get("href").split("menu_id=")[1]
-    current_list.append(id_item)
+# 가끔씩 처음 페이지 들어갈 때 400에러 뜨는 버그
+for class_id in class_data:
+    driver.get(f"{format_url}/business/page.html?mc=0891")
+    time.sleep(2)
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
+    
+    for i in soup.select(f"ul.snb > li[class='{class_id}'] > ul > li > a"):
+        id_item = i.get("href").split("mc=")[1]
+        current_list.append(id_item)
 
+
+print(current_list)
 page_list = set(current_list) - set(old_list)
 result_data = []
-    
+
 for page_id in page_list:
-    page_url = f"https://www.suseong.kr/health/index.do?menu_id={page_id}"
+    page_url = f"{format_url}/business/page.html?mc={page_id}"
     driver.get(page_url)
     time.sleep(2)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
@@ -51,11 +57,11 @@ for page_id in page_list:
     }
     
     # title
-    for title in soup.select("div.cont_head > div.inr > h1.title"):
+    for title in soup.select("#content > div.cont_head > h1.cont_tit"):
         data_dict["title"] = title.get_text()
         
     # content
-    for content in soup.select("#content > div.cont_body > div.icss"):
+    for content in soup.select("#content > div.con_wrap"):
         # 이미지 처리
         for img in content.find_all('img'):
             img_url = img.get("src")
@@ -65,13 +71,13 @@ for page_id in page_list:
         for a in content.find_all("a", href=True):
             file_url = a['href']
             a['href'] = urllib.parse.urljoin(base_url, file_url)
-            
+          
         data_dict["content"] = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
-        
+    
     # editDate
-    for date in soup.select("footer.cont_foot > div.cont_manager > dl.update > dd"):
-        data_dict["editDate"] = ' '.join(date.get_text().split()).replace(".", "-")
-        
+    for edit_date in soup.select_one("#content > div.cb_area > div.cb_head > div.info2 > span"):
+        data_dict["editDate"] = edit_date.get_text().split(": ")[1].replace(".", "-")
+    
     # pageId
     data_dict["pageId"] = page_id
     
@@ -79,7 +85,8 @@ for page_id in page_list:
     data_dict["site"] = base_url
     
     result_data.append(data_dict)
-    
+
+
 if (len(result_data) > 0):
     print(f"크롤링한 페이지 개수: [{len(result_data)}]")
     policy = requests.post(f"{babya_server}/policy", json=result_data)

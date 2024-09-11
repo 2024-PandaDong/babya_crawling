@@ -1,4 +1,5 @@
 import re
+import sys
 import time
 import requests
 import urllib.parse
@@ -14,6 +15,7 @@ driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())
 
 babya_server = "http://동바오.site"
 region = "104030"
+current_list = list()
 
 site_url = requests.get(f"{babya_server}/policy/site", params={"region": region})
 response_data = site_url.json()
@@ -23,7 +25,6 @@ collected_site = requests.get(f"{babya_server}/policy/catalog", params={"site": 
 old_list = [item["pageId"] for item in collected_site.json()["data"]]
 
 url_data = [f"{base_url}?menu_id=00002309", f"{base_url}?menu_id=00002318"]
-current_list = list()
 
 # 모자보건사업, 출산지원사업
 for url in url_data:
@@ -87,14 +88,8 @@ for page_id in page_list:
         data_dict["content"] = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
 
     # editDate 데이터
-    for date in soup.select("#content > footer.cont_foot > div.cont_manager > dl.update > dd"):
-        edit_date = ' '.join(date.get_text().split())
-        format_editDate = ""
-        
-        if "." in edit_date:
-            format_editDate = edit_date.replace(".", "-")
-            
-        data_dict["editDate"] = format_editDate
+    for date in soup.select("#content > footer.cont_foot > div.cont_manager > dl.update > dd"):            
+        data_dict["editDate"] = ' '.join(date.get_text().split()).replace(".", "-")
 
     # pageID 데이터
     data_dict["pageId"] = page_id
@@ -118,6 +113,7 @@ else:
 
 
 driver.close()
+sys.exit()
 
 while True:
     pass
