@@ -1,7 +1,6 @@
 import re
 import sys
 import time
-import base64
 import requests
 import urllib.parse
 from bs4 import BeautifulSoup, Comment
@@ -46,7 +45,7 @@ for url in url_data:
 page_list = set(current_list) - set(old_list)
 
 for page_id in page_list:
-    page_url = f"{base_url}?menu_id=00001643"
+    page_url = f"{base_url}?menu_id={page_id}"
     driver.get(page_url)
     time.sleep(2)
     soup = BeautifulSoup(driver.page_source, 'html.parser')

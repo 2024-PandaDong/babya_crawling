@@ -38,7 +38,6 @@ for class_id in class_data:
         current_list.append(id_item)
 
 
-print(current_list)
 page_list = set(current_list) - set(old_list)
 result_data = []
 

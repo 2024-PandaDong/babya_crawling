@@ -3,7 +3,7 @@ import sys
 import time
 import requests
 import urllib.parse
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Comment
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
@@ -44,7 +44,7 @@ for i in soup.select("#mobile_first_li_00000550 > div.depth02 > ul > li"):
         
 page_list = set(current_list) - set(old_list)
 
-for page_id in current_list:
+for page_id in page_list:
     page_url = f"{base_url}?menu_id={page_id}"
     driver.get(page_url)
     time.sleep(2)
