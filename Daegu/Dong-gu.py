@@ -86,10 +86,11 @@ for page_id in page_list:
                         menu_comment.extract()
                     
                     for menu_content in soup.select("#conts"):
-                        content_add += re.sub(r'[\s\u00A0-\u00FF]+', " ", str(menu_content).replace('"', "'")) + "\n"
+                        content_add += re.sub(r'[\s\u00A0-\u00FF]+', " ", str(menu_content).replace('"', "'").replace("href='#'","href='"+menu_url+"'")) + "\n"
             
                 content_add += "</div>"
                 data_dict["content"] = content_add
+                
                 
         else:
             data_dict["content"] = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
