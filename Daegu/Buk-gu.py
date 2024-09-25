@@ -58,9 +58,22 @@ for page_id in page_list:
         "site": None
     }
     
+    styles = []
+    
     # HTML 코드 주석 삭제
     for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
         comment.extract()
+        
+    for meta in soup.select("html > head > meta"):
+        if meta.get("charset"):
+            styles.append(str(meta))
+        
+    for link in soup.select("html > head > link"):
+        if link.get("rel")[0] == "stylesheet":
+            link_url = link.get("href")
+            if link_url.split("/")[-1] != "layout.css": # 배경 회색으로 만드는 css 제외
+                link["href"] = urllib.parse.urljoin(base_url, link_url)
+                styles.append(str(link))
     
     for title in soup.select("#content-item > #page-title"):
         data_dict["title"] = title.get_text()
@@ -68,21 +81,30 @@ for page_id in page_list:
     for content in soup.select("#content-item > #content-body"):
         for img in content.find_all('img'):
             img_url = img.get("src")
-            img["src"] = urllib.parse.urljoin(base_url, img_url)
+            if img_url:
+                img["src"] = urllib.parse.urljoin(base_url, img_url)
             
         for a in content.find_all("a", href=True):
             file_url = a['href']
             a['href'] = urllib.parse.urljoin(base_url, file_url)
             
-        data_dict["content"] = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
+        styles_str = "".join(styles)
+        content_str = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
+        
+        head_content = f"<head>{styles_str}</head>"
+        body_content = f"<body>{content_str}</body>"
+        
+        html_content = f"<!DOCTYPE html><html>{head_content}{body_content}</html>"
+        data_dict["content"] = html_content
     
-    # 최근수정일 없음    
+    # 최근수정일 없음
     
     data_dict["pageId"] = page_id
     data_dict["site"] = base_url
     
-    result_data.append(data_dict)
-        
+    if all(data_dict[key] is not None for key in ["title", "content"]):
+        result_data.append(data_dict)
+    
         
 if (len(result_data) > 0):
     print(f"크롤링한 페이지 개수: [{len(result_data)}]")

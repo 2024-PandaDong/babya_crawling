@@ -46,15 +46,6 @@ for page_id in page_list:
     driver.get(page_url)
     time.sleep(2)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
-    
-    # 외부 css 파일 다운로드
-    # css_links = soup.find_all('link', rel='stylesheet')
-    # css_urls = [urllib.parse.urljoin(url, link['href']) for link in css_links]
-    
-    # external_css = ""
-    # for css_url in css_urls:
-    #     css_response = requests.get(css_url)
-    #     external_css += css_response.text + "\n"
         
     data_dict = {
         "title": None,
@@ -64,9 +55,23 @@ for page_id in page_list:
         "site": None
     }
     
+    styles = [] # link 태그 리스트
+    
     # HTML 코드 주석 삭제
     for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
         comment.extract()
+        
+    # 해당 문서의 문자 인코딩 방식 가져오기
+    for meta in soup.select("html > head > meta"):
+        if meta.get("charset"):
+            styles.append(str(meta))
+        
+    # 외부 스타일 시트와 연결된 link 태그 가져오기
+    for link in soup.select("html > head > link"):
+        if link.get("rel")[0] == "stylesheet":
+            link_url = link.get("href")
+            link["href"] = urllib.parse.urljoin(base_url, link_url) # 상대 경로를 절대 경로로 수정
+            styles.append(str(link))
 
     # title 데이터
     for title in soup.select("#content > header.cont_head > h1.title"):
@@ -77,20 +82,23 @@ for page_id in page_list:
         # 이미지 처리
         for img in content.find_all('img'):
             img_url = img.get("src")
-            img["src"] = urllib.parse.urljoin(base_url, img_url)
+            if img_url:
+                img["src"] = urllib.parse.urljoin(base_url, img_url)
             
         # 파일 처리
         for a in content.find_all("a", href=True):
             file_url = a['href']
             a['href'] = urllib.parse.urljoin(base_url, file_url)
         
-        # 내부 <style> 태그를 생성하고 외부 CSS를 추가
-        # style_tag = soup.new_tag('style')
-        # style_tag.string = external_css
+        styles_str = "".join(styles)
+        content_str = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
         
-        # content.insert(0, style_tag)
-        data_dict["content"] = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
-
+        head_content = f"<head>{styles_str}</head>"
+        body_content = f"<body>{content_str}</body>"
+        
+        html_content = f"<!DOCTYPE html><html>{head_content}{body_content}</html>"
+        data_dict["content"] = html_content
+        
     # editDate 데이터
     for date in soup.select("#content > footer.cont_foot > div.cont_manager > dl.update > dd"):            
         data_dict["editDate"] = ' '.join(date.get_text().split()).replace(".", "-")
@@ -101,9 +109,10 @@ for page_id in page_list:
     # site 데이터
     data_dict["site"] = base_url
 
-    # 서버로 보낼 데이터 값 삽입
-    result_data.append(data_dict)
-
+    # 딕셔너리의 값의 title, content 값이 None이 아닐때만 서버로 보낼 데이터 값 삽입
+    if all(data_dict[key] is not None for key in ["title", "content"]):
+        result_data.append(data_dict)
+    
 
 if (len(result_data) > 0):
     # 크롤링한 페이지 개수

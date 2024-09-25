@@ -55,39 +55,51 @@ for page_id in page_list:
         "site": None
     }
     
-    # HTML 코드 주석 삭제
+    styles = []
+    
     for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
         comment.extract()
+        
+    for meta in soup.select("html > head > meta"):
+        if meta.get("charset"):
+            styles.append(str(meta))
+        
+    for link in soup.select("html > head > link"):
+        if link.get("rel")[0] == "stylesheet":
+            link_url = link.get("href")
+            link["href"] = urllib.parse.urljoin(base_url, link_url)
+            styles.append(str(link))
     
-    # title
     for title in soup.select("#content > div.cont_head > h1.cont_tit"):
         data_dict["title"] = title.get_text()
         
-    # content
     for content in soup.select("#content > div.con_wrap"):
-        # 이미지 처리
         for img in content.find_all('img'):
             img_url = img.get("src")
-            img["src"] = urllib.parse.urljoin(base_url, img_url)
+            if img_url:
+                img["src"] = urllib.parse.urljoin(base_url, img_url)
             
-        # 파일 처리
         for a in content.find_all("a", href=True):
             file_url = a['href']
             a['href'] = urllib.parse.urljoin(base_url, file_url)
           
-        data_dict["content"] = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
+        styles_str = "".join(styles)
+        content_str = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
+        
+        head_content = f"<head>{styles_str}</head>"
+        body_content = f"<body>{content_str}</body>"
+        
+        html_content = f"<!DOCTYPE html><html>{head_content}{body_content}</html>"
+        data_dict["content"] = html_content
     
-    # editDate
     for edit_date in soup.select_one("#content > div.cb_area > div.cb_head > div.info2 > span"):
         data_dict["editDate"] = edit_date.get_text().split(": ")[1].replace(".", "-")
     
-    # pageId
     data_dict["pageId"] = page_id
-    
-    # site
     data_dict["site"] = base_url
     
-    result_data.append(data_dict)
+    if all(data_dict[key] is not None for key in ["title", "content"]):
+        result_data.append(data_dict)
 
 
 if (len(result_data) > 0):

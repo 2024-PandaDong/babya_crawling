@@ -64,8 +64,21 @@ for page_id in page_list:
         "site": None
     }
     
+    styles = []
+    
     for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
         comment.extract()
+        
+    for meta in soup.select("html > head > meta"):
+        if meta.get("charset"):
+            styles.append(str(meta))
+        
+    # 외부 스타일 시트와 연결된 link 태그 가져오기
+    for link in soup.select("html > head > link"):
+        if link.get("rel")[0] == "stylesheet":
+            link_url = link.get("href")
+            link["href"] = urllib.parse.urljoin(base_url, link_url)
+            styles.append(str(link))
     
     for title in soup.select("div.sub_right_top > h3"):
         data_dict["title"] = title.get_text()
@@ -79,13 +92,21 @@ for page_id in page_list:
         
         for img in content.find_all('img'):
             img_url = img.get("src")
-            img["src"] = urllib.parse.urljoin(base_url, img_url)
+            if img_url:
+                img["src"] = urllib.parse.urljoin(base_url, img_url)
             
         for a in content.find_all("a", href=True):
             file_url = a['href']
             a['href'] = urllib.parse.urljoin(base_url, file_url)
             
-        data_dict["content"] = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
+        styles_str = "".join(styles)
+        content_str = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
+        
+        head_content = f"<head>{styles_str}</head>"
+        body_content = f"<body>{content_str}</body>"
+        
+        html_content = f"<!DOCTYPE html><html>{head_content}{body_content}</html>"
+        data_dict["content"] = html_content
         
     data_dict["pageId"] = page_id
     data_dict["site"] = base_url

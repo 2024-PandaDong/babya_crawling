@@ -55,10 +55,21 @@ for page_id in page_list:
         "site": None
     }
     
+    styles = []
     menu_element = soup.select("div.tab_depth05")
     
     for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
         comment.extract()
+        
+    for meta in soup.select("html > head > meta"):
+        if meta.get("charset"):
+            styles.append(str(meta))
+    
+    for link in soup.select("html > head > link"):
+        if link.get("rel")[0] == "stylesheet":
+            link_url = link.get("href")
+            link["href"] = urllib.parse.urljoin(base_url, link_url)
+            styles.append(str(link))
         
     for title in soup.select("ul.list05 > li > a.on > strong > span"):
         data_dict["title"] = title.get_text()
@@ -66,11 +77,15 @@ for page_id in page_list:
     for content in soup.select("#conts"):        
         for img in content.find_all('img'):
             img_url = img.get("src")
-            img["src"] = urllib.parse.urljoin(base_url, img_url)
+            if img_url:
+                img["src"] = urllib.parse.urljoin(base_url, img_url)
             
         for a in content.find_all("a", href=True):
             file_url = a['href']
             a['href'] = urllib.parse.urljoin(base_url, file_url)
+        
+        styles_str = "".join(styles)
+        content_str = ""
         
         if menu_element:
             for element in menu_element:
@@ -89,11 +104,17 @@ for page_id in page_list:
                         content_add += re.sub(r'[\s\u00A0-\u00FF]+', " ", str(menu_content).replace('"', "'").replace("href='#'","href='"+menu_url+"'")) + "\n"
             
                 content_add += "</div>"
-                data_dict["content"] = content_add
+                content_str = content_add
                 
                 
         else:
-            data_dict["content"] = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
+            content_str = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
+            
+        head_content = f"<head>{styles_str}</head>"
+        body_content = f"<body>{content_str}</body>"
+        
+        html_content = f"<!DOCTYPE html><html>{head_content}{body_content}</html>"
+        data_dict["content"] = html_content
                 
                     
     for edit_date in soup.select("div.pageInfo.mT50 > div.dataOffer.clFix > dl.date > dd"):
@@ -102,7 +123,8 @@ for page_id in page_list:
     data_dict["pageId"] = page_id
     data_dict["site"] = base_url
     
-    result_data.append(data_dict)
+    if all(data_dict[key] is not None for key in ["title", "content"]):
+        result_data.append(data_dict)
         
     
 if (len(result_data) > 0):
