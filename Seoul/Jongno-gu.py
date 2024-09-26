@@ -76,7 +76,8 @@ for page_id in page_list:
     for content in soup.select("div.content-body > div.sub_main"):
         for img in content.find_all('img'):
             img_url = img.get("src")
-            img["src"] = urllib.parse.urljoin(base_url, img_url)
+            if img_url:
+                img["src"] = urllib.parse.urljoin(base_url, img_url)
             
         for a in content.find_all("a", href=True):
             file_url = a['href']

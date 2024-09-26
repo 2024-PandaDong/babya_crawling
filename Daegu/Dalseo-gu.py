@@ -45,10 +45,6 @@ for link in link_list:
     
     if elements:
         for element in elements:
-            a_remove = element.find_all('a', target='_blank')
-            for a_tag in a_remove:
-                a_tag.extract()
-            
             for i in element.select("ul > li > a"):
                 id_item = i.get("href").split("menu_id=")[1]
                 current_list.append(id_item)
