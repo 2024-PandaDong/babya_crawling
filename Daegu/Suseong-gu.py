@@ -22,7 +22,7 @@ response_data = site_url.json()
 base_url = response_data["data"]["policySiteUrl"]
 
 collected_site_data = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
-old_list = [item["pageId"] for item in collected_site_data.json()["data"]]
+collected_list = [item["pageId"] for item in collected_site_data.json()["data"]]
 
 url = f"{base_url}?menu_id=00041260"
 driver.get(url)
@@ -33,7 +33,7 @@ for i in soup.select("#side .snb > li.open > ul > li > a"):
     id_item = i.get("href").split("menu_id=")[1]
     current_list.append(id_item)
 
-page_list = set(current_list) - set(old_list)
+page_list = set(current_list) - set(collected_list)
 result_data = []
     
 for page_id in page_list:

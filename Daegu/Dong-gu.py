@@ -24,7 +24,7 @@ base_url = response_data["data"]["policySiteUrl"]
 format_url = base_url.split("/main")[0]
 
 collected_site_data = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
-old_list = [item["pageId"] for item in collected_site_data.json()["data"]]
+collected_list = [item["pageId"] for item in collected_site_data.json()["data"]]
 
 url = f"{format_url}/contents.do?mid=0408010101"
 driver.get(url)
@@ -39,7 +39,7 @@ for i in soup.select("li > div.mnu-tit-type2 > a > span"):
             current_list.append(id_item)
 
 
-page_list = set(current_list) - set(old_list)
+page_list = set(current_list) - set(collected_list)
 
 for page_id in page_list:
     page_url = f"{format_url}/contents.do?mid={page_id}"

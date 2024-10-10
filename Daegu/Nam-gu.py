@@ -23,7 +23,7 @@ response_data = site_url.json()
 base_url = response_data["data"]["policySiteUrl"]
 
 collected_site_data = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
-old_list = [item["pageId"] for item in collected_site_data.json()["data"]]
+collected_list = [item["pageId"] for item in collected_site_data.json()["data"]]
 
 url_data = [f"{base_url}?menu_id=00001640", f"{base_url}?menu_id=00202650"]
 
@@ -42,7 +42,7 @@ for url in url_data:
                     current_list.append(id_item)
                    
                     
-page_list = set(current_list) - set(old_list)
+page_list = set(current_list) - set(collected_list)
 
 for page_id in page_list:
     page_url = f"{base_url}?menu_id={page_id}"
