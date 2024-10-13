@@ -102,14 +102,14 @@ try:
                             menu_comment.extract()
                         
                         for menu_content in soup.select("#conts"):
-                            content_add += re.sub(r'[\s\u00A0-\u00FF]+', " ", str(menu_content).replace('"', "'").replace("href='#'","href='"+menu_url+"'")) + "\n"
+                            content_add += re.sub(r'[\s\u00A0-\u00FF]+', " ", str(menu_content).replace("href='#'","href='"+menu_url+"'")) + "\n"
                 
                     content_add += "</div>"
                     content_str = content_add
                     
                     
             else:
-                content_str = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
+                content_str = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content))
                 
             head_content = f"<head>{styles_str}</head>"
             body_content = f"<body>{content_str}</body>"

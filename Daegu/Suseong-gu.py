@@ -85,7 +85,7 @@ try:
                 a['href'] = urllib.parse.urljoin(base_url, file_url)
                 
             styles_str = "".join(styles)
-            content_str = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content).replace('"', "'"))
+            content_str = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content))
             
             head_content = f"<head>{styles_str}</head>"
             body_content = f"<body>{content_str}</body>"
