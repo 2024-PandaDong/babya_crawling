@@ -34,8 +34,8 @@ try:
     soup = BeautifulSoup(driver.page_source, "html.parser")
 
     for i in soup.select("ul.depth_list.depth1_list > li.active > div.depth.depth2 > ul > li"):
-        is_chlid_element = i.find("div")
-        if is_chlid_element:
+        is_child_element = i.find("div")
+        if is_child_element:
             for j in i.select("div.depth.depth3 > ul > li > a"):
                 id_item = j.get("href").split("key=")[1]
                 current_list.append(id_item)

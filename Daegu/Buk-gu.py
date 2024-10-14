@@ -32,8 +32,8 @@ try:
     soup = BeautifulSoup(driver.page_source, 'html.parser')
 
     for i in soup.select("#mobile_first_li_00000550 > div.depth02 > ul > li"):
-        is_chlid_element = i.find("ul")
-        if is_chlid_element:
+        is_child_element = i.find("ul")
+        if is_child_element:
             for j in i.select("ul.clearfix > li > a"):
                 id_item = j.get("href").split("menu_id=")[1]
                 current_list.append(id_item)

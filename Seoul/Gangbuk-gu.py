@@ -33,8 +33,8 @@ try:
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     
     for i in soup.select("li.lnb__depth1.on > ul.dp2-ul > li"):
-        is_chlid_element = i.find("ul", class_="dp3-ul")
-        if is_chlid_element:
+        is_child_element = i.find("ul", class_="dp3-ul")
+        if is_child_element:
            for j in i.select("ul.dp3-ul > li > a"):
                 id_item = j.get("href").split("menuNo=")[1]
                 current_list.append(id_item)
