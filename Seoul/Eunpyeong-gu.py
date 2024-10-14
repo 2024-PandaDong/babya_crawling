@@ -16,7 +16,6 @@ driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())
 try:
     babya_server = "http://동바오.site"
     region = "101220"
-    link_list = list()
     current_list = list()
     result_data = []
 
