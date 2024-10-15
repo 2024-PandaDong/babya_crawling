@@ -14,7 +14,7 @@ chrome_options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
 try:
-    babya_server = "http://동바오.site"
+    babya_server = "http://babyaapi.xn--2q1b39m2ui.site"
     region = "104010"
     current_list = list()
     result_data = []
