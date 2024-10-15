@@ -90,9 +90,6 @@ try:
                 data_dict["title"] = title.get_text().strip()
             
         for content in soup.select("div.cms-content"):
-            for tag in content.find_all('div', class_='tab-nav'):
-                tag.extract()
-                
             for img in content.find_all('img'):
                 img_url = img.get("src")
                 if img_url:
