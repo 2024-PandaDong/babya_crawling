@@ -15,7 +15,7 @@ driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())
 
 try:
     babya_server = "http://babyaapi.xn--2q1b39m2ui.site"
-    region = "101150"
+    region = "101010"
     link_list = list()
     current_list = list()
     result_data = []
@@ -27,39 +27,26 @@ try:
 
     collected_site_data = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
     collected_list = [item["pageId"] for item in collected_site_data.json()["data"]]
-
-    url_data = [f"{format_url}/02/10201010000002015070902.jsp", f"{format_url}/02/10202010000002015070902.jsp",
-                f"{format_url}/03/10304010100002020031805.jsp", f"{format_url}/03/10304050101002020031910.jsp"]
     
-    for url in url_data:
-        driver.get(url)
-        time.sleep(2)
-        soup = BeautifulSoup(driver.page_source, 'html.parser')
+    url = f"{format_url}/content/1163/view.do?mid=419-1163&lang=ko"
+    driver.get(url)
+    time.sleep(2)
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-        for i in soup.select("nav > ul.dep1 > li.on > ul.dep2 > li"):
-            elements = i.select("ul.dep3")
-            
-            if elements:
-                for element in elements:
-                    for j in element.select("ul.dep3 > li > a"):
-                        id_item = j.get("href").split("sh/")[1]
-                        link_list.append(id_item)
-                        
-            else:
-                for j in i.select("a"):
-                    id_item = j.get("href").split("sh/")[1]
-                    link_list.append(id_item)
+    for i in soup.select("#sideNav1_3_l > div.panel-body > ul > li > a"):
+        id_item = i.get("href").split("content/")[1]
+        link_list.append(id_item)
                     
     for link in link_list:
-        driver.get(f"{format_url}/{link}")
+        driver.get(f"{format_url}/content/{link}")
         time.sleep(2)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
-        elements = soup.select("div.tab-wrap")
+        elements = soup.select("ul#tabs")
         
         if elements:
             for element in elements:
-                for i in element.select("ul > li > a"):
-                    id_item = i.get("href").split("sh/")[1]
+                for i in element.select("ul#tabs > li > a"):
+                    id_item = i.get("href").split("content/")[1]
                     current_list.append(id_item)
                     
         else:
@@ -69,7 +56,7 @@ try:
     page_list = set(current_list) - set(collected_list)
 
     for page_id in page_list:
-        page_url = f"{format_url}/{page_id}"
+        page_url = f"{format_url}/content/{page_id}"
         driver.get(page_url)
         time.sleep(2)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
@@ -82,7 +69,8 @@ try:
             "site": None
         }
         
-        styles = []
+        styles = ["<style>*::before {content: none !important;}</style>"]
+        elements = soup.select("ul#tabs")
         
         for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
             comment.extract()
@@ -97,11 +85,17 @@ try:
                 link["href"] = urllib.parse.urljoin(base_url, link_url)
                 styles.append(str(link))
                 
-        for title in soup.select("div.contents-top > h3"):
-            data_dict["title"] = title.get_text().strip()
+        if elements:
+            for element in elements:
+                for subTitle in element.select("li.active > a"):
+                    data_dict["title"] = subTitle.get_text().strip()
+                    
+        else:
+            for title in soup.select("div.sub-header.subH3 > h4.subContTitle"):
+                data_dict["title"] = title.get_text().strip()
             
-        for content in soup.select("#contents"):  
-            for tag in content.find_all('div', class_='tab-wrap'):
+        for content in soup.select("div.contents"):  
+            for tag in content.find_all('ul', id='tabs'):
                 tag.extract()
                 
             for img in content.find_all('img'):
@@ -122,7 +116,8 @@ try:
             html_content = f"<!DOCTYPE html><html>{head_content}{body_content}</html>"
             data_dict["content"] = html_content
             
-        # 최근 수정일 없음
+        for edit_date in soup.select("div.btm_org > dl > dd.date"):
+            data_dict["editDate"] = edit_date.get_text().split(": ")[1]
         
         data_dict["pageId"] = page_id
         data_dict["site"] = base_url
