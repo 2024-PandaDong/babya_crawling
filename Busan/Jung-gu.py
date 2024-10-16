@@ -15,8 +15,7 @@ driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())
 
 try:
     babya_server = "http://babyaapi.xn--2q1b39m2ui.site"
-    region = "101100"
-    link_list = list()
+    region = "106150"
     current_list = list()
     result_data = []
 
@@ -27,45 +26,20 @@ try:
     collected_site_data = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
     collected_list = [item["pageId"] for item in collected_site_data.json()["data"]]
 
-    url = f"{base_url}Contents.asp?code=10005062"
+    url = f"{base_url}?menuCd=DOM_000000603001001001"
     driver.get(url)
     time.sleep(2)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     
-    for i in soup.select("ul.depth1 > li.on > a > span"):
-        if i.text == "모자보건":
-            parent_div = i.find_parent("li")
-            for j in parent_div.select("ul.depth2 > li > a"):
-                id_item = j.get("href")
-                if id_item and "javascript:" not in id_item:  # 자바스크립트 호출 링크 제외
-                    if "?code=" in id_item:
-                        id_item = id_item.split("?code=")[1]
-                        link_list.append(id_item)
-
-        
-    for link in link_list:
-        driver.get(f"{base_url}Contents.asp?code={link}")
-        time.sleep(2)
-        soup = BeautifulSoup(driver.page_source, 'html.parser')
-        elements = soup.select("div.tab1")
-        
-        if elements:
-            for element in elements:
-                for i in element.select("ul > li > a"):
-                    id_item = i.get("href")
-                    if id_item and "javascript:" not in id_item:  # 자바스크립트 호출 링크 제외
-                        if "?code=" in id_item:
-                            id_item = id_item.split("?code=")[1]
-                            current_list.append(id_item)
-                    
-        else:
-            current_list.append(link)
+    for i in soup.select("#lnb > li.has-sub.open > ul > li.has-sub.open > ul > li > a"):
+        id_item = i.get("href").split("?menuCd=")[1]
+        current_list.append(id_item)
                 
                 
     page_list = set(current_list) - set(collected_list)
 
     for page_id in page_list:
-        page_url = f"{base_url}Contents.asp?code={page_id}"
+        page_url = f"{base_url}?menuCd={page_id}"
         driver.get(page_url)
         time.sleep(2)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
@@ -94,18 +68,23 @@ try:
                 link["href"] = urllib.parse.urljoin(base_url, link_url)
                 styles.append(str(link))
                 
-        for title in soup.select("#s_contents > div.s_con_tit > h3"):
+        for title in soup.select("#content > h1.title"):
             data_dict["title"] = title.get_text()
             
-        for content in soup.select("#mainCont > div.part > div > div.bul"):
+        for edit_date in soup.select("#change > div.page_infor > ul > li.mod_data"):
+            data_dict["editDate"] = edit_date.get_text().split(": ")[1]
+            
+        for content in soup.select("#content"):
+            for tag in content.find_all('h1', class_='title'):
+                tag.extract()
+                
+            for tag in content.find_all('div', id='change'):
+                tag.extract()
+            
             for img in content.find_all('img'):
-                if img.get("alt") == "미리보기": 
-                    img.extract()     # 미리보기가 js로 구현되어 있어서 제거
-                    
-                else:
-                    img_url = img.get("src")
-                    if img_url:
-                        img["src"] = urllib.parse.urljoin(base_url, img_url)
+                img_url = img.get("src")
+                if img_url:
+                    img["src"] = urllib.parse.urljoin(base_url, img_url)
                 
             for a in content.find_all("a", href=True):
                 file_url = a['href']
@@ -119,10 +98,6 @@ try:
             
             html_content = f"<!DOCTYPE html><html>{head_content}{body_content}</html>"
             data_dict["content"] = html_content
-            
-        for edit_date in soup.select("#survey > div.dataPerson2 > ul > li > p"):
-            if re.match(r'^\d{4}-\d{2}-\d{2}$', edit_date.get_text()):
-                data_dict["editDate"] = edit_date.get_text()
             
         data_dict["pageId"] = page_id
         data_dict["site"] = base_url
