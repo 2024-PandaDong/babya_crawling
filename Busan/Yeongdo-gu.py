@@ -44,7 +44,7 @@ try:
     page_list = set(current_list) - set(collected_list)
 
     for page_id in page_list:
-        page_url = f"{base_url}/01568/01603/{page_id}"
+        page_url = f"{format_url}/01568/01603/{page_id}"
         driver.get(page_url)
         time.sleep(2)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
@@ -75,10 +75,7 @@ try:
         for title in soup.select("#body_title > h1"):
             data_dict["title"] = title.get_text()
             
-        for content in soup.select("#body_content"):
-            for tag in content.find_all(['div', 'footer'], class_=['codeView04', 'satisfaction']):
-                tag.extract()
-            
+        for content in soup.select("#body_content"):    
             for img in content.find_all('img'):
                 img_url = img.get("src")
                 if img_url:
