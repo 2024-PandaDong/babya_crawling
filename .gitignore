@@ -1,0 +1,12 @@
+# Python __pycache__ directories
+__pycache__/
+
+# Compiled Python files
+*.pyc
+*.pyo
+
+# Environment variables or local Python settings
+.env
+
+# Config
+config.py

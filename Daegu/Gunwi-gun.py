@@ -1,4 +1,5 @@
 import re
+import os
 import sys
 import time
 import requests
@@ -9,12 +10,15 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from config import babya_server
+
 chrome_options = Options()
 chrome_options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
 try:
-    babya_server = "http://babyaapi.xn--2q1b39m2ui.site"
     region = "104090"
     link_list = list()
     current_list = list()
