@@ -69,7 +69,8 @@ try:
             "content": None,
             "editDate": None,
             "pageId": None,
-            "site": None
+            "site": None,
+            "page": None
         }
         
         styles = ["<style>*::after {content: none !important;}</style>"]
@@ -116,6 +117,7 @@ try:
         
         data_dict["pageId"] = page_id
         data_dict["site"] = base_url
+        data_dict["page"] = page_url
         
         if all(data_dict[key] is not None for key in ["title", "content"]):
             result_data.append(data_dict)

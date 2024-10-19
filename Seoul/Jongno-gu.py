@@ -57,7 +57,8 @@ try:
             "content": None,
             "editDate": None,
             "pageId": None,
-            "site": None
+            "site": None,
+            "page": None
         }
         
         styles = []
@@ -107,6 +108,7 @@ try:
                 
         data_dict["pageId"] = page_id
         data_dict["site"] = base_url
+        data_dict["page"] = page_url
         
         # 딕셔너리의 값의 title, content 값이 None이 아닐때
         if all(data_dict[key] is not None for key in ["title", "content"]):

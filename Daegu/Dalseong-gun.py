@@ -57,7 +57,8 @@ try:
             "content": None,
             "editDate": None,
             "pageId": None,
-            "site": None
+            "site": None,
+            "page": None
         }
         
         styles = [] # link 태그 리스트
@@ -113,6 +114,9 @@ try:
         
         # site 데이터
         data_dict["site"] = base_url
+        
+        # page 데이터
+        data_dict["page"] = page_url
 
         # 딕셔너리의 값의 title, content 값이 None이 아닐때만 서버로 보낼 데이터 값 삽입
         if all(data_dict[key] is not None for key in ["title", "content"]):
