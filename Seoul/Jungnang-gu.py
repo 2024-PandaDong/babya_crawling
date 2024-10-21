@@ -1,4 +1,5 @@
 import re
+import os
 import sys
 import time
 import requests
@@ -10,12 +11,15 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from config import babya_server
+
 chrome_options = Options()
 chrome_options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
 try:
-    babya_server = "http://babyaapi.xn--2q1b39m2ui.site"
     region = "101250"
     current_list = list()
     result_data = []
@@ -38,7 +42,6 @@ try:
         current_list.append(id_item)
 
 
-    print(current_list)
     page_list = set(current_list) - set(collected_list)
     
     for page_id in page_list:
@@ -52,7 +55,8 @@ try:
             "content": None,
             "editDate": None,
             "pageId": None,
-            "site": None
+            "site": None,
+            "page": None
         }
         
         styles = []
@@ -82,17 +86,16 @@ try:
                 data_dict["editDate"] = formatted_date
             
         for content in soup.select("div.sub-center"):
-            for tag in content.find_all(['div', 'form']):
-                if tag.name == 'div' and tag.has_attr('class') and 'sub-table1' in tag['class'] and 'mt60' in tag['class']:
-                    tag.extract()
-                    
-                elif tag.name == 'form' and tag.has_attr('id') and tag['id'] == 'satisfactionFrm':
-                    tag.extract()
+            for tag in content.find_all(['div', 'div'], class_=['sub-tab1', 'mt60']):
+                tag.extract()
+            
+            for tag in content.find_all('form', id='satisfactionFrm'):
+                tag.extract()
             
             for img in content.find_all('img'):
                 img_url = img.get("src")
                 if img_url:
-                    img["src"] = urllib.parse.urljoin(base_url, img_url)
+                    img["src"] = urllib.parse.urljoin(f"{base_url}/health", img_url)
                 
             for a in content.find_all("a", href=True):
                 file_url = a['href']
@@ -107,14 +110,22 @@ try:
             html_content = f"<!DOCTYPE html><html>{head_content}{body_content}</html>"
             data_dict["content"] = html_content
             
-            # print(data_dict["content"], "\n\n\n\n\n\n\n\n\n")
-            
         data_dict["pageId"] = page_id
         data_dict["site"] = base_url
+        data_dict["page"] = page_url
         
         if all(data_dict[key] is not None for key in ["title", "content"]):
             result_data.append(data_dict)
-                
+            
+            
+    if (len(result_data) > 0):
+        print(f"크롤링한 페이지 개수: [{len(result_data)}]")
+        policy = requests.post(f"{babya_server}/policy", json=result_data)
+        print(policy.status_code)
+        print(policy.text)
+        
+    else:
+        print("아직 새로운 정책이 업데이트 되지 않았습니다.")        
 
 except Exception as e:
     print(f"Error: {e}")
