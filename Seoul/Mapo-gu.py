@@ -37,7 +37,7 @@ try:
     time.sleep(2)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-    for i in soup.select("div.snav_3rd.snav > ul.link_list > li > a"):
+    for i in soup.select("li.snav_3rd.snav > ul.link_list > li > a"):
         if i.get_text() != "영양플러스" and i.get_text() != "구강건강(임산부)" and i.get_text() != "금연관리(모성 및 희망자)":
             id_item = i.get("href").split("content/")[1]
             link_list.append(id_item)
