@@ -60,7 +60,7 @@ try:
     page_list = set(current_list) - set(collected_list)
 
     for page_id in page_list:
-        page_url = f"{format_url}/contents.do?mId={page_id}"
+        page_url = f"{format_url}/contents.do?mId=0402030300"
         driver.get(page_url)
         time.sleep(2)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
