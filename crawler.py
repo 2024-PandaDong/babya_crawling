@@ -17,8 +17,8 @@ def run_crawlers_in_subfolders():
                 if result.returncode != 0:
                     print(f"Error running {crawler_script_path}: {result.stderr}")
                 else:
-                    print(f"\n\n\n{crawler_script_path} 실행 완료\n\n\n\n\n")
-                    print("--------------------------------------------------------------------------\n\n")
+                    print(f"\n\n\n{crawler_script_path} 실행 완료\n\n\n")
+                    print("--------------------------------------------------------------------------\n\n\n")
 
 if __name__ == "__main__":
     run_crawlers_in_subfolders()
