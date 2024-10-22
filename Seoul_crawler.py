@@ -1,14 +1,14 @@
 import os
 import subprocess
 
-# Busan 폴더 경로 가져옴
-folder_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Busan")
+# Seoul 폴더 경로 가져옴
+folder_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Seoul")
 
-# Busan 폴더 안의 모든 .py 파일을 리스트에 추가
+# Seoul 폴더 안의 모든 .py 파일을 리스트에 추가
 script_list = [file for file in os.listdir(folder_path) if file.endswith('.py')]
 
 def run_crawlers():
-    print("부산\n\n")
+    print("서울\n\n")
     for script in script_list:
         print("행정 구역:", script.split(".")[0] + "\n")
         print(f"{script} 크롤링 하는 중...")

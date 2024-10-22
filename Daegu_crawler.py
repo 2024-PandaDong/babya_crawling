@@ -8,6 +8,7 @@ folder_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Daegu")
 script_list = [file for file in os.listdir(folder_path) if file.endswith('.py')]
 
 def run_crawlers():
+    print("대구\n\n")
     for script in script_list:
         print("행정 구역:", script.split(".")[0] + "\n")
         print(f"{script} 크롤링 하는 중...")
@@ -17,7 +18,7 @@ def run_crawlers():
             print(f"Error running {script}: {result.stderr}")
         else:
             print(f"{script} 실행 완료")
-            print("--------------------------------------------")
+            print("--------------------------------------------\n\n\n\n\n")
 
 if __name__ == "__main__":
     run_crawlers()
