@@ -19,7 +19,7 @@ chrome_options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
 try:
-    region = "103040"
+    region = "103050"
     link_list = list()
     current_list = list()
     result_data = []
@@ -27,17 +27,17 @@ try:
     site_url = requests.get(f"{babya_server}/policy/site", params={"region": region})
     response_data = site_url.json()
     base_url = response_data["data"]["policySiteUrl"]
-    format_url = base_url.split("/index")[0]
+    format_url = base_url.split("/health")[0]
 
     collected_site_data = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
     collected_list = [item["pageId"] for item in collected_site_data.json()["data"]]
 
-    url = f"{format_url}/menu.es?mid=a60301010600"
+    url = f"{format_url}/menu.es?mid=b30405010100"
     driver.get(url)
     time.sleep(2)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     
-    for i in soup.select("#smenu2 > li > a"):
+    for i in soup.select("#smenu5 > li > a"):
         id_item = i.get("href").split("?mid=")[1]
         link_list.append(id_item)
         
@@ -45,7 +45,7 @@ try:
         driver.get(f"{format_url}/menu.es?mid={link}")
         time.sleep(2)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
-        elements = soup.select("#depth4_menu_div")
+        elements = soup.select("#depth4_menu_ul")
         
         if elements:
             for element in elements:
@@ -58,7 +58,7 @@ try:
     
     
     page_list = set(current_list) - set(collected_list)
-
+    
     for page_id in page_list:
         page_url = f"{format_url}/menu.es?mid={page_id}"
         driver.get(page_url)
@@ -75,7 +75,7 @@ try:
         }
         
         styles = ["<style>*::before {content: none !important;} *::after {content: none !important;}</style>"]
-        elements = soup.select("#depth4_menu_div")
+        elements = soup.select("#depth4_menu_ul")
         
         for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
             comment.extract()
@@ -92,14 +92,14 @@ try:
 
         if elements:
             for element in elements:
-                for subTitle in element.select("#depth4_menu_ul > li.active > a"):
+                for subTitle in element.select("li.active > a"):
                     data_dict["title"] = subTitle.get_text()
                 
         else: 
-            for title in soup.select("#content > section.content_info > h3.title"):
+            for title in soup.select("#contents_title"):
                 data_dict["title"] = title.get_text()
         
-        for content in soup.select("#content_detail"):
+        for content in soup.select("#contents_body"):
             for tag in content.find_all("div", id="depth4_menu_div"):
                 tag.extract()
             
