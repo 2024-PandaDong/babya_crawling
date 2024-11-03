@@ -113,9 +113,9 @@ try:
         data_dict["site"] = base_url
         data_dict["page"] = page_url
         
-        if all(data_dict[key] is not None for key in ["title", "content"]) and data_dict["title"] != "분만예정일 계산":
+        if all(data_dict[key] is not None for key in ["title", "content"]):
             result_data.append(data_dict)
-            
+        
         # 서브 페이지 (메뉴바 같은거)
         for subPage_id in subPage_list:
             subPage_url = f"{base_url}html/sub06/{subPage_id}"
