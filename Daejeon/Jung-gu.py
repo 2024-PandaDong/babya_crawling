@@ -19,7 +19,7 @@ chrome_options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
 try:
-    region = "105040"
+    region = "105050"
     current_list = list()
     result_data = []
 
@@ -31,12 +31,12 @@ try:
     collected_site_data = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
     collected_list = [item["pageId"] for item in collected_site_data.json()["data"]]
 
-    url = f"{format_url}/sub03_03_01.do"
+    url = f"{format_url}/sub04_07_01.do"
     driver.get(url)
     time.sleep(2)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     
-    for i in soup.select("#snb > li.n3.on > ul.depth3_ul > li > a"):
+    for i in soup.select("#snb > li.n6.on > ul.depth3_ul > li > a"):
         id_item = i.get("href").split("health/")[1]
         current_list.append(id_item)
 
@@ -59,7 +59,6 @@ try:
         }
         
         styles = []
-        subPage_list = []
         
         for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
             comment.extract()
@@ -75,7 +74,7 @@ try:
                 styles.append(str(link))
 
         for title in soup.select("#location > h2.page__title"):
-            data_dict["title"] = title.get_text()
+            data_dict["title"] = title.get_text().strip()
             
         for content in soup.select("#txt"):
             for img in content.find_all('img'):
@@ -96,7 +95,11 @@ try:
             html_content = f"<!DOCTYPE html><html>{head_content}{body_content}</html>"
             data_dict["content"] = html_content
             
-        # 최근수정일 없음
+        for edit_date in soup.select("div.content-info > div.content-info__charge > span.last"):
+            for tag in edit_date.find_all("em"):
+                tag.extract()
+                
+            data_dict["editDate"] = edit_date.get_text()
         
         data_dict["pageId"] = page_id
         data_dict["site"] = base_url
