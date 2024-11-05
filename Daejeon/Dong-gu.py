@@ -195,14 +195,14 @@ try:
                 result_data.append(data_dict)
     
     
-    # if (len(result_data) > 0):
-    #     print(f"크롤링한 페이지 개수: [{len(result_data)}]")
-    #     policy = requests.post(f"{babya_server}/policy", json=result_data)
-    #     print(policy.status_code)
-    #     print(policy.text)
+    if (len(result_data) > 0):
+        print(f"크롤링한 페이지 개수: [{len(result_data)}]")
+        policy = requests.post(f"{babya_server}/policy", json=result_data)
+        print(policy.status_code)
+        print(policy.text)
         
-    # else:
-    #     print("아직 새로운 정책이 업데이트 되지 않았습니다.")
+    else:
+        print("아직 새로운 정책이 업데이트 되지 않았습니다.")
 
 except Exception as e:
     print(f"Error: {e}")
