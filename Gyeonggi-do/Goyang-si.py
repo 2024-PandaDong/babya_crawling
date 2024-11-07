@@ -19,7 +19,7 @@ chrome_options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
 try:
-    region = "102030"
+    region = "102020"
     current_list = list()
     result_data = []
 
@@ -38,20 +38,8 @@ try:
     
     for i in soup.select("#snb > ul > li.on > ul > li > a"):
         id_item = i.get("href").split("health02_4/")[1]
-        if "health02_4_3" in id_item:
-            url = f"{format_url}/health02/health02_4/{id_item}"
-            driver.get(url)
-            time.sleep(2)
-            subSoup = BeautifulSoup(driver.page_source, 'html.parser')
-            
-            for j in subSoup.select("ul.tab-list > li.on > a"):
-                sub_id_item = j.get("href").split("health02_4/")[1]
-                if "덕양구" in j.get_text():
-                    current_list.append(sub_id_item)
-        
-        else:
-            if "산후우울증자가진단" not in i.get_text().strip():
-                current_list.append(id_item)
+        if "산후우울증자가진단" not in i.get_text().strip():
+            current_list.append(id_item)
 
     
     page_list = set(current_list) - set(collected_list)
@@ -79,8 +67,7 @@ try:
         if elements:
             for element in elements:
                 id_item = element.get("href").split("health02_4/")[1]
-                if "health02_4_3" not in id_item:
-                    subPage_list.append(id_item)
+                subPage_list.append(id_item)
         
         for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
             comment.extract()
@@ -96,14 +83,9 @@ try:
                 styles.append(str(link))
             
         if elements:
-            if "health02_4_3" in page_id:
-                for title in soup.select("#content-title"):
-                    data_dict["title"] = title.get_text().strip()
-                
-            else:
-                for title in soup.select("ul.tab-list > li.on > a"):
-                    data_dict["title"] = title.get_text()
-            
+            for title in soup.select("ul.tab-list > li.on > a"):
+                data_dict["title"] = title.get_text()
+        
         else:
             for title in soup.select("#content-title"):
                 data_dict["title"] = title.get_text().strip()
