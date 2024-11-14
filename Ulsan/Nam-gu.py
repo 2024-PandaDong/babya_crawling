@@ -20,6 +20,7 @@ driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())
 
 try:
     region = "107010"
+    link_list = list()
     current_list = list()
     result_data = []
 
@@ -38,7 +39,22 @@ try:
     
     for i in soup.select("div.snb > ul > li.on > ul > li > a"):
         id_item = i.get("href").split("business/")[1]
-        current_list.append(id_item)
+        link_list.append(id_item)
+        
+    for link in link_list:
+        driver.get(f"{format_url}/business/{link}")
+        time.sleep(2)
+        soup = BeautifulSoup(driver.page_source, 'html.parser')
+        elements = soup.select("#tab")
+        
+        if elements:
+            for element in elements:
+                for i in element.select("ul.tab-ul > li > a"):
+                    id_item = i.get("href").split("business/")[1]
+                    current_list.append(id_item)
+            
+        else:
+            current_list.append(link)
 
     
     page_list = set(current_list) - set(collected_list)
@@ -59,14 +75,7 @@ try:
         }
         
         styles = []
-        subPage_list = []
-        elements = soup.select("#tab > ul.tab-ul > li:not(.on) > a")
-        
-        # subPage가 있을때 (menu)
-        if elements:
-            for element in elements:
-                id_item = element.get("href").split("business/")[1]
-                subPage_list.append(id_item)
+        elements = soup.select("#tab")
         
         for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
             comment.extract()
@@ -119,78 +128,6 @@ try:
         
         if all(data_dict[key] is not None for key in ["title", "content"]):
             result_data.append(data_dict)
-            
-        # 서브 페이지 (메뉴바 같은거)
-        for subPage_id in subPage_list:
-            subPage_url = f"{format_url}/business/{subPage_id}"
-            driver.get(subPage_url)
-            time.sleep(2)
-            subSoup = BeautifulSoup(driver.page_source, 'html.parser')
-            
-            data_dict = {
-                "title": None,
-                "content": None,
-                "editDate": None,
-                "pageId": None,
-                "site": None,
-                "page": None
-            }
-            
-            styles = []
-            link_data = []
-            sub_elements = soup.select("#tab")
-            
-            for comment in subSoup.find_all(string=lambda text: isinstance(text, Comment)):
-                comment.extract()
-            
-            for meta in subSoup.select("html > head > meta"):
-                if meta.get("charset"):
-                    styles.append(str(meta))
-                
-            for link in soup.select("html > head > link"):
-                if link.get("rel")[0] == "stylesheet":
-                    link_url = link.get("href")
-                    link["href"] = urllib.parse.urljoin(base_url, link_url)
-                    styles.append(str(link))
-
-            if elements:
-                for subTitle in subSoup.select("ul.tab-ul > li.on > a > span"):
-                    data_dict["title"] = subTitle.get_text()
-
-            else:
-                for subTitle in subSoup.select("#content_field > div > h2"):
-                    data_dict["title"] = subTitle.get_text()
-                
-            for subContent in subSoup.select("#content_field > div:nth-of-type(2)"):
-                for tag in subContent.find_all("div", id="tab"):
-                    tag.extract()
-                
-                for img in subContent.find_all('img'):
-                    img_url = img.get("src")
-                    if img_url:
-                        img["src"] = urllib.parse.urljoin(base_url, img_url)
-                    
-                for a in subContent.find_all("a", href=True):
-                    file_url = a['href']
-                    a['href'] = urllib.parse.urljoin(base_url, file_url)
-                
-                styles_str = "".join(styles)
-                content_str = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(subContent))
-                
-                head_content = f"<head>{styles_str}</head>"
-                body_content = f"<body>{content_str}</body>"
-                
-                html_content = f"<!DOCTYPE html><html>{head_content}{body_content}</html>"
-                data_dict["content"] = html_content
-
-            # 최종수정일 없음
-            
-            data_dict["pageId"] = subPage_id
-            data_dict["site"] = base_url
-            data_dict["page"] = subPage_url
-            
-            if all(data_dict[key] is not None for key in ["title", "content"]):
-                result_data.append(data_dict)
     
     
     if (len(result_data) > 0):

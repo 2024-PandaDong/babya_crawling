@@ -59,7 +59,6 @@ try:
         }
         
         styles = []
-        subPage_list = []
         
         for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
             comment.extract()
