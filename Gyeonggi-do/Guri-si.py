@@ -95,6 +95,14 @@ try:
             
         for title in soup.select("header.sub_head > div.sub_title > h2 > span"):
             data_dict["title"] = title.get_text()
+            
+        for edit_date in soup.select("footer.satisfaction > div.manager_info > ul.clearfix > li"):
+            for tag in edit_date.find_all("span"):
+                tag.extract()
+                
+            editDate = edit_date.get_text().strip()
+            if re.match(r"^\d{4}-\d{2}-\d{2}$", editDate):
+                data_dict["editDate"] = editDate
         
         for content in soup.select("#contents"):
             for tag in content.find_all("footer", class_="satisfaction"):
@@ -117,14 +125,6 @@ try:
             
             html_content = f"<!DOCTYPE html><html>{head_content}{body_content}</html>"
             data_dict["content"] = html_content
-            
-        for edit_date in soup.select("footer.satisfaction > div.manager_info > ul.clearfix > li"):
-            for tag in edit_date.find_all("span"):
-                tag.extract()
-                
-            editDate = edit_date.get_text().strip()
-            if re.match(r"^\d{4}-\d{2}-\d{2}$", editDate):
-                data_dict["editDate"] = editDate
         
         data_dict["pageId"] = page_id
         data_dict["site"] = base_url
