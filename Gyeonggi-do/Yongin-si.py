@@ -42,10 +42,11 @@ try:
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         
         for i in soup.select("#lnb > ul > li.on > ul > li.on > ul > a"):
-            id_item = i.get("href").split("mcHealth/")[1]
+            href = i.get("href").split(";")[0]
+            id_item = href.split("mcHealth/")[1]
             current_list.append(id_item)
-        
-    
+
+
     page_list = set(current_list) - set(collected_list)
 
     for page_id in page_list:
@@ -92,12 +93,7 @@ try:
             
             for a in content.find_all("a", href=True):
                 file_url = a['href']
-                if file_url == "#":
-                    path, filename = a.get("onclick").split("'")[3], a.get("onclick").split("'")[1]
-                    a['href'] = f"{format_url.split('/depart')[0]}/FileDown_direct.do?path={path}&file={filename}"
-                    
-                else:
-                    a['href'] = urllib.parse.urljoin(base_url, file_url)
+                a['href'] = urllib.parse.urljoin(base_url, file_url)
                 
             styles_str = "".join(styles)
             content_str = re.sub(r'[\s\u00A0-\u00FF]+', " ", str(content))
