@@ -19,7 +19,7 @@ chrome_options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
 try:
-    region = "114030"
+    region = "114040"
     current_list = list()
     result_data = []
 
@@ -31,20 +31,22 @@ try:
     collected_site_data = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
     collected_list = [item["pageId"] for item in collected_site_data.json()["data"]]
     
-    url = f"{format_url}/contents.do?key=687"
-    driver.get(url)
-    time.sleep(2)
-    soup = BeautifulSoup(driver.page_source, 'html.parser')
-    
-    for i in soup.select("nav.menu > div.depth1 > ul.depth1_list > li.active > div > ul > li > a"):
-        id_item = i.get("href").split("?key=")[1]
-        current_list.append(id_item)
+    url_data = [f"{format_url}html/sub05/050401.html", f"{format_url}html/sub05/050501.html"]
+
+    for url in url_data:
+        driver.get(url)
+        time.sleep(2)
+        soup = BeautifulSoup(driver.page_source, 'html.parser')
+        
+        for i in soup.select("#snb > li.on > ul.depth3_ul > li > a"):
+            id_item = i.get("href").split("sub05/")[1]
+            current_list.append(id_item)
     
 
     page_list = set(current_list) - set(collected_list)
 
     for page_id in page_list:
-        page_url = f"{format_url}/contents.do?key={page_id}"
+        page_url = f"{format_url}html/sub05/{page_id}"
         driver.get(page_url)
         time.sleep(2)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
@@ -58,7 +60,7 @@ try:
             "page": None
         }
         
-        styles = []
+        styles = ["<style> div { display: block !important; } </style>"]
         
         for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
             comment.extract()
@@ -67,16 +69,20 @@ try:
             if meta.get("charset"):
                 styles.append(str(meta))
             
-        for link in soup.select("html > head > link"):
+        # 놀랍게도 링크 태그가 body태그 안에 있음...
+        for link in soup.select("html > body > link"):
             if link.get("rel")[0] == "stylesheet":
                 link_url = link.get("href")
                 link["href"] = urllib.parse.urljoin(base_url, link_url)
                 styles.append(str(link))
                 
-        for title in soup.select("header.sub_head > div.sub_title > h2"):
+        for title in soup.select("#location > h2.page__title"):
             data_dict["title"] = title.get_text()
         
-        for content in soup.select("#contents"):
+        for content in soup.select("#txt"):
+            for tag in content.find_all("ul", class_="tab-ul"):
+                tag.extract()
+            
             for img in content.find_all('img'):
                 img_url = img.get("src")
                 if img_url:
@@ -95,13 +101,7 @@ try:
             html_content = f"<!DOCTYPE html><html>{head_content}{body_content}</html>"
             data_dict["content"] = html_content
             
-        for edit_date in soup.select("div.satisfaction > div.manager_info > ul.clearfix > li"):
-            for tag in edit_date.find_all("span"):
-                tag.extract()
-                
-            editDate = edit_date.get_text().strip()
-            if re.match(r"^\d{4}.\d{2}.\d{2}$", editDate):
-                data_dict["editDate"] = editDate.replace(".", "-")
+        # 최근수정일 없음
         
         data_dict["pageId"] = page_id
         data_dict["site"] = base_url
