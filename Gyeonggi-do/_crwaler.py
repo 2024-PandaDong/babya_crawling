@@ -17,8 +17,8 @@ def run_crawlers():
         if result.returncode != 0:
             print(f"Error running {script}: {result.stderr}")
         else:
-        print(f"{script} 실행 완료")
-        print("------------------------------------------------------")
+            print(f"{script} 실행 완료")
+            print("------------------------------------------------------")
 
 if __name__ == "__main__":
     run_crawlers()
