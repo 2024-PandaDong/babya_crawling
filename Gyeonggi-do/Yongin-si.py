@@ -20,6 +20,7 @@ driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())
 
 try:
     region = "102400"
+    link_list = list()
     current_list = list()
     result_data = []
 
@@ -31,20 +32,31 @@ try:
     collected_site_data = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
     collected_list = [item["pageId"] for item in collected_site_data.json()["data"]]
     
-    url_data = [f"{format_url}/home/health/healthSvc/mcHealth/mcHealth02/mcHealth02_05.jsp",
-                f"{format_url}/home/health/healthSvc/mcHealth/mcHealth02/mcHealth02_01.jsp",
-                f"{format_url}/home/health/healthSvc/mcHealth/mcHealth02/mcHealth02_07.jsp",
-                f"{format_url}/home/health/healthSvc/mcHealth/mcHealth03/mcHealth03_04.jsp",]
+    url = f"{format_url}/home/health/healthSvc/mcHealth/mcHealth02/mcHealth02_05.jsp"
+    driver.get(url)
+    time.sleep(2)
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
     
-    for url in url_data:
-        driver.get(url)
+    for i in soup.select("#lnb > ul > li.on > ul > li > a"):
+        href = i.get("href").split(";")[0]
+        id_item = href.split("mcHealth/")[1]
+        link_list.append(id_item)
+        
+    for link in link_list:
+        driver.get(f"{format_url}/home/health/healthSvc/mcHealth/{link}")
         time.sleep(2)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
+        elements = soup.select("div.tab_list")
         
-        for i in soup.select("#lnb > ul > li.on > ul > li.on > ul > a"):
-            href = i.get("href").split(";")[0]
-            id_item = href.split("mcHealth/")[1]
-            current_list.append(id_item)
+        if elements:
+            for element in elements:
+                for i in element.select("ul > li > a"):
+                    href = i.get("href").split(";")[0]
+                    id_item = href.split("mcHealth/")[1]
+                    current_list.append(id_item)
+                    
+        else:
+            current_list.append(link)
 
 
     page_list = set(current_list) - set(collected_list)
