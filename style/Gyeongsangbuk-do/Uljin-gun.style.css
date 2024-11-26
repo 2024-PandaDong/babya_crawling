@@ -1,0 +1,7002 @@
+@charset "utf-8";
+
+/* 나눔 스퀘어 */
+@font-face {
+  font-family: "NanumSQ";
+  font-weight: 400;
+  src: url("https://www.uljin.go.kr/font/NanumSquareR.eot");
+  src: url("https://www.uljin.go.kr/font/NanumSquareR.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://www.uljin.go.kr/font/NanumSquareR.woff") format("woff"),
+    url("https://www.uljin.go.kr/font/NanumSquareR.ttf") format("truetype");
+}
+@font-face {
+  font-family: "NanumSQ";
+  font-weight: 600;
+  src: url("https://www.uljin.go.kr/font/NanumSquareB.eot");
+  src: url("https://www.uljin.go.kr/font/NanumSquareB.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://www.uljin.go.kr/font/NanumSquareB.woff") format("woff"),
+    url("https://www.uljin.go.kr/font/NanumSquareB.ttf") format("truetype");
+}
+
+/* 나눔 명조 */
+@font-face {
+  font-family: "NanumMJ";
+  src: url("https://www.uljin.go.kr/font/NanumMyeongjo.eot");
+  src: url("https://www.uljin.go.kr/font/NanumMyeongjo.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://www.uljin.go.kr/font/NanumMyeongjo.woff") format("woff"),
+    url("https://www.uljin.go.kr/font/NanumMyeongjo.ttf") format("truetype");
+}
+
+/*TVN 폰트*/
+@font-face {
+  font-family: "tvN Enjoystories";
+  src: url("https://www.uljin.go.kr/font/tvNBold.eot");
+  src: url("https://www.uljin.go.kr/font/tvNBold.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://www.uljin.go.kr/font/tvNBold.woff") format("woff"),
+    url("https://www.uljin.go.kr/font/tvNBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-size: 0.93em !important;
+  margin: 0;
+  padding: 0;
+  font-family: "NanumSQ", NanumGothic, "나눔고딕", sans-serif;
+  color: #666;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+div,
+p,
+ul,
+ol,
+li,
+img,
+a,
+table,
+td,
+th,
+tr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+input,
+span,
+iframe,
+dl,
+dt,
+dd,
+caption {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+table {
+  border-collapse: collapse;
+  vertical-align: top;
+  font-size: 100%;
+}
+img {
+  border: 0 none;
+}
+input,
+select {
+  font-family: "NanumSQ", NanumGothic, "나눔고딕", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #666;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+a:visited {
+  text-decoration: none;
+  border: none;
+}
+a:active {
+  text-decoration: none;
+  border: none;
+}
+a:hover {
+  text-decoration: none;
+  border: none;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+img,
+input.image {
+  border: 0 none;
+}
+form,
+input {
+  margin: 0;
+  padding: 0;
+}
+legend {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+caption {
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  text-indent: -9999px;
+}
+ul,
+ol,
+li {
+  list-style: none;
+}
+select {
+  font-size: 0.93em;
+}
+textarea {
+  font-size: 0.93em;
+  margin: 0;
+  padding: 0;
+}
+button {
+  border: 0;
+  cursor: pointer;
+  font-family: "NanumSQ", NanumGothic, "나눔고딕", sans-serif;
+}
+a,
+button,
+submit {
+  transition: 0.2s ease-out;
+}
+hr {
+  visibility: hidden;
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+}
+td *,
+div *,
+span *,
+p * {
+  vertical-align: top;
+}
+h1 {
+  font-size: 200%;
+}
+h2 {
+  font-size: 180%;
+}
+h3 {
+  font-size: 160%;
+}
+h4 {
+  font-size: 140%;
+}
+h5 {
+  font-size: 120%;
+}
+h6 {
+  font-size: 100%;
+}
+
+.tvn {
+  font-family: "tvN Enjoystories", sans-serif;
+}
+
+/* ::selection {
+background: #e4780b;
+color: #FFF;
+text-shadow: none;                                  */
+
+/* common */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.blind {
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: -5000px;
+  font-size: 1.8em;
+}
+.hide {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  border-bottom: 3px solid #223e99;
+  background: url("https://www.uljin.go.kr/images/09_health/common/top_bg.gif")
+    repeat-x;
+}
+header .m_top {
+  height: 110px;
+}
+header:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+header h1 {
+  position: absolute;
+  top: 48px;
+  left: 15px;
+  font-size: 18px;
+  letter-spacing: -0.125em;
+}
+header h1 img {
+  width: 85%;
+}
+header h1.subsite {
+  top: 50px;
+}
+header h1.subsite img {
+  display: block;
+  width: 40%;
+  margin: 0 0 5px 0;
+}
+header h1.subsite a {
+  display: block;
+}
+header h1 * {
+  vertical-align: middle;
+}
+header h1 a {
+  color: #223e99;
+}
+
+header .skip {
+  display: none;
+}
+header .gnb {
+  float: right;
+  width: 45%;
+}
+header .gnb button {
+  background: url("https://www.uljin.go.kr/images/01_potal/common/arr_icon.png")
+    no-repeat right -6px;
+  color: #fff;
+  width: 100%;
+  height: 40px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.5em;
+}
+header .gnb > ul {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 50%;
+  background: #41c2e1;
+  z-index: 2;
+}
+header .gnb ul.on {
+  display: block;
+}
+header .gnb li {
+  border-bottom: 1px solid #fff;
+  text-align: left;
+}
+header .gnb li a {
+  display: block;
+  color: #fff;
+  padding: 7px 10px;
+}
+header .gnb li button {
+  padding: 0 10px;
+  height: 30px;
+  background-position: right -10px;
+}
+header .gnb li ul {
+  display: none;
+  background: #223e99;
+}
+header .gnb li li {
+  border: none;
+}
+header .subsite_gnb {
+  width: 100%;
+}
+header .subsite_gnb ul {
+  width: 100%;
+}
+
+header .t_link {
+  float: left;
+  width: 55%;
+}
+header .t_link:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+header .t_link > li {
+  float: left;
+  border-right: 1px solid #8ddaee;
+  box-sizing: border-box;
+}
+header .t_link > li.login {
+  width: 40%;
+}
+header .t_link li.sitemap {
+  display: none;
+}
+header .t_link > li.lang {
+  width: 60%;
+  position: relative;
+}
+header .t_link > li a {
+  color: #fff;
+  display: block;
+  padding: 12px 0;
+  height: 16px;
+  text-align: center;
+}
+header .lang button {
+  background: url("https://www.uljin.go.kr/images/09_health/common/arr_icon.png")
+    no-repeat right -6px #41c2e1;
+  color: #fff;
+  width: 100%;
+  height: 39px;
+  text-align: left;
+  font-size: 14px;
+}
+header .lang ul {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  background: #41c2e1;
+}
+header .lang ul li {
+  border-bottom: 1px solid #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+header .lang ul li a {
+  text-align: left;
+  padding: 7px 10px;
+}
+header .lang ul.on {
+  display: block;
+}
+
+header .weather {
+  display: none;
+}
+header .t_search button {
+  background: url("https://www.uljin.go.kr/images/09_health/common/common_btn.png")
+    no-repeat;
+  width: 50px;
+  height: 0;
+  padding: 50px 0 0 0;
+  overflow: hidden;
+  position: absolute;
+}
+header .t_search button.open {
+  background-position: -50px 0px;
+  top: 50px;
+  right: 15px;
+}
+header .t_search button.close {
+  background-position: -100px 0px;
+  top: 30px;
+  right: -50px;
+}
+header .t_search div {
+  display: none;
+  width: 70%;
+  background: #223e99;
+  position: absolute;
+  top: 20px;
+  right: 65px;
+  padding: 20px 5%;
+  z-index: 1;
+}
+header .t_search div .inp_sel {
+  border: none;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  width: 30%;
+}
+header .t_search div .inp_txt {
+  border: none;
+  height: 20px;
+  padding: 10px 0;
+  width: 50%;
+}
+header .t_search div .inp_btn {
+  border: none;
+  background: #142456;
+  color: #fff;
+  height: 40px;
+  border-radius: 0 5px 5px 0;
+  width: 20%;
+}
+header .t_search div.on {
+  display: block;
+}
+/* header .subsite_tlink .login, header .subsite_tlink .lang{display:none} */
+
+.m_nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  background: #000;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+}
+
+header nav {
+  background: #f3f7fa;
+  width: 300px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+header nav.on {
+  height: 100%;
+  z-index: 5;
+}
+header nav h2 {
+  display: none;
+  background: #223e99;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  font-size: 14px;
+  padding: 12px;
+}
+header nav.on h2 {
+  display: block;
+}
+header nav > div {
+  display: none;
+}
+header nav.on > div {
+  display: block;
+}
+header nav div li a {
+  display: block;
+  line-height: 1.25em;
+}
+header nav > div > ul > li > a {
+  display: block;
+  color: #000;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 0 1px 0;
+  width: 120px;
+}
+header nav > div > ul > li.on > a {
+  color: #fff;
+  background: url("https://www.uljin.go.kr/images/09_health/common/nav_on.png")
+    no-repeat right center #223e99;
+}
+header nav > div > ul > li > div {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: #fff;
+  width: 150px;
+  padding: 5px 15px;
+}
+header nav > div > ul > li.on > div {
+  display: block;
+}
+header nav > div div > ul > li > a {
+  color: #223e99;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 0 10px 10px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/nav_icon1.png")
+    no-repeat 0 15px;
+}
+header nav div div li ul {
+  margin: 0 0 5px 0;
+}
+header nav div div li li a {
+  color: #464646;
+  font-size: 14px;
+  padding: 6px 0 6px 18px;
+  background: url("https://www.uljin.go.kr/images/09_health/common/nav_icon2.png")
+    no-repeat 10px 8px;
+}
+header nav div div li li ul {
+  background: #eef0f5;
+  margin: 0 0 10px 8px;
+}
+header nav div div li li li a {
+  padding: 6px 0 6px 20px;
+  background: url("https://www.uljin.go.kr/images/09_health/common/list_icon.png")
+    no-repeat 10px 10px;
+}
+header nav > div div div div {
+  display: none;
+}
+header nav button {
+  background: url("https://www.uljin.go.kr/images/09_health/common/common_btn.png")
+    no-repeat;
+  width: 50px;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+}
+header nav button.nav_open {
+  background-position: 0px 0px;
+  top: 50px;
+  right: 70px;
+  padding: 50px 0 0 0;
+}
+header nav.on button.nav_open {
+  display: none;
+}
+header nav button.nav_close {
+  background-position: -100px -6px;
+  top: 0;
+  right: 0;
+  padding: 40px 0 0 0;
+}
+
+footer {
+  background: #363636;
+  position: relative;
+  z-index: 3;
+}
+footer .f_sitelink {
+  border-bottom: 1px solid #474747;
+  position: relative;
+}
+footer .f_sitelink > button {
+  width: 50%;
+  height: 50px;
+  background: #262626;
+  color: #fff;
+  box-sizing: border-box;
+  font-size: 14px;
+  text-align: left;
+  padding: 0 15px;
+  letter-spacing: -0.1em;
+  line-height: 2em;
+  overflow: hidden;
+}
+footer .f_sitelink > button:first-child {
+  border-right: 1px solid #424242;
+}
+footer .f_sitelink > button span {
+  display: inline-block;
+  width: 29px;
+  height: 29px;
+  background: url("https://www.uljin.go.kr/images/09_health/common/common_btn.png")
+    no-repeat -145px -108px;
+  float: right;
+}
+footer .f_sitelink div {
+  display: none;
+  border: 1px solid #223e99;
+  background: #fff;
+  position: absolute;
+  bottom: 50px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+footer .f_sitelink div.f_site01 {
+  left: 0;
+  width: 60%;
+}
+footer .f_sitelink div.f_site02 {
+  right: 0;
+  width: 50%;
+}
+footer .f_sitelink div.on {
+  display: block;
+}
+footer .f_sitelink div li {
+  background: url("https://www.uljin.go.kr/images/09_health/common/list_icon.png")
+    no-repeat 0 5px;
+  line-height: 1.25em;
+  margin: 5px 0 0 0;
+  padding: 0 0 0 15px;
+}
+footer .f_sitelink div li:first-child {
+  margin: 0;
+}
+footer .f_sitelink div button {
+  background: url("https://www.uljin.go.kr/images/09_health/common/common_btn.png")
+    no-repeat -100px 0px;
+  width: 50px;
+  height: 0;
+  padding: 50px 0 0 0;
+  overflow: hidden;
+  position: absolute;
+  top: -50px;
+  right: -1px;
+}
+
+footer .f_banner {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 0;
+}
+footer .f_banner h2 {
+  color: #fff;
+  font-size: 18px;
+  margin: 10px 15px 10px 20px;
+}
+footer .f_banner p {
+  position: absolute;
+  top: 15px;
+  left: 80px;
+}
+footer .f_banner p button {
+  background: url("https://www.uljin.go.kr/images/09_health/common/common_btn.png")
+    no-repeat;
+  width: 29px;
+  height: 0;
+  padding: 29px 0 0 0;
+  overflow: hidden;
+}
+footer .f_banner .stop {
+  background-position: 0px -108px;
+}
+footer .f_banner .play {
+  background-position: -29px -108px;
+}
+footer .f_banner .prev {
+  background-position: -87px -108px;
+}
+footer .f_banner .next {
+  background-position: -116px -108px;
+}
+footer .f_banner .list {
+  overflow: hidden;
+  width: 87.5%;
+  clear: both;
+  margin: 0 20px;
+}
+footer .f_banner .list ul {
+  overflow: hidden;
+  width: 2000px;
+}
+footer .f_banner .list li {
+  float: left;
+  margin: 0 20px 0 0;
+}
+footer .f_banner .list li a {
+  color: #b7b7b7;
+  display: block;
+  padding: 7px 0;
+}
+footer .f_banner .list li a:hover {
+  text-decoration: underline;
+}
+
+footer .f_con {
+  border-top: 1px solid #474747;
+}
+footer .f_con > div {
+  padding: 20px 15px;
+  font-size: 14px;
+}
+footer .f_qr {
+  display: none;
+}
+footer .f_wa {
+  display: none;
+}
+footer .f_link {
+  overflow: hidden;
+  margin: 0 0 15px 0;
+}
+footer .f_link li {
+  float: left;
+  padding: 0 0 0 20px;
+  margin: 0 0 5px 0;
+  background: url("https://www.uljin.go.kr/images/09_health/common/flink_line.png")
+    no-repeat 8px center;
+}
+footer .f_link li:first-child {
+  padding: 0;
+}
+footer .f_link li a {
+  color: #fff;
+}
+footer .f_link li strong {
+  color: #d66112;
+  font-weight: 400;
+}
+footer address {
+  font-style: normal;
+  padding: 0 20px 0 0;
+}
+footer .addre {
+  color: #acacac;
+  line-height: 1.5em;
+}
+footer .addre span {
+  width: 0;
+  height: 0;
+  padding: 0 20px 0 0;
+  overflow: hidden;
+  display: inline-block;
+}
+footer .addre a {
+  color: #acacac;
+}
+footer .copy {
+  color: #acacac;
+  line-height: 1.5em;
+}
+footer .gotop {
+  position: fixed;
+  right: 0;
+  bottom: 100px;
+}
+footer .gotop {
+  display: block;
+  background: url("https://www.uljin.go.kr/images/09_health/common/common_btn.png")
+    no-repeat -150px 0;
+  width: 50px;
+  height: 0;
+  padding: 50px 0 0 0;
+  overflow: hidden;
+}
+
+.s_contents {
+  padding: 0 0 60px 0;
+  margin: 0 15px;
+  position: relative;
+  z-index: 1;
+}
+.s_left {
+  display: none;
+  float: left;
+  width: 250px;
+  margin: 0 50px 0 0;
+}
+.s_left h2 {
+  background: url("https://www.uljin.go.kr/images/09_health/common/lnb_tit.jpg")
+    no-repeat;
+  height: 100px;
+  padding: 70px 0 0 0;
+  color: #fff;
+  text-align: center;
+}
+.s_left li a {
+  display: block;
+}
+.s_left > ul > li {
+  margin: 3px 0 0 0;
+  background: #f3f3f3;
+  border: 1px solid #d7d7d7;
+}
+.s_left > ul > li > a {
+  background: url("https://www.uljin.go.kr/images/09_health/common/lnb_list.png")
+    no-repeat 220px 20px #fff;
+  color: #363636;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 15px 35px 0 20px;
+  height: 33px;
+}
+.s_left > ul > li.on > a {
+  background: url("https://www.uljin.go.kr/images/09_health/common/lnb_list_on.png")
+    no-repeat 220px 20px #f26d7d;
+  color: #fff;
+}
+.s_left > ul > li > ul {
+  display: none;
+  margin: 20px;
+}
+.s_left > ul > li.on > ul {
+  display: block;
+}
+.s_left li li {
+  margin: 8px 0 0 0;
+  line-height: 1.25em;
+  font-size: 16px;
+}
+.s_left li li:first-child {
+  margin: 0;
+}
+.s_left li li a {
+  background: url("https://www.uljin.go.kr/images/09_health/common/lnb_icon1.png")
+    no-repeat 0 5px;
+  padding: 0 0 0 10px;
+  color: #363636;
+}
+.s_left li li.on a {
+  color: #da4456;
+  font-weight: 600;
+}
+.s_left li li ul {
+  margin: 5px 0 10px 0;
+}
+.s_left li li li {
+  margin: 0 0 1px 0 !important;
+}
+.s_left li li li a {
+  background: #fff;
+  display: block;
+  padding: 5px 10px;
+  font-weight: 400 !important;
+  color: #363636 !important;
+}
+.s_left li li li.on a {
+  font-weight: 600 !important;
+  color: #000 !important;
+}
+
+.s_right .s_tit {
+  padding: 30px 0 20px 0;
+  border-bottom: 1px solid #d4d4d4;
+  margin: 0 0 50px 0;
+  position: relative;
+}
+.s_right .s_tit h3 {
+  color: #000;
+  font-size: 30px;
+  margin: 0 0 10px 0;
+}
+.s_right .s_tit .local {
+  background: url("https://www.uljin.go.kr/images/09_health/common/local_icon.gif")
+    no-repeat 0 3px;
+  padding: 0 0 0 20px;
+  margin: 0 0 10px 0;
+  color: #636363;
+  line-height: 1.5em;
+}
+.s_right .s_tit .local span {
+  color: #c1c1c1;
+  font-size: 5px;
+  padding: 0 10px;
+}
+.s_right .s_tit .local em {
+  font-style: normal;
+  color: #e95466;
+}
+.s_right .s_tit > ul {
+  position: relative;
+}
+.s_right .s_tit > ul:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.s_right .s_tit > ul > li {
+  float: left;
+  margin: 0 5px 0 0;
+}
+.s_right .s_tit li > button {
+  background: url("https://www.uljin.go.kr/images/09_health/common/scon_icon.png")
+    no-repeat;
+  width: 40px;
+  height: 0;
+  padding: 40px 0 0 0;
+  overflow: hidden;
+}
+.s_right .s_tit .print > button {
+  background-position: 0 0;
+}
+.s_right .s_tit .sharing > button {
+  background-position: 0 -40px;
+}
+.s_right .s_tit .qrmark > button {
+  background-position: 0 -80px;
+}
+.s_right .s_tit .sharing div {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 45px;
+}
+.s_right .s_tit .sharing div.on {
+  display: block;
+}
+.s_right .s_tit .sharing li a {
+  display: block;
+  background: url("https://www.uljin.go.kr/images/09_health/common/scon_icon.png")
+    no-repeat;
+  width: 40px;
+  height: 0;
+  padding: 40px 0 0 0;
+  overflow: hidden;
+}
+.s_right .s_tit .sharing li.face a {
+  background-position: 0 -120px;
+}
+.s_right .s_tit .sharing li.twi a {
+  background-position: 0 -160px;
+}
+.s_right .s_tit .sharing div button {
+  background: url("https://www.uljin.go.kr/images/09_health/common/common_btn.png")
+    no-repeat -105px -5px;
+  border-radius: 100%;
+  width: 40px;
+  height: 0;
+  padding: 40px 0 0 0;
+  overflow: hidden;
+}
+.s_right .s_tit .qrmark div {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  border: 1px solid #2d3ca3;
+  background: #fff;
+  text-align: center;
+}
+.s_right .s_tit .qrmark div.on {
+  display: block;
+}
+.s_right .s_tit .qrmark div img {
+  width: 100px;
+  margin: 10px;
+}
+.s_right .s_tit .qrmark div button {
+  background: #2d3ca3;
+  width: 100%;
+  display: block;
+  color: #fff;
+  padding: 6px 0;
+}
+
+.s_right .scon_bottom {
+  border: 1px solid #e2e2e2;
+  margin: 60px 0 0 0;
+  line-height: 1.25em;
+}
+.s_right .scon_bottom > div {
+  padding: 15px;
+}
+.s_right .manager {
+  background: #f8f8f8;
+  border-bottom: 1px solid #e2e2e2;
+}
+.s_right .manager li {
+  background: url("https://www.uljin.go.kr/images/09_health/common/mng_icon.gif")
+    no-repeat 0 6px;
+  padding: 0 0 0 8px;
+  margin: 5px 0 0 0;
+  color: #555;
+}
+.s_right .manager li:first-child {
+  margin: 0;
+}
+.s_right .manager li strong {
+  color: #000;
+  margin: 0 5px 0 0;
+}
+.s_right .research {
+}
+.s_right .research .tit {
+  color: #000;
+  margin: 0 0 10px 0;
+}
+.s_right .research ul {
+  overflow: hidden;
+}
+.s_right .research li {
+  float: left;
+  width: 100%;
+}
+.s_right .research li:first-child {
+  margin: 0 0 10px 0;
+}
+.s_right .research li * {
+  vertical-align: middle;
+}
+.s_right .research li label {
+  margin: 0 20px 0 0;
+}
+.s_right .research li .sch_txt {
+  border: 1px solid #e1e1e1;
+  width: 65%;
+  height: 30px;
+  box-sizing: border-box;
+}
+.s_right .research li .rsch_btn {
+  background: #757575;
+  color: #fff;
+  width: 35%;
+  height: 30px;
+}
+
+/* Tablet */
+@media all and (min-width: 768px) {
+  header {
+    height: 202px;
+  }
+  header .m_top {
+    z-index: 6;
+    position: relative;
+  }
+  header h1 {
+    top: 65px;
+    left: 20px;
+  }
+  header h1 img {
+    width: auto;
+  }
+  header h1.subsite {
+    top: 70px;
+    font-size: 30px;
+  }
+  header h1.subsite img {
+    width: auto;
+    height: 70px;
+    display: inline;
+    margin: 0 10px 0 0;
+  }
+  header h1.subsite a {
+    display: inline;
+  }
+  header .gnb {
+    width: 100%;
+    border-bottom: none;
+  }
+  header .gnb > button {
+    display: none;
+  }
+  header .gnb ul {
+    display: block;
+    position: static;
+    width: 100%;
+    background: none;
+  }
+  header .gnb ul:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  header .gnb li {
+    float: left;
+    border-bottom: none;
+    border-right: 1px solid #8ddaed;
+    letter-spacing: -0.125em;
+    line-height: 1.5em;
+    position: relative;
+  }
+  header .gnb li a {
+    padding: 9px 20px;
+  }
+  header .gnb li.on {
+    background: #fff;
+    font-weight: 600;
+  }
+  header .gnb li.on a {
+    color: #223e99;
+  }
+  header .gnb li button {
+    padding: 0 40px 0 20px;
+    height: 40px;
+    background-position: right -7px;
+  }
+  header .gnb li ul {
+    position: absolute;
+    top: 40px;
+    left: -1px;
+    z-index: 9;
+    width: 170px;
+    background: #41c2e1;
+    border: 1px solid #fff;
+  }
+  header .gnb li li {
+    float: inherit;
+    border-bottom: 1px solid #fff;
+  }
+  header .gnb li li a {
+    padding: 7px 10px;
+  }
+  header .gnb li.tsns {
+    display: none;
+  }
+  header .t_link {
+    position: absolute;
+    top: 72px;
+    right: 20px;
+    width: auto;
+    background: none;
+    border: none;
+  }
+  header .t_link > li {
+    border: none;
+    margin: 0 0 0 3px;
+  }
+  header .t_link li.login,
+  header .t_link li.lang {
+    width: auto;
+  }
+  header .t_link li.login a {
+    background: #f6f6f6;
+    color: #555;
+    line-height: 1.5em;
+    display: block;
+    padding: 15px;
+    height: 20px;
+  }
+  header .t_link li.lang button {
+    background: url("https://www.uljin.go.kr/images/09_health/common/arr_icon.png")
+      no-repeat right -50px #f6f6f6;
+    color: #555;
+    height: 50px;
+    padding: 0 30px 0 15px;
+  }
+  header .t_link li.lang ul {
+    background: #f6f6f6;
+    top: 51px;
+  }
+  header .t_link li.lang li a {
+    color: #555;
+  }
+  header .t_link li.sitemap {
+    display: block;
+  }
+  header .t_link li.sitemap a {
+    display: block;
+    background: url("https://www.uljin.go.kr/images/09_health/common/common_btn.png")
+      no-repeat;
+    width: 50px;
+    height: 0;
+    padding: 50px 0 0 0;
+    overflow: hidden;
+  }
+  header .t_search > button {
+    position: static;
+  }
+  header .t_search div {
+    width: 400px;
+    padding: 30px;
+    top: 0;
+    right: 51px;
+  }
+  header .t_search button.close {
+    background-position: -100px 0px;
+    top: 0px;
+    right: -51px;
+  }
+
+  header nav {
+    width: 100%;
+    top: 150px;
+    background: none;
+    z-index: 5;
+  }
+  header nav.on {
+    height: auto;
+  }
+  header nav.on h2 {
+    display: none;
+  }
+  header nav div {
+    display: block;
+  }
+  header nav > div > ul {
+    overflow: hidden;
+  }
+  header nav > div > ul > li {
+    float: left;
+    width: 16.6666%;
+    background: url("https://www.uljin.go.kr/images/09_health/common/nav_line.png")
+      no-repeat 0 center;
+    border: none;
+  }
+  header nav > div > ul > li:first-child {
+    background: none;
+  }
+  header nav > div > ul > li > a {
+    font-size: 17px;
+    width: auto;
+    padding: 15px 0;
+    letter-spacing: -0.06em;
+    font-weight: 400;
+  }
+  header nav > div > ul > li.on > a {
+    background: url("https://www.uljin.go.kr/images/01_potal/common/nav_on2.png")
+      no-repeat center bottom #223e99;
+    color: #fff;
+    transition: none;
+    font-weight: 600;
+    border-radius: 10px 10px 0 0;
+  }
+  header nav > div > ul > li > div {
+    width: 100%;
+    top: 55px;
+    padding: 10px 0;
+    border-bottom: 1px solid #223e99;
+    position: absolute;
+    right: 0;
+  }
+  header nav > div div > ul > li > a {
+    padding: 10px 0 5px 10px;
+  }
+  header nav > div div div {
+    overflow: hidden;
+  }
+  header nav > div div div div {
+    height: 340px;
+    position: absolute;
+  }
+  header nav > div div div > ul li {
+    float: left;
+    padding: 0 30px 0 0;
+  }
+
+  header nav button {
+    display: none;
+  }
+
+  footer .f_top {
+    background: #262626;
+  }
+  footer .f_top > div {
+    padding: 0 20px 0 0;
+  }
+  footer .f_top > div:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  footer .f_sitelink {
+    float: left;
+    border-bottom: none;
+    width: 40%;
+  }
+  footer .f_sitelink div {
+    bottom: 60px;
+  }
+  footer .f_sitelink > button {
+    border-right: 1px solid #424242;
+    height: 60px;
+  }
+  footer .f_sitelink > button,
+  footer .f_sitelink > button:first-child {
+  }
+  footer .f_banner {
+    float: left;
+    width: 60%;
+    padding: 10px 0;
+    height: 40px;
+  }
+  footer .f_banner h2 {
+    margin: 10px 15px;
+  }
+  footer .f_banner .list {
+    position: absolute;
+    top: 15px;
+    left: 195px;
+  }
+  footer .f_con > div {
+    padding: 20px;
+  }
+  footer address {
+    display: inline;
+  }
+
+  .s_contents {
+    margin: 0 20px;
+  }
+  .s_right .s_tit h3 {
+    font-size: 40px;
+  }
+  .s_right .s_tit > ul {
+    position: absolute;
+    top: 72px;
+    right: 0;
+  }
+  .s_right .s_tit > ul > li {
+    margin: 0 0 0 5px;
+  }
+  .s_right .s_tit .sharing div {
+    left: 50px;
+  }
+  .s_right .s_tit .qrmark div {
+    right: 0;
+  }
+  .s_right .scon_bottom > div {
+    padding: 15px 20px;
+  }
+  .s_right .manager ul {
+    overflow: hidden;
+  }
+  .s_right .manager li {
+    float: left;
+    margin: 0 30px 0 0 !important;
+  }
+  .s_right .research li .sch_txt {
+    width: 80%;
+  }
+  .s_right .research li .rsch_btn {
+    width: 20%;
+  }
+}
+
+/* Desktop */
+@media all and (min-width: 1023px) {
+  header {
+    min-width: 1200px;
+  }
+  header .m_top {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 6;
+  }
+  header h1 {
+    /* left:510px */
+    position: static;
+    text-align: center;
+    padding: 65px 0 0 0;
+  }
+
+  header .skip {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  header .skip a {
+    display: block;
+    background: #223e99;
+    color: #fff;
+    width: 115px;
+    text-align: center;
+    padding: 9px 0;
+    line-height: 1.5em;
+  }
+  header .gnb {
+    width: auto;
+  }
+  header .gnb li {
+    letter-spacing: normal;
+  }
+  header .gnb li a {
+    padding: 9px 33px;
+  } /* 9px 26px */
+  header .gnb li button {
+    padding: 9px 40px;
+  }
+  header .gnb li.tsns {
+    display: block;
+    padding: 0;
+  }
+  /*
+header .gnb li.tsns a{background:url("https://www.uljin.go.kr/images/01_potal/common/tsns_icon.png") no-repeat;padding:40px 0 0 0;width:45px;height:0;overflow:hidden}
+header .gnb li.twi a{background-position:center -1px;}
+header .gnb li.face a{background-position:center -42px;}
+header .gnb li.daum a{background-position:center -80px;}
+header .gnb li.naver a{background-position:center -120px;}
+header .gnb li.ytb a{background-position:center -160px;}
+*/
+  header .gnb li a {
+    padding: 9px 26px;
+  }
+  header .gnb li.tsns a {
+    background: url("https://www.uljin.go.kr/images/01_potal/common/tsns_icon2.gif")
+      no-repeat;
+    padding: 40px 0 0 0;
+    width: 45px;
+    height: 0;
+    overflow: hidden;
+  }
+  header .gnb li.ytb a {
+    background-position: center 0;
+  }
+  header .gnb li.insta a {
+    background-position: center -40px;
+  }
+  header .gnb li.face a {
+    background-position: center -80px;
+  }
+  header .gnb li.naver a {
+    background-position: center -120px;
+  }
+  header .gnb li.band a {
+    background-position: center -160px;
+  }
+
+  header .t_link {
+    right: 0;
+  }
+
+  header .weather {
+    display: block;
+    position: absolute;
+    top: 82px;
+    left: 0;
+    overflow: hidden;
+  }
+  header .weather img {
+    float: left;
+    margin: 0 10px 0 0;
+  }
+  header .weather p {
+    float: left;
+    color: #7d7d7d;
+    font-size: 12px;
+  }
+  header .weather .date {
+    display: block;
+    color: #252525;
+    font-size: 18px;
+    line-height: 1.5em;
+    letter-spacing: -0.05em;
+  }
+  header .weather .line {
+    font-size: 5px;
+    padding: 0 5px;
+  }
+  header .weather p strong {
+    font-size: 24px;
+    color: #0d9dd2;
+  }
+  header .weather p em {
+    color: #223e99;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  header nav > div {
+    width: 1200px;
+    margin: 0 auto;
+  }
+  header nav > div > ul > li > a {
+    font-size: 20px;
+    padding: 14px 0;
+    letter-spacing: 0;
+  }
+  header nav > div div div {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  header nav > div div div div {
+    width: 250px;
+    padding: 0 0 0 30px;
+  }
+  header nav > div div div > ul {
+    padding: 0 20px;
+  }
+  header nav > div div div > ul > li {
+    overflow: hidden;
+    padding: 0 0 0 20px;
+  }
+  header nav > div div div ul ul {
+    overflow: hidden;
+    float: left;
+    margin: 5px 0 0 0;
+    width: 695px;
+  }
+  header nav > div div div ul ul ul {
+    display: none;
+  }
+  header nav > div div div li li {
+    float: left;
+  }
+
+  .menu2 div div ul {
+    padding: 0 0 0 150px;
+  }
+  .menu3 div div ul {
+    padding: 0 0 0 400px;
+  }
+  .menu5 div div ul {
+    padding: 0 0 0 800px;
+  }
+  .menu6 div div ul {
+    padding: 0 0 0 510px;
+  }
+
+  footer {
+    min-width: 1200px;
+  }
+  footer .f_top > div {
+    width: 1178px;
+    margin: 0 auto;
+    border-left: 1px solid #424242;
+    border-right: 1px solid #424242;
+  }
+  footer .f_sitelink {
+    width: 30%;
+  }
+  footer .f_banner {
+    width: 70%;
+  }
+  footer .f_con > div {
+    width: 900px;
+    margin: 0 auto;
+    padding: 35px 0 35px 300px;
+    position: relative;
+  }
+  footer .f_qr {
+    display: block;
+    position: absolute;
+    top: 30px;
+    left: 10px;
+  }
+  footer .f_wa {
+    display: block;
+    position: absolute;
+    top: 35px;
+    left: 160px;
+  }
+  footer .gotop {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .s_contents {
+    width: 1200px;
+    margin: 0 auto;
+  }
+  .s_contents:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .s_left {
+    display: block;
+  }
+  .s_right {
+    float: left;
+    width: 900px;
+  }
+  .s_right .s_tit {
+    height: 99px;
+    padding: 70px 0 0 0;
+  }
+  .s_right .research ul {
+    overflow: hidden;
+  }
+  .s_right .research li {
+    width: 50%;
+    float: left;
+  }
+  .s_right .research li:first-child {
+    margin: 5px 0 0 0;
+  }
+}
+
+.m_contents {
+  position: relative;
+  z-index: 1;
+}
+
+.mcon1 {
+  padding: 40px 0;
+  background: url("https://www.uljin.go.kr/images/09_health/main/main_visual01.jpg")
+    no-repeat center 0;
+  background-size: cover;
+}
+.visual {
+}
+.visual h2 {
+  text-align: center;
+}
+.visual h2 img {
+  width: 100%;
+}
+.visual_icon {
+  overflow: hidden;
+}
+.visual_icon li {
+  float: left;
+  width: 46%;
+  margin: 1% 2%;
+  background: url("https://www.uljin.go.kr/images/09_health/main/vis_ban_bg2.png");
+  border-radius: 10px;
+}
+.visual_icon li a {
+  display: block;
+  padding: 20px 0;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+.visual_icon li a:hover,
+.visual_icon li a:focus,
+.visual_icon li a:active {
+  text-decoration: underline;
+}
+
+.mcon2 {
+  padding: 30px 15px;
+}
+
+.infozone {
+  position: relative;
+  background: #eef0f5;
+  border-radius: 5px;
+}
+.infozone h2 {
+  color: #000;
+  font-size: 18px;
+  padding: 12px;
+  line-height: 1.5em;
+  background: #fff;
+  border-radius: 5px 5px 0 0;
+  border-left: 1px solid #e3e3e3;
+  border-right: 1px solid #e3e3e3;
+  border-top: 1px solid #e3e3e3;
+}
+.infozone p {
+  position: absolute;
+  top: 11px;
+  right: 15px;
+}
+.infozone p button {
+  background: url("https://www.uljin.go.kr/images/09_health/common/common_btn.png")
+    no-repeat;
+  width: 29px;
+  height: 0;
+  padding: 29px 0 0 0;
+  overflow: hidden;
+}
+.infozone p .stop {
+  background-position: 0px -108px;
+}
+.infozone p .play {
+  background-position: -29px -108px;
+}
+.infozone p .prev {
+  background-position: -87px -108px;
+}
+.infozone p .next {
+  background-position: -116px -108px;
+}
+.infozone p .v_img {
+  background-position: -203px -108px;
+}
+.infozone p .v_txt {
+  background-position: -232px -108px;
+}
+
+.infozone li {
+  display: none;
+}
+.infozone li.on {
+  display: block;
+}
+.infozone li img {
+  width: 100%;
+  hegith: 100%;
+  border-radius: 0 0 5px 5px;
+}
+.infozone li span {
+  display: none;
+}
+
+.type_img .btn_txt,
+.type_txt .btn_img {
+  display: none;
+}
+.type_img .btn_img,
+.type_txt .btn_txt {
+  display: inline-block;
+}
+.type_txt {
+}
+.type_txt ul {
+  margin: 20px;
+}
+.type_txt li {
+  background: url("https://www.uljin.go.kr/images/09_health/main/bbs_list.png")
+    no-repeat 0 5px;
+  padding: 0 0 0 10px;
+  margin: 10px 0 0 0;
+  display: block;
+}
+.type_txt li span {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.type_txt li:first-child {
+  margin: 0;
+}
+.type_txt li img {
+  display: none;
+}
+.type_txt li span {
+  display: block;
+}
+
+.fservice {
+  margin: 20px 0 0 0;
+}
+.fservice h2 {
+  font-weight: 400;
+  color: #000;
+  font-size: 24px;
+  text-align: center;
+  margin: 0 0 10px 0;
+}
+.fservice h2 strong {
+  font-weight: 600;
+}
+.fservice ul {
+  overflow: hidden;
+}
+.fservice li {
+  float: left;
+  width: 46%;
+  margin: 0 2% 3px 2%;
+}
+.fservice li a {
+  display: block;
+  border-radius: 5px;
+  border: 1px solid #00837a;
+  padding: 10px 0;
+  text-align: center;
+  color: #00837a;
+  font-size: 14px;
+}
+.fservice li a:hover,
+.fservice li a:focus {
+  text-decoration: underline;
+}
+
+.mcon3 {
+  padding: 30px 15px;
+  background: url("https://www.uljin.go.kr/images/09_health/main/bbs_bg.jpg")
+    no-repeat top center;
+  background-size: cover;
+  position: relative;
+}
+
+.bbs {
+  position: relative;
+}
+.bbs h2 {
+  color: #000;
+  font-size: 26px;
+  text-align: center;
+  font-weight: 400;
+}
+.bbs ul {
+  margin: 20px 0 0 0;
+}
+.bbs ul li {
+  display: none;
+  width: 90%;
+  background: #019a8f;
+  padding: 5%;
+}
+.bbs ul li a {
+  border: 1px solid #01b9ac;
+  display: block;
+  padding: 10%;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.6em;
+}
+.bbs ul li a strong {
+  text-align: center;
+  display: block;
+  font-size: 20px;
+  margin: 0 0 20px 0;
+  font-weight: 500;
+  line-height: 1.2em;
+}
+.bbs ul li a em {
+  font-style: normal;
+  display: block;
+  text-align: center;
+  margin: 15px 0 0 0;
+}
+.bbs ul li.list01 {
+  display: block;
+}
+.bbs ul li:hover,
+.bbs ul li:focus {
+  background: #00776f;
+}
+.bbs .more {
+  position: absolute;
+  top: 0;
+  left: 80%;
+}
+.bbs .more img {
+  width: 35px;
+}
+
+.mcon4 {
+  padding: 30px 15px;
+}
+
+.call {
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid #dcdcdc;
+}
+.call h2 {
+  font-weight: 400;
+  color: #000;
+  font-size: 24px;
+  text-align: center;
+}
+.call h2 span {
+  color: #019a8f;
+}
+.call .num {
+  background: #82be31;
+  color: #fff;
+  text-align: center;
+  font-size: 22px;
+  padding: 8px 0;
+  border-radius: 30px;
+  margin: 10px 0;
+}
+.call .time {
+  text-align: center;
+  font-size: 13px;
+  color: #444;
+}
+.call .time span {
+  color: #0072bc;
+}
+.call .time em {
+  font-style: normal;
+  display: inline-block;
+  padding: 0 5px;
+  color: #d7d7d7;
+}
+
+.health_site {
+  padding: 20px 0;
+  border-bottom: 1px solid #dcdcdc;
+}
+.health_site h2 {
+  font-weight: 400;
+  color: #000;
+  font-size: 24px;
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+.health_site h2 span {
+  color: #019a8f;
+}
+.health_site button {
+  width: 100%;
+  font-size: 13px;
+  border: 1px solid #cecece;
+  text-align: left;
+  padding: 0 0 0 20px;
+  height: 35px;
+  background: url("https://www.uljin.go.kr/images/09_health/main/stielink_blit.png")
+    #f8f8f8 no-repeat 90% center;
+}
+.health_site .site {
+  display: none;
+}
+.health_site .site ul {
+  background: #fff;
+  border: 1px solid #cecece;
+  border-top: none;
+  padding: 15px 5%;
+  margin: 0 0 10px 0;
+  width: 89.555555%;
+}
+.health_site .site li {
+  line-height: 1.5em;
+  padding: 0 0 0 15px;
+  background: url("https://www.uljin.go.kr/images/09_health/main/list_icon.png")
+    no-repeat left center;
+}
+.health_site .site li a {
+  font-size: 13px;
+}
+.health_site .site li a:hover,
+.health_site .site li a:focus {
+  text-decoration: underline;
+}
+.health_site div.on {
+  display: block;
+}
+.health_site button.btn02 {
+  margin: 5px 0 0 0;
+}
+
+.center_banner {
+  padding: 20px 0;
+}
+.center_banner dl {
+  position: relative;
+  margin: 15px 0;
+}
+.center_banner dl.top {
+  padding: 0 0 15px 0;
+  border-bottom: 1px dashed #d7d7d7;
+}
+.center_banner dl dt {
+  font-weight: 400;
+  color: #000;
+  font-size: 24px;
+}
+.center_banner dl dt span {
+  color: #019a8f;
+}
+.center_banner dl dd {
+  font-size: 13px;
+  color: #8b8b8b;
+  margin: 5px 0 0 0;
+}
+.center_banner dl dd.more {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/*200707 관련사이트 추가*/
+.health_site a.btn03 {
+  display: block;
+  width: 100%;
+  font-size: 13px;
+  border: 1px solid #cecece;
+  text-align: left;
+  padding: 0 0 0 20px;
+  height: 35px;
+  background: url("https://www.uljin.go.kr/images/09_health/main/sitelink_new.png")
+    #f8f8f8 no-repeat 90% center;
+  color: #000;
+  line-height: 35px;
+  margin: 5px 0 0 0;
+  box-sizing: border-box;
+}
+
+@media all and (min-width: 380px) {
+  .visual_icon li {
+    width: 29.2%;
+  }
+}
+
+@media all and (min-width: 600px) {
+  .bbs ul {
+    overflow: hidden;
+  }
+  .bbs ul li {
+    width: 38%;
+    float: left;
+    margin: 0 1%;
+  }
+  .bbs ul li a {
+    height: 200px;
+  }
+  .bbs ul li.list02 {
+    display: block;
+  }
+}
+
+@media all and (min-width: 700px) {
+  .visual h2 img {
+    width: auto;
+  }
+}
+
+/* Tablet */
+@media all and (min-width: 768px) {
+  .infozone {
+    float: right;
+    width: 50%;
+    height: 285px;
+  }
+  .infozone h2 {
+    padding: 15px 0 0 15px;
+    height: 40px;
+  }
+  .infozone li {
+    text-align: center;
+  }
+  .infozone li img {
+    height: 230px;
+    width: 100%;
+  }
+  .type_txt li {
+    text-align: left;
+  }
+
+  .fservice {
+    padding: 0;
+  }
+  .fservice h2 {
+    font-size: 30px;
+    margin: 0 0 30px 0;
+  }
+  .fservice li {
+    width: 25%;
+    margin: 0 0 25px 0;
+  }
+  .fservice li a {
+    border: none;
+    padding: 70px 0 0 0;
+    background: url("https://www.uljin.go.kr/images/09_health/main/fservice_icon.png")
+      no-repeat;
+  }
+  .fservice li.icon1 a {
+    background-position: center 0;
+  }
+  .fservice li.icon2 a {
+    background-position: center -110px;
+  }
+  .fservice li.icon3 a {
+    background-position: center -220px;
+  }
+  .fservice li.icon4 a {
+    background-position: center -330px;
+  }
+  .fservice li.icon5 a {
+    background-position: center -440px;
+  }
+  .fservice li.icon6 a {
+    background-position: center -550px;
+  }
+  .fservice li.icon7 a {
+    background-position: center -660px;
+  }
+  .fservice li.icon8 a {
+    background-position: center -770px;
+  }
+  .fservice li.icon9 a {
+    background-position: center -880px;
+  }
+  .fservice li.icon10 a {
+    background-position: center -990px;
+  }
+  .fservice li.icon11 a {
+    background-position: center -1100px;
+  }
+  .fservice li.icon12 a {
+    background-position: center -1210px;
+  }
+  .fservice li.icon13 a {
+    background-position: center -1320px;
+  }
+  .fservice li.icon14 a {
+    background-position: center -1430px;
+  }
+
+  .bbs ul li {
+    padding: 3%;
+    width: 42%;
+  }
+  .bbs ul li a {
+    height: 180px;
+    padding: 5%;
+  }
+}
+
+/* Desktop */
+@media all and (min-width: 1023px) {
+  .mcon1 {
+    min-width: 1200px;
+    height: 730px;
+    background-size: auto;
+    padding: 0;
+  }
+  .visual {
+    width: 1200px;
+    margin: 0 auto;
+  }
+  .visual h2 {
+    text-align: center;
+    padding: 60px 0 0 0;
+  }
+  .visual_icon {
+    margin: 150px 0 0 0;
+    padding: 0 0 5px 0;
+  }
+  .visual_icon li {
+    background: url("https://www.uljin.go.kr/images/09_health/main/vis_ban_bg.png")
+      no-repeat;
+    width: 180px;
+    height: 185px;
+    margin: 0 0 0 24px;
+    border-radius: 0;
+  }
+  .visual_icon li:first-child {
+    margin: 0;
+  }
+  .visual_icon li a {
+    font-size: 18px;
+    padding: 130px 0 35px 0;
+    font-weight: 400;
+  }
+  .visual_icon li.icon01 a {
+    background: url("https://www.uljin.go.kr/images/09_health/main/vis_icon01.png")
+      no-repeat center 30px;
+  }
+  .visual_icon li.icon02 a {
+    background: url("https://www.uljin.go.kr/images/09_health/main/vis_icon02.png")
+      no-repeat center 40px;
+  }
+  .visual_icon li.icon03 a {
+    background: url("https://www.uljin.go.kr/images/09_health/main/vis_icon03.png")
+      no-repeat center 40px;
+  }
+  .visual_icon li.icon04 a {
+    background: url("https://www.uljin.go.kr/images/09_health/main/vis_icon04.png")
+      no-repeat center 30px;
+  }
+  .visual_icon li.icon05 a {
+    background: url("https://www.uljin.go.kr/images/09_health/main/vis_icon05.png")
+      no-repeat center 35px;
+  }
+  .visual_icon li.icon06 a {
+    background: url("https://www.uljin.go.kr/images/09_health/main/vis_icon06.png")
+      no-repeat center 30px;
+  }
+
+  .mcon2 {
+    min-width: 1200px;
+    padding: 70px 0;
+  }
+  .health_con {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .infozone {
+    float: left;
+    margin: 0 35px 0 0;
+    width: 395px;
+  }
+  .infozone li img {
+    width: auto;
+    height: 100%;
+  }
+
+  .fservice {
+    float: left;
+    margin: 0;
+    width: 740px;
+    height: 285px;
+    background: url("https://www.uljin.go.kr/images/09_health/main/fservice_bg1.png")
+      no-repeat left 0;
+    padding: 0 0 0 30px;
+  }
+  .fservice h2 {
+    padding: 30px 0 10px 0;
+  }
+  .fservice > div {
+    background: url("https://www.uljin.go.kr/images/09_health/main/fservice_bg2.png")
+      no-repeat right 0;
+    height: 285px;
+    padding: 0 30px 0 0;
+  }
+  .fservice ul {
+    margin: 0 10px 0 25px;
+  }
+  .fservice li {
+    width: 25%;
+    margin: 0 0 25px 0;
+  }
+  .fservice li a {
+    border: none;
+    padding: 25px 0 25px 70px;
+    background: url("https://www.uljin.go.kr/images/09_health/main/fservice_icon.png")
+      no-repeat;
+    text-align: left;
+  }
+  .fservice li.icon1 a {
+    background-position: left 0;
+  }
+  .fservice li.icon2 a {
+    background-position: left -110px;
+  }
+  .fservice li.icon3 a {
+    background-position: left -220px;
+  }
+  .fservice li.icon4 a {
+    background-position: left -330px;
+  }
+  .fservice li.icon5 a {
+    background-position: left -440px;
+  }
+  .fservice li.icon6 a {
+    background-position: left -550px;
+  }
+  .fservice li.icon7 a {
+    background-position: left -660px;
+  }
+  .fservice li.icon8 a {
+    background-position: left -770px;
+  }
+  .fservice li.icon9 a {
+    background-position: left -880px;
+  }
+  .fservice li.icon10 a {
+    background-position: left -990px;
+  }
+  .fservice li.icon11 a {
+    background-position: left -1100px;
+  }
+  .fservice li.icon12 a {
+    background-position: left -1210px;
+  }
+  .fservice li.icon13 a {
+    background-position: left -1320px;
+  }
+  .fservice li.icon14 a {
+    background-position: left -1430px;
+  }
+
+  .mcon3 {
+    min-width: 1200px;
+    padding: 0;
+    height: 550px;
+  }
+  .bbs {
+    width: 1200px;
+    margin: 0 auto;
+  }
+  .bbs h2 {
+    font-size: 50px;
+    padding: 80px 0 0 0;
+  }
+  .bbs ul {
+    margin: 60px 0 0 0;
+  }
+  .bbs ul li {
+    display: block;
+    float: left;
+    width: 256px;
+    height: 256px;
+    padding: 12px;
+    margin: 0 0 0 26px;
+  }
+  .bbs ul li:first-child {
+    margin: 0;
+  }
+  .bbs ul li a {
+    width: 196px;
+    height: 196px;
+    padding: 30px;
+  }
+  .bbs ul li a strong {
+    font-size: 24px;
+    margin: 0 0 20px 0;
+  }
+  .bbs .more {
+    position: absolute;
+    top: 85px;
+    left: 720px;
+  }
+  .bbs .more img {
+    width: auto;
+  }
+
+  .mcon4 {
+    min-width: 1200px;
+    padding: 60px 0;
+  }
+
+  .health_info {
+    width: 1200px;
+    margin: 0 auto;
+  }
+  .health_info:after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+
+  .call {
+    float: left;
+    width: 295px;
+    height: 160px;
+    padding: 0 50px 0 150px;
+    border-right: 1px solid #dcdcdc;
+    border-bottom: none;
+    background: url("https://www.uljin.go.kr/images/09_health/main/call_img.gif")
+      no-repeat 0 0;
+  }
+  .call .num {
+    margin: 15px 0;
+  }
+
+  .health_site {
+    float: left;
+    width: 250px;
+    height: 160px;
+    padding: 0 55px;
+    border-right: 1px solid #dcdcdc;
+    border-bottom: none;
+  }
+  .health_site h2 {
+    text-align: left;
+    margin: 0 0 15px 0;
+  }
+  .health_site .site {
+    position: relative;
+  }
+  .health_site .site ul {
+    position: absolute;
+    height: auto;
+    top: 0;
+    left: 0;
+  }
+
+  .center_banner {
+    float: left;
+    width: 285px;
+    height: 160px;
+    padding: 0 0 0 55px;
+  }
+  .center_banner dl.top {
+    margin: 0;
+  }
+  .center_banner dl dt {
+    font-size: 22px;
+  }
+}
+
+.tf01 {
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-name: transf01;
+}
+.tf02 {
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-name: transf02;
+}
+.tf03 {
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-name: transf03;
+}
+.tf04 {
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-name: transf04;
+}
+.tf05 {
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-name: transf05;
+}
+.tf06 {
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-name: transf06;
+}
+
+@keyframes transf01 {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  15% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  30% {
+    transform: scale3d(1, 1, 1);
+  }
+  45% {
+    transform: scale3d(1, 1, 1);
+  }
+  60% {
+    transform: scale3d(1, 1, 1);
+  }
+  75% {
+    transform: scale3d(1, 1, 1);
+  }
+  90% {
+    transform: scale3d(1, 1, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes transf02 {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  15% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  45% {
+    transform: scale3d(1, 1, 1);
+  }
+  60% {
+    transform: scale3d(1, 1, 1);
+  }
+  75% {
+    transform: scale3d(1, 1, 1);
+  }
+  90% {
+    transform: scale3d(1, 1, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes transf03 {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  15% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1, 1, 1);
+  }
+  45% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  60% {
+    transform: scale3d(1, 1, 1);
+  }
+  75% {
+    transform: scale3d(1, 1, 1);
+  }
+  90% {
+    transform: scale3d(1, 1, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes transf04 {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  15% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1, 1, 1);
+  }
+  45% {
+    transform: scale3d(1, 1, 1);
+  }
+  60% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  75% {
+    transform: scale3d(1, 1, 1);
+  }
+  90% {
+    transform: scale3d(1, 1, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes transf05 {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  15% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1, 1, 1);
+  }
+  45% {
+    transform: scale3d(1, 1, 1);
+  }
+  60% {
+    transform: scale3d(1, 1, 1);
+  }
+  75% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  90% {
+    transform: scale3d(1, 1, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes transf06 {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  15% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1, 1, 1);
+  }
+  45% {
+    transform: scale3d(1, 1, 1);
+  }
+  60% {
+    transform: scale3d(1, 1, 1);
+  }
+  75% {
+    transform: scale3d(1, 1, 1);
+  }
+  90% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes bounceInUp {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  from {
+    opacity: 0;
+    transform: translate3d(0, 3000px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, 10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -5px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.bounceInUp {
+  animation-name: bounceInUp;
+  animation-duration: 3s;
+}
+
+/* ************************* S : common style************************** */
+
+h4 {
+  font-size: 24px;
+  color: #223e99;
+  margin: 40px 0 20px 0;
+}
+h5 {
+  font-size: 18px;
+  line-height: 1.5em;
+  color: #000;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/h5.gif")
+    no-repeat 0 4px;
+  padding: 0 0 0 20px;
+  margin: 20px 0 10px 0;
+}
+h6 {
+  font-size: 16px;
+  line-height: 1.5em;
+  color: #223e99;
+  margin: 20px 0 10px 0;
+}
+
+/* 기본절차도 */
+.basic_step li {
+  background: url("https://www.uljin.go.kr/images/01_potal/common/basic_step1.gif")
+    no-repeat center top !important;
+  padding: 15px 0 0 0 !important;
+  margin: 0 0 10px 0 !important;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.5em;
+}
+.basic_step li:first-child {
+  background: none;
+  padding-top: 0 !important;
+}
+.basic_step li strong {
+  display: block;
+  background: #223e99;
+  color: #fff;
+  padding: 16px 15px;
+}
+.basic_step li span {
+  display: block;
+  border: 1px dotted #c2c2c2;
+  padding: 15px;
+  background: #f4f6fb;
+}
+
+.basic_step2 li {
+  background: url("https://www.uljin.go.kr/images/01_potal/common/basic_step1.gif")
+    no-repeat center top;
+  padding: 15px 0 0 0;
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.5em;
+}
+.basic_step2 li:first-child {
+  background: none;
+  padding-top: 0;
+}
+.basic_step2 li strong {
+  display: block;
+  background: #223e99;
+  color: #fff;
+  padding: 16px 15px;
+}
+.basic_step2 li span {
+  display: block;
+  border: 1px dotted #c2c2c2;
+  padding: 15px;
+  background: #f4f6fb;
+}
+
+/* 기본 컨텐츠 */
+
+.basic_p {
+  font-size: 14px;
+  line-height: 1.5em;
+  margin: 10px 0;
+}
+
+.basic_ul {
+  margin: 0 0 40px 0;
+}
+.basic_ul li {
+  font-size: 14px;
+  line-height: 1.5em;
+  padding: 0 0 0 12px;
+  margin: 0 0 5px 0;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li01.png")
+    no-repeat 0 7px;
+}
+.basic_ul li ul {
+  margin: 7px 0;
+}
+.basic_ul li li {
+  padding: 0 0 0 10px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li02.png")
+    no-repeat 0 7px;
+}
+.basic_ul li li li {
+  padding: 0 0 0 12px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li03.png")
+    no-repeat 0 7px;
+}
+.basic_ul .li_none {
+  background: none;
+}
+
+.w100 img,
+img.w100 {
+  width: 100%;
+}
+
+/* 폰트 컬러 : 상황에 따라 추가 가능 */
+.fc_red {
+  color: #d44500 !important;
+}
+.fc_blue {
+  color: #0072bc !important;
+}
+
+/* 테이블 */
+.over_table {
+  overflow-x: auto;
+}
+
+.basic_table {
+  width: 100%;
+  min-width: 800px;
+  margin: 10px 0;
+  border-top: 1px solid #223e99;
+}
+.basic_table th,
+.basic_table td {
+  text-align: center;
+  padding: 15px 10px;
+  border: 1px solid #cdcdcd;
+  border-top: none;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 1.5em;
+}
+.basic_table thead th {
+  background: #f4f6fb;
+  color: #223e99;
+}
+.basic_table tbody th {
+  background: #f4f6fb;
+  color: #444;
+}
+.basic_table tbody td {
+  color: #555;
+}
+.basic_table tbody td li {
+  padding: 0 0 0 12px;
+  margin: 0 0 5px 0;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li01.png")
+    no-repeat 0 7px;
+  text-align: left;
+}
+.basic_table tbody td li ul {
+  margin: 7px 0;
+}
+.basic_table tbody td li li {
+  padding: 0 0 0 10px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li02.png")
+    no-repeat 0 7px;
+}
+.basic_table tbody td li li li {
+  padding: 0 0 0 12px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li03.png")
+    no-repeat 0 7px;
+}
+.basic_table tbody td table {
+  border-top: 1px solid #223e99;
+}
+.basic_table .point_bg {
+  background: #f8f7f0;
+}
+.basic_table .sbtn_down2 {
+  margin: 0 5px 5px 8px;
+}
+.table_left td {
+  text-align: left;
+}
+
+.stxt th,
+.stxt td {
+  font-size: 13px;
+  padding: 5px;
+}
+
+/* 탭 */
+.basic_tab {
+  overflow: hidden;
+  border-top: 1px solid #d7d7d7;
+  border-left: 1px solid #d7d7d7;
+}
+.basic_tab li {
+  float: left;
+  width: 100%;
+}
+.basic_tab li a {
+  display: block;
+  padding: 15px 15px 0 15px;
+  height: 30px;
+  border-right: 1px solid #d7d7d7;
+  border-bottom: 1px solid #d7d7d7;
+}
+.basic_tab li.on a {
+  background: url("https://www.uljin.go.kr/images/01_potal/common/tab_on.png")
+    no-repeat right center #2d3ca3;
+  color: #fff;
+}
+
+/* 버튼 스타일 */
+.basic_btn {
+  text-align: center;
+  margin: 20px 0;
+}
+.basic_btn a {
+  display: inline-block;
+  background: #223e99;
+  border: 1px solid #15296a;
+  border-radius: 3px;
+  color: #fff;
+  text-align: left;
+  font-size: 18px;
+  margin: 0 5px 10px 5px;
+  padding: 0 20px 0 0;
+}
+.basic_btn a:hover {
+  background: #15296a;
+  border: 1px solid #223e99;
+}
+.basic_btn span {
+  display: block;
+  padding: 15px 40px 15px 20px;
+}
+.btn_go span {
+  background: url("https://www.uljin.go.kr/images/01_potal/common/btn_go.png")
+    no-repeat right center;
+}
+.btn_new span {
+  background: url("https://www.uljin.go.kr/images/01_potal/common/btn_new.png")
+    no-repeat right center;
+}
+.btn_down span {
+  background: url("https://www.uljin.go.kr/images/01_potal/common/btn_down.png")
+    no-repeat right center;
+}
+
+.sbtn_go {
+  display: inline-block;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/btn_go.png")
+    no-repeat 10px center #223e99;
+  color: #223e99;
+  font-size: 14px;
+  margin: 2px 5px 2px 0;
+  padding: 0 0 0 35px;
+  border: 1px solid #223e99;
+}
+.sbtn_go:hover {
+  border: 1px solid #15296a;
+  background-color: #15296a;
+  color: #000;
+}
+.sbtn_go span {
+  display: block;
+  background: #fff;
+  padding: 5px 15px;
+  white-space: nowrap;
+}
+
+.sbtn_new {
+  display: inline-block;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/btn_new.png")
+    no-repeat 10px center #223e99;
+  color: #223e99;
+  font-size: 14px;
+  margin: 2px 5px 2px 0;
+  padding: 0 0 0 35px;
+  border: 1px solid #223e99;
+}
+.sbtn_new:hover {
+  border: 1px solid #15296a;
+  background-color: #15296a;
+  color: #000;
+}
+.sbtn_new span {
+  display: block;
+  background: #fff;
+  padding: 5px 15px;
+  white-space: nowrap;
+}
+
+.sbtn_down {
+  display: inline-block;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/btn_down.png")
+    no-repeat 9px center #223e99;
+  color: #223e99;
+  font-size: 14px;
+  margin: 2px 5px 2px 0;
+  padding: 0 0 0 35px;
+  border: 1px solid #223e99;
+}
+.sbtn_down:hover {
+  border: 1px solid #15296a;
+  background-color: #15296a;
+  color: #000;
+}
+.sbtn_down span {
+  display: block;
+  background: #fff;
+  padding: 5px 15px;
+  white-space: nowrap;
+}
+
+.sbtn_down2 {
+  display: inline-block;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/btn_down.png")
+    no-repeat 9px center #223e99;
+  color: #223e99;
+  font-size: 12px;
+  margin: 2px 5px 2px 0;
+  padding: 0 0 0 35px;
+  border: 1px solid #223e99;
+}
+.sbtn_down2:hover {
+  border: 1px solid #15296a;
+  background-color: #15296a;
+  color: #000;
+}
+.sbtn_down2 span {
+  display: block;
+  background: #fff;
+  padding: 0 15px;
+  white-space: nowrap;
+}
+
+.txt_link,
+.txt_link:hover {
+  background: url("https://www.uljin.go.kr/images/01_potal/common/new_win.png")
+    no-repeat right center;
+  padding: 0 20px 0 0;
+  color: #223e99;
+  text-decoration: underline;
+}
+
+.btn a {
+  margin: 0 0 5px 0;
+}
+.down_jpg {
+  display: inline-block;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/file_jpg.png")
+    no-repeat 10px center #fff;
+  border: 1px solid #ccc;
+  padding: 10px 10px 10px 35px;
+  letter-spacing: -0.05em;
+}
+.down_jpg:hover {
+  border: 1px solid #223e99;
+}
+.down_ai {
+  display: inline-block;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/file_ai.png")
+    no-repeat 10px center #fff;
+  border: 1px solid #ccc;
+  padding: 10px 10px 10px 35px;
+  letter-spacing: -0.05em;
+}
+.down_ai:hover {
+  border: 1px solid #223e99;
+}
+.down_pdf {
+  display: inline-block;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/file_pdf.png")
+    no-repeat 10px center #fff;
+  border: 1px solid #ccc;
+  padding: 10px 10px 10px 35px;
+  letter-spacing: -0.05em;
+}
+.down_pdf:hover {
+  border: 1px solid #223e99;
+}
+.down_xls {
+  display: inline-block;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/file_xls.png")
+    no-repeat 10px center #fff;
+  border: 1px solid #ccc;
+  padding: 10px 10px 10px 35px;
+  letter-spacing: -0.05em;
+}
+.down_xls:hover {
+  border: 1px solid #223e99;
+}
+.down_hwp {
+  display: inline-block;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/file_hwp.png")
+    no-repeat 10px center #fff;
+  border: 1px solid #ccc;
+  padding: 10px 10px 10px 35px;
+  letter-spacing: -0.05em;
+}
+.down_hwp:hover {
+  border: 1px solid #223e99;
+}
+
+/* 박스형 컨텐츠 */
+.basic_box {
+  background: url("https://www.uljin.go.kr/images/01_potal/common/box_bg.gif");
+  padding: 8px;
+  margin: 20px 0 30px 0;
+}
+.basic_box > div {
+  background: #fff;
+  padding: 15px;
+}
+.basic_box li {
+  font-size: 14px;
+  line-height: 1.5em;
+  padding: 0 0 0 12px;
+  margin: 0 0 5px 0;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li01.png")
+    no-repeat 0 7px;
+}
+.basic_box li ul {
+  margin: 10px 0 0 0;
+}
+.basic_box li li {
+  padding: 0 0 0 10px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li02.png")
+    no-repeat 0 7px;
+}
+.basic_box li li li {
+  padding: 0 0 0 12px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li03.png")
+    no-repeat 0 7px;
+}
+.basic_box dt {
+  color: #e4780b;
+  font-size: 24px;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+.basic_box dd {
+  font-size: 14px;
+  line-height: 1.5em;
+  padding: 0 0 0 12px;
+  margin: 0 0 5px 0;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li01.png")
+    no-repeat 0 7px;
+}
+.basic_box dd li ul {
+  margin: 10px 0 0 0;
+}
+.basic_box dd li {
+  padding: 0 0 0 10px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li02.png")
+    no-repeat 0 7px;
+}
+.basic_box dd li li {
+  padding: 0 0 0 12px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li03.png")
+    no-repeat 0 7px;
+}
+.basic_box p {
+  line-height: 1.5em;
+}
+.basic_box .img span {
+  display: block;
+  text-align: center;
+  margin: 0 0 15px 0;
+}
+
+.info_box {
+  border: 1px dashed #ddd;
+  margin: 0 0 20px 0;
+  padding: 20px;
+}
+.info_box p {
+  background: url("https://www.uljin.go.kr/images/01_potal/common/ex_mark.png")
+    no-repeat 0 2px;
+  line-height: 1.5em;
+  padding: 0 0 0 20px;
+}
+
+/* 이미지 코멘트 */
+.comment {
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  font-size: 1.8em;
+  left: -5000px;
+  top: 0;
+}
+
+.map_area {
+  border: 1px solid #ccc;
+}
+.map_area img {
+  width: 100%;
+}
+
+/* 폰트 사이즈 : 기본적으로 작성은 되어있으나 사용여부는 디자이너 판단 */
+.fs11 {
+  font-size: 11px !important;
+}
+.fs12 {
+  font-size: 12px;
+}
+.fs13 {
+  font-size: 13px;
+}
+.fs14 {
+  font-size: 14px;
+}
+.fs15 {
+  font-size: 15px;
+}
+.fs16 {
+  font-size: 16px;
+}
+.fs17 {
+  font-size: 17px;
+}
+.fs18 {
+  font-size: 18px;
+}
+.fs19 {
+  font-size: 19px;
+}
+.fs20 {
+  font-size: 20px;
+}
+.fs21 {
+  font-size: 21px;
+}
+.fs22 {
+  font-size: 22px;
+}
+
+/* 기본 마진 : 상황에 따라 추가 가능 */
+.ml10 {
+  margin-left: 10px;
+}
+.ml20 {
+  margin-left: 20px;
+}
+.ml30 {
+  margin-left: 30px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+.mr20 {
+  margin-right: 20px;
+}
+.mr30 {
+  margin-right: 30px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+.mt20 {
+  margin-top: 20px;
+}
+.mt30 {
+  margin-top: 30px;
+}
+
+.mb05 {
+  margin-bottom: 5px !important;
+}
+.mb10 {
+  margin-bottom: 10px !important;
+}
+.mb15 {
+  margin-bottom: 15px !important;
+}
+.mb20 {
+  margin-bottom: 20px !important;
+}
+.mb30 {
+  margin-bottom: 30px !important;
+}
+
+/* 기본 패딩 : 상황에 따라 추가 가능 */
+.p0 {
+  padding: 0 !important;
+}
+.pb0 {
+  padding-bottom: 0px !important;
+}
+.pb10 {
+  padding-bottom: 10px !important;
+}
+.pb20 {
+  padding-bottom: 20px !important;
+}
+.pb30 {
+  padding-bottom: 30px !important;
+}
+
+.pl10 {
+  padding-left: 10px;
+}
+.pl15 {
+  padding-left: 15px;
+}
+.pl20 {
+  padding-left: 20px;
+}
+.pl30 {
+  padding-left: 30px;
+}
+
+.pr10 {
+  padding-right: 10px;
+}
+.pr20 {
+  padding-right: 10px;
+}
+.pr30 {
+  padding-right: 10px;
+}
+
+.pt10 {
+  padding-top: 10px !important;
+}
+.pt20 {
+  padding-top: 20px !important;
+}
+.pt30 {
+  padding-top: 30px !important;
+}
+.pt40 {
+  padding-top: 40px !important;
+}
+.pt50 {
+  padding-top: 50px !important;
+}
+.pt60 {
+  padding-top: 60px !important;
+}
+.pt70 {
+  padding-top: 70px !important;
+}
+.pt80 {
+  padding-top: 80px !important;
+}
+.pt100 {
+  padding-top: 100px !important;
+}
+
+/* 배경 없앰 */
+.bg_none {
+  background: none !important;
+}
+
+.va_top {
+  vertical-align: top !important;
+}
+
+/* 컨텐츠 float */
+.f_left {
+  float: left;
+}
+.f_right {
+  float: right;
+}
+
+/* float 해제 */
+.clear {
+  clear: both;
+}
+
+/* 이미지 및 컨텐츠 정렬 시. */
+.txt_center {
+  text-align: center !important;
+}
+.txt_right {
+  text-align: right !important;
+}
+.txt_left {
+  text-align: left !important;
+}
+
+/* ************************* E : common style************************** */
+
+/* Tablet */
+@media all and (min-width: 768px) {
+  .basic_box > div {
+    padding: 30px;
+  }
+
+  .basic_tab li {
+    width: 50%;
+  }
+
+  .basic_box .img {
+    overflow: hidden;
+  }
+  .basic_box .img span {
+    text-align: left;
+    margin: 0 3% 0 0;
+    float: left;
+    width: 15%;
+  }
+  .basic_box .img span img {
+    width: 100%;
+  }
+  .basic_box .img dl,
+  .basic_box .img ul,
+  .basic_box .img p {
+    float: left;
+    width: 82%;
+  }
+  /* 기본절차도 */
+  .basic_step ol {
+    overflow: hidden;
+  }
+  .basic_step li {
+    float: left;
+    background: url("https://www.uljin.go.kr/images/01_potal/common/basic_step2.gif")
+      no-repeat 0 center !important;
+    padding: 0 0 0 20px !important;
+    margin: 0 15px 10px 0 !important;
+  }
+  .basic_step li:first-child {
+    padding-left: 0 !important;
+  }
+
+  .mh100 span {
+    min-height: 100px;
+  }
+}
+
+/* Desktop */
+@media all and (min-width: 1023px) {
+  .w100 img,
+  img.w100 {
+    width: auto;
+  }
+
+  .basic_tab li {
+    width: 25%;
+  }
+  .basic_tab .col5 li {
+    width: 20%;
+  }
+  .basic_tab .col3 li {
+    width: 33.333%;
+  }
+  .basic_tab .col2 li {
+    width: 50%;
+  }
+
+  /* 기본절차도 */
+  .basic_step ol {
+    overflow: hidden;
+  }
+  .basic_step li {
+    float: left;
+    background: url("https://www.uljin.go.kr/images/01_potal/common/basic_step2.gif")
+      no-repeat 0 center !important;
+    padding: 0 0 0 20px !important;
+    margin: 0 15px 10px 0 !important;
+  }
+  .basic_step li:first-child {
+    padding-left: 0 !important;
+  }
+  .basic_step .col2 li {
+    width: 46%;
+  }
+  .basic_step .col3 li {
+    width: 29%;
+  }
+  .basic_step .col4 li {
+    width: 21%;
+  }
+  .basic_step .col5 li {
+    width: 16%;
+  }
+
+  .basic_step2 li {
+    overflow: hidden;
+  }
+  .basic_step2 li strong {
+    float: left;
+    width: 20%;
+  }
+  .basic_step2 li strong.line2 {
+    padding: 27px 15px;
+  }
+  .basic_step2 li span {
+    float: left;
+    width: 70%;
+    text-align: left;
+  }
+}
+
+/* sub01 */
+.center_info p {
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.greeting {
+  line-height: 1.5em;
+}
+.greeting .gree_tit {
+  padding: 0 0 30px 0;
+  font-size: 22px;
+  color: #223e99;
+}
+.greeting .gree_tit span {
+  color: #0a206a;
+  font-weight: 600;
+}
+.greeting .gree_txt p {
+  padding-bottom: 30px;
+}
+.greeting .gree_sign {
+  color: #000;
+}
+.greeting .gree_sign strong {
+  font-size: 18px;
+}
+
+@media all and (min-width: 768px) {
+  .greeting {
+    background: url("https://www.uljin.go.kr/images/09_health/sub/gree_img.png")
+      no-repeat right top;
+  }
+  .greeting .gree_txt {
+    width: calc(100% - 140px);
+  }
+}
+
+@media all and (min-width: 1023px) {
+  .greeting {
+    background-position: 90% top;
+  }
+  .greeting .gree_tit {
+    font-size: 25px;
+    line-height: 1.4em;
+  }
+  .greeting .gree_txt {
+    width: calc(100% - 300px);
+  }
+}
+
+/* sub02 */
+
+/* sub03 */
+
+/* sub04 */
+
+/* sub05 */
+
+.comment {
+  position: absolute;
+  top: -1000px;
+  left: -2000px;
+}
+
+/* Tablet */
+@media all and (min-width: 768px) {
+  /* sub01 */
+
+  .sub_his {
+    border-top: 1px solid #223e99;
+    border-bottom: 1px solid #d6d6d6;
+    padding: 35px 0;
+    margin: 50px 0;
+    overflow: hidden;
+  }
+  .sub_his h4 {
+    float: left;
+    width: 25%;
+    height: 110px;
+    padding: 15px 0 0 20%;
+    margin: 0;
+    font-size: 30px;
+  }
+  .sub_his h4 span {
+    color: #e0e0e0;
+    font-size: 50px;
+    display: block;
+  }
+  .sub_his ul {
+    float: left;
+    width: 55%;
+    margin: 0;
+  }
+
+  .his01 {
+    background: url("https://www.uljin.go.kr/images/07_welfare/sub/his01.jpg")
+      no-repeat 30px;
+  }
+  .his02 {
+    background: url("https://www.uljin.go.kr/images/07_welfare/sub/his02.jpg")
+      no-repeat 30px;
+  }
+  .his03 {
+    background: url("https://www.uljin.go.kr/images/07_welfare/sub/his03.jpg")
+      no-repeat 30px;
+  }
+
+  .his04 {
+    background: url("https://www.uljin.go.kr/images/07_welfare/sub/his04.jpg")
+      no-repeat 30px;
+  }
+  .his05 {
+    background: url("https://www.uljin.go.kr/images/07_welfare/sub/his05.jpg")
+      no-repeat 30px;
+  }
+
+  /* sub02 */
+
+  /* sub03 */
+
+  /* sub04 */
+
+  /* sub05 */
+}
+
+/* Desktop */
+@media all and (min-width: 1023px) {
+  /* sub01 */
+  .center_info p {
+    border: 1px solid #e7e7e7;
+    padding: 40px 0;
+  }
+
+  /* sub02 */
+
+  /* sub03 */
+
+  /* sub04 */
+
+  /* sub05 */
+}
+
+/* 울진캘린더 */
+.uj_calender {
+  margin: 0 0 30px 0;
+}
+.uj_calender .calender p {
+  text-align: center;
+  font-size: 20px;
+  color: #333;
+  margin: 0 0 10px 0;
+}
+.uj_calender .calender p * {
+  vertical-align: middle;
+}
+.uj_calender .calender p strong {
+  color: #223e99;
+}
+.uj_calender .calender p a {
+  display: inline-block;
+  margin: 0 20px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/common_btn.png")
+    no-repeat;
+  width: 29px;
+  height: 0;
+  padding: 29px 0 0 0;
+  overflow: hidden;
+}
+.uj_calender .calender p a.prev {
+  background-position: -87px -108px;
+}
+.uj_calender .calender p a.next {
+  background-position: -116px -108px;
+}
+.uj_calender table {
+  width: 100%;
+  margin: 0 0 20px 0;
+}
+.uj_calender th,
+.uj_calender td {
+  border: 1px solid #dedede;
+  width: 14%;
+  text-align: center;
+}
+.uj_calender th {
+  border-top: 1px solid #223e99;
+  background: #f4f6fb;
+  color: #223e99;
+  padding: 15px 0;
+}
+.uj_calender td {
+  padding: 10px 0;
+}
+.uj_calender td.sat a {
+  color: #29aece;
+}
+.uj_calender td.sun a {
+  color: #e4580b;
+}
+.uj_calender td a {
+  border-radius: 15px;
+  display: inline-block;
+  width: 30px;
+  height: 20px;
+  padding: 5px 0;
+}
+.uj_calender td.cal a {
+  border: 1px solid #ddd;
+}
+.uj_calender td.on a {
+  background: #223e99;
+  color: #fff;
+  border: none;
+}
+.uj_calender .tab {
+  overflow: hidden;
+}
+.uj_calender .tab li {
+  float: left;
+  width: 25%;
+  text-align: center;
+}
+.uj_calender .tab li a {
+  display: block;
+  border: 1px solid #223e99;
+  background: #fff;
+  color: #223e99;
+  padding: 10px 0;
+  margin: 0 0 0 1px;
+}
+.uj_calender .tab li.on a {
+  background: #223e99;
+  color: #fff;
+}
+.uj_calender .info div {
+  background: #f4f6fb;
+  padding: 20px;
+  margin: 10px 0 0 0;
+}
+.uj_calender .info div h4 {
+  margin: 0 0 15px 0;
+  font-size: 20px;
+}
+.uj_calender .info div li {
+  line-height: 1.75em;
+  font-size: 14px;
+  padding: 0 0 0 10px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li02.png")
+    no-repeat 0 10px;
+}
+
+@media all and (min-width: 768px) {
+  .uj_calender {
+    overflow: hidden;
+  }
+  .uj_calender .calender {
+    float: left;
+    width: 50%;
+    margin: 0 5% 0 0;
+  }
+  .uj_calender .calender p {
+    font-size: 30px;
+  }
+  .uj_calender .info {
+    float: left;
+    width: 45%;
+  }
+  .uj_calender .info div {
+    min-height: 215px;
+  }
+  .uj_calender .tab {
+    margin: 47px 0 0 0;
+  }
+}
+
+.h_check {
+  text-align: center;
+}
+.h_check h4 {
+  margin: 20px 0 12px 0;
+}
+.h_check p {
+  display: inline-block;
+  margin: 0 6px;
+  padding: 10px;
+  background: #fff;
+}
+
+/* Search */
+.bbs_search {
+  text-align: center;
+  background: #f4f4f8;
+  padding: 25px 0;
+  margin: 20px 0;
+}
+.bbs_search .form_sel {
+  width: 20%;
+  height: 30px;
+  border: 1px solid #cdcdcd;
+  vertical-align: middle;
+}
+.bbs_search .form_txt {
+  width: 40%;
+  height: 18px;
+  padding: 5px;
+  border: 1px solid #cdcdcd;
+  vertical-align: middle;
+}
+.bbs_search .form_sm {
+  cursor: pointer;
+  width: 20%;
+  height: 30px;
+  background: #223e99;
+  color: #fff;
+  vertical-align: middle;
+}
+
+.bbs_search2 {
+  text-align: center;
+  background: #f4f4f8;
+  padding: 25px 0;
+  margin: 20px 0;
+}
+.bbs_search2 .form_sel {
+  width: 20%;
+  height: 30px;
+  border: 1px solid #cdcdcd;
+  vertical-align: middle;
+}
+.bbs_search2 .form_txt {
+  width: 40%;
+  height: 18px;
+  padding: 5px;
+  border: 1px solid #cdcdcd;
+  vertical-align: middle;
+}
+.bbs_search2 .form_sm {
+  cursor: pointer;
+  width: 20%;
+  height: 30px;
+  background: #223e99;
+  color: #fff;
+  vertical-align: middle;
+}
+.bbs_search2 .left {
+  margin: 0 0 10px 0;
+}
+
+.gg_search {
+  background: #f4f4f8;
+  padding: 25px;
+  margin: 20px 0;
+}
+.gg_search > ul > li:first-child {
+  display: none;
+  border-bottom: 1px solid #dedede;
+  padding: 0 0 15px 0;
+  margin: 0 0 20px 0;
+}
+.gg_search > ul > li.on {
+  display: block;
+}
+.gg_search li * {
+  vertical-align: middle;
+}
+.gg_search li {
+  text-align: center;
+}
+.gg_search li li {
+  margin: 0 0 5px 0;
+}
+.gg_search li label {
+  color: #333;
+}
+.gg_search .form_sel {
+  width: 50%;
+  height: 30px;
+  border: 1px solid #cdcdcd;
+  vertical-align: middle;
+}
+.gg_search .form_txt {
+  width: 25%;
+  height: 18px;
+  padding: 5px;
+  border: 1px solid #cdcdcd;
+  vertical-align: middle;
+}
+.gg_search .form_sm {
+  cursor: pointer;
+  width: 90px;
+  height: 30px;
+  background: #223e99;
+  color: #fff;
+  vertical-align: middle;
+}
+.gg_search button {
+  width: 70px;
+  height: 30px;
+  background: #363636;
+  color: #fff;
+}
+.gg_search p {
+  text-align: center;
+  margin: 10px 0 0 0;
+}
+
+.jj_search {
+  background: #f4f4f8;
+  padding: 25px 20px;
+  margin: 20px 0;
+}
+.jj_search li {
+  margin: 0 0 15px 0;
+}
+.jj_search li * {
+  vertical-align: middle;
+}
+.jj_search li span {
+  display: block;
+  margin: 5px 0 0 0;
+}
+.jj_search label {
+  display: block;
+  margin: 0 0 5px 0;
+  color: #333;
+  padding: 0 0 0 10px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li02.png")
+    no-repeat 0 5px;
+}
+.jj_search p {
+  text-align: center;
+  margin: 10px 0 0 0;
+}
+.jj_search .form_sel {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #cdcdcd;
+  vertical-align: middle;
+}
+.jj_search .form_txt {
+  width: 100%;
+  height: 18px;
+  padding: 5px 0;
+  border: 1px solid #cdcdcd;
+}
+.jj_search .wid50 {
+  width: 45%;
+}
+.jj_search button.type {
+  height: 30px;
+  border: 1px solid #cdcdcd;
+  background: #fff;
+}
+.jj_search button.reset {
+  width: 70px;
+  height: 30px;
+  background: #363636;
+  color: #fff;
+}
+.jj_search .form_sm {
+  cursor: pointer;
+  width: 70px;
+  height: 30px;
+  background: #223e99;
+  color: #fff;
+}
+.jj_search .sch_row1 {
+  margin: 0;
+}
+.jj_search .sch_row1 * {
+  vertical-align: middle;
+}
+.jj_search .sch_row1 span {
+  display: block;
+  margin: 0 0 5px 0;
+}
+
+.jj_title {
+  text-align: center;
+  line-height: 2em;
+  margin: 50px 0 0 0;
+}
+.jj_title strong {
+  display: block;
+  font-size: 26px;
+  color: #000;
+}
+
+.bbs_comment {
+  margin: 15px 0;
+}
+.bbs_total {
+  margin: 30px 0 15px 0;
+  padding: 0 0 0 5px;
+  background: url("https://www.uljin.go.kr/images/bbs/bbs_total.gif") no-repeat
+    0 center;
+}
+.bbs_total strong {
+  color: #444547;
+}
+
+/* Page */
+.bbs_page {
+  text-align: center;
+  padding: 25px 0 5px 0;
+}
+.bbs_page span {
+  margin: 0 2px 7px 2px;
+  display: inline-block;
+}
+.bbs_page a {
+  display: inline-block;
+  padding: 10px 0 0 0;
+  border: 1px solid #ddd;
+  width: 40px;
+  height: 30px;
+}
+.bbs_page a:hover {
+  text-decoration: underline;
+}
+.bbs_page a img {
+  margin: 6px 0 0 0;
+}
+.bbs_page .on a {
+  font-weight: bold;
+  color: #fff;
+  background: #444547;
+  border: 1px solid #444547;
+}
+
+.bbs_btnr {
+  text-align: center;
+  margin: 10px 0;
+}
+.bbs_btnr a {
+  display: inline-block;
+  margin: 0 5px 7px 5px;
+}
+.bbs_btnc {
+  text-align: center;
+  margin: 10px 0;
+}
+.bbs_btnc a {
+  margin: 0 2px;
+}
+
+/*List*/
+.bbs_list {
+  width: 100%;
+  border-top: 1px solid #223e99;
+}
+.bbs_list li {
+  border-bottom: 1px solid #cdcdcd;
+  line-height: 1.25em;
+}
+.bbs_list li a {
+  display: block;
+  padding: 30px 0 15px 0;
+}
+.bbs_list li strong {
+  font-weight: 600;
+  color: #000;
+  font-size: 20px;
+  line-height: 1em;
+}
+.bbs_list li strong img {
+  margin: 7px 0 0 5px;
+}
+.bbs_list li a > span {
+  display: block;
+  margin: 10px 0 12px 0;
+  padding: 0 0 20px 0;
+  border-bottom: 1px dotted #dedede;
+}
+.bbs_list li a:hover,
+.bbs_list li a:focus {
+  text-decoration: underline;
+}
+.bbs_list li em {
+  font-style: normal;
+}
+.bbs_list li em span {
+  margin: 0 15px;
+  font-size: 5px;
+  color: #ddd;
+}
+.bbs_list strong em {
+  color: #f26522;
+}
+
+.adm_list li {
+  position: relative;
+}
+.adm_list li a {
+  width: 85%;
+  margin: 0 0 0 15%;
+}
+.adm_list .adm_check {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 30px;
+  left: 0;
+}
+
+.bbs_table {
+  width: 100%;
+  min-width: 800px;
+  margin: 10px 0;
+  border-top: 1px solid #223e99;
+}
+.bbs_table th,
+.bbs_table td {
+  text-align: center;
+  padding: 15px;
+  border: 1px solid #cdcdcd;
+  border-top: none;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 1.5em;
+}
+.bbs_table thead th {
+  background: #f4f6fb;
+  color: #223e99;
+}
+.bbs_table a {
+  color: #000;
+}
+
+.bbs_tablev {
+  width: 100%;
+  min-width: 800px;
+  margin: 10px 0;
+  border-top: 1px solid #223e99;
+}
+.bbs_tablev th,
+.bbs_tablev td {
+  text-align: center;
+  padding: 15px;
+  border: 1px solid #cdcdcd;
+  border-top: none;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 1.5em;
+}
+.bbs_tablev thead th {
+  background: #f4f6fb;
+  color: #223e99;
+}
+.bbs_tablev tbody th {
+  background: #f4f6fb;
+  color: #444;
+}
+.bbs_tablev tbody td {
+  text-align: left;
+}
+
+.bbs_yesan {
+  width: 100%;
+  min-width: 800px;
+  margin: 10px 0;
+  border-top: 1px solid #223e99;
+}
+.bbs_yesan th,
+.bbs_yesan td {
+  text-align: center;
+  padding: 15px 0px;
+  border: 1px solid #cdcdcd;
+  border-top: none;
+  vertical-align: middle;
+  font-size: 12px;
+  line-height: 1.5em;
+}
+.bbs_yesan thead th {
+  background: #f4f6fb;
+  color: #223e99;
+}
+.bbs_yesan tbody th {
+  background: #f4f6fb;
+  color: #444;
+}
+.bbs_yesan tbody td {
+  color: #555;
+}
+.bbs_yesan tbody td li {
+  padding: 0 0 0 12px;
+  margin: 0 0 5px 0;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li01.png")
+    no-repeat 0 7px;
+  text-align: left;
+}
+.bbs_yesan tbody td li ul {
+  margin: 7px 0;
+}
+.bbs_yesan tbody td li li {
+  padding: 0 0 0 10px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li02.png")
+    no-repeat 0 7px;
+}
+.bbs_yesan tbody td li li li {
+  padding: 0 0 0 12px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li03.png")
+    no-repeat 0 7px;
+}
+.bbs_yesan tbody td table {
+  border-top: 1px solid #223e99;
+}
+
+/*Photo*/
+.photo_list {
+  border-top: 1px solid #223e99;
+  border-bottom: 1px solid #cdcdcd;
+  padding: 20px 0 0 0;
+}
+.photo_list ul {
+  overflow: hidden;
+}
+.photo_list li {
+  float: left;
+  width: 100%;
+  margin: 0 0px 30px 0px;
+  text-align: center;
+}
+.photo_list li a {
+  font-size: 13px;
+  color: #777;
+  display: block;
+}
+.photo_list li span {
+  display: block;
+  width: 99%;
+  border: solid 1px #e6e6e6;
+  margin: 0 auto 10px auto;
+}
+.photo_list li span img {
+  width: 100%;
+}
+.photo_list li strong {
+  display: block;
+  color: #000;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+/* News */
+.news_list {
+  width: 100%;
+  border-top: 1px solid #223e99;
+}
+.news_list li {
+  border-bottom: 1px solid #cdcdcd;
+  line-height: 1.25em;
+}
+.news_list li a {
+  display: block;
+  padding: 25px 0 15px 0;
+}
+.news_list li strong {
+  font-weight: 600;
+  color: #000;
+  font-size: 20px;
+  line-height: 1.5em;
+}
+.news_list li strong img {
+  margin: 7px 0 0 5px;
+}
+.news_list li a > span {
+  display: block;
+  margin: 5px 0 20px 0;
+}
+.news_list li a:hover,
+.news_list li a:focus {
+  text-decoration: underline;
+}
+.news_list li em {
+  font-style: normal;
+}
+.news_list li em span {
+  margin: 0 15px;
+  font-size: 5px;
+  color: #ddd;
+}
+.news_list strong em {
+  color: #f26522;
+}
+.news_list .img {
+  display: block;
+  width: 100%;
+  margin: 0 0 10px 0;
+}
+
+/* enquete */
+.enquete_list {
+  width: 100%;
+  border-top: 1px solid #223e99;
+}
+.enquete_list li {
+  border-bottom: 1px solid #cdcdcd;
+  line-height: 1.25em;
+  padding: 25px 0;
+}
+.enquete_list li * {
+  vertical-align: middle;
+}
+.enquete_list li strong {
+  font-weight: 600;
+  color: #000;
+  font-size: 20px;
+  line-height: 1.5em;
+}
+.enquete_list li > span {
+  display: inline-block;
+  padding: 3px 10px;
+  margin: 0 0 0 10px;
+  border-radius: 3px;
+  border: 1px solid #223e99;
+  color: #223e99;
+  font-size: 13px;
+  font-weight: 600;
+}
+.enquete_list li em {
+  font-style: normal;
+  font-size: 16px;
+  display: block;
+  margin: 10px 0;
+}
+.enquete_list li p {
+  margin: 10px 0 0 0;
+}
+.enquete_list li p a {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 10px 0 0;
+  color: #fff;
+  border-radius: 3px;
+}
+.enquete_list li p a.join {
+  background: #e4780b;
+}
+.enquete_list li p a.join:hover {
+  background: #cf5d00;
+}
+.enquete_list li p a.result {
+  background: #223e99;
+}
+.enquete_list li p a.result:hover {
+  background: #15296a;
+}
+.enquete_list li p span.end {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 10px 0 0;
+  color: #fff;
+  border-radius: 3px;
+  background: #a1a1a1;
+}
+.enquete_list li p span.end:hover {
+  background: #707070;
+}
+
+.enquete_view li * {
+  vertical-align: middle;
+}
+.enquete_view .enquete_tit {
+  border-top: 1px solid #223e99;
+  border-bottom: 1px solid #cdcdcd;
+  margin: 0 0 40px 0;
+}
+.enquete_view .enquete_tit h4 {
+  color: #000;
+  margin: 20px 10px 10px 10px;
+}
+.enquete_view .enquete_tit ul {
+  margin: 0 10px;
+}
+.enquete_view .enquete_tit li {
+  margin: 0 0 3px 0;
+  font-size: 14px;
+}
+.enquete_view .enquete_tit div {
+  border-top: 1px dotted #dedede;
+  margin: 20px 0 0 0;
+  padding: 10px;
+  background: #fff;
+  font-size: 14px;
+  line-height: 1.5em;
+}
+.enquete_view .qbox > div {
+  margin: 0 0 40px 0;
+}
+.enquete_view .qbox ul {
+  margin: 20px 0;
+}
+.enquete_view .qbox li {
+  font-size: 14px;
+  line-height: 1.5em;
+  padding: 0 0 0 12px;
+  margin: 0 0 5px 0;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li01.png")
+    no-repeat 0 7px;
+}
+.enquete_view .qbox li ul {
+  margin: 7px 0;
+}
+.enquete_view .qbox li li {
+  padding: 0 0 0 10px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li02.png")
+    no-repeat 0 7px;
+}
+.enquete_view h5 {
+  background: #f4f6fb;
+  padding: 15px;
+  border: 1px solid #d0d7e7;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+.enquete_view .qcoment {
+  font-size: 14px;
+  line-height: 1.5em;
+  margin: 0 0 10px 0;
+}
+.enquete_view .in_txt {
+  width: 97%;
+  height: 18px;
+  padding: 7px 0;
+  border: 1px solid #cdcdcd;
+  vertical-align: middle;
+}
+.enquete_view .in_txta {
+  width: 97%;
+  height: 50px;
+  padding: 7px 0;
+  border: 1px solid #cdcdcd;
+  vertical-align: middle;
+}
+.enquete_view .enquete_btn {
+  text-align: center;
+}
+.enquete_view .enquete_btn input,
+.enquete_view .enquete_btn a {
+  background: #223e99;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  width: 150px;
+  padding: 15px 0;
+  border-radius: 3px;
+}
+.enquete_view .enquete_btn input {
+  cursor: pointer;
+}
+.enquete_view .enquete_btn a {
+  display: inline-block;
+}
+.enquete_view .enquete_btn input:hover,
+.enquete_view .enquete_btn a:hover {
+  background: #15296a;
+}
+
+/*View*/
+.bbs_view {
+  border-bottom: 1px solid #cdcdcd;
+}
+.bbs_view .bbs_vtop {
+  border-top: 1px solid #223e99;
+  border-bottom: 1px solid #cdcdcd;
+}
+.bbs_view h4 {
+  color: #000;
+  margin: 20px 10px 10px 10px;
+}
+.bbs_view .col {
+  margin: 0 10px;
+}
+.bbs_view .col li {
+  margin: 0 0 3px 0;
+  font-size: 14px;
+}
+.bbs_view .bbs_filedown {
+  border-top: 1px dotted #dedede;
+  margin: 20px 0 0 0;
+  padding: 10px;
+  background: #fff;
+}
+.bbs_view .bbs_filedown a {
+  background: url("https://www.uljin.go.kr/images/bbs/ico_file.gif") no-repeat 0
+    2px;
+  padding: 0 0 0 15px;
+  font-size: 14px;
+}
+.bbs_view .bbs_filedown a:hover {
+  text-decoration: underline;
+  color: #444547;
+}
+.bbs_con {
+  padding: 20px 10px;
+}
+
+.photo_view {
+  border-bottom: 1px solid #cdcdcd;
+}
+.photo_view .bbs_vtop {
+  border-top: 1px solid #223e99;
+}
+.photo_view h4 {
+  color: #000;
+  margin: 20px 10px 10px 10px;
+}
+.photo_view .col {
+  margin: 0 10px 10px 10px;
+}
+.photo_view .col li {
+  margin: 0 0 3px 0;
+  font-size: 14px;
+}
+.photo_view .bbs_filedown {
+  border-top: 1px dotted #dedede;
+  margin: 20px 0 0 0;
+  padding: 10px;
+  background: #fff;
+}
+.photo_view .bbs_filedown a {
+  background: url("https://www.uljin.go.kr/images/bbs/ico_file.gif") no-repeat 0
+    2px;
+  padding: 0 0 0 15px;
+  font-size: 14px;
+}
+.photo_view .bbs_filedown a:hover {
+  text-decoration: underline;
+  color: #444547;
+}
+.photo_view .img_view {
+  margin: 20px 0;
+  position: relative;
+}
+.photo_view .img_view .img_big {
+  text-align: center;
+  position: relative;
+}
+.photo_view .img_view .img_big .bbs_img {
+  margin: 20px 0;
+}
+.photo_view .img_view .img_big img {
+  display: inline-block;
+  height: 240px;
+  width: 100%;
+  margin: 0 0 10px;
+}
+.photo_view .img_view .img_big a {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+}
+.photo_view .img_view .img_list {
+  overflow: hidden;
+  height: 76px;
+  position: relative;
+  background: #f4f6fb;
+}
+.photo_view .img_view .img_list button {
+  width: 30px;
+  height: 0;
+  padding: 50px 0 0 0;
+  overflow: hidden;
+  position: absolute;
+  top: 13px;
+  border: 1px solid #ddd;
+}
+.photo_view .img_view .img_list .prev {
+  background: url("https://www.uljin.go.kr/images/bbs/photo_prev.gif") no-repeat
+    center center #fff;
+  left: 10px;
+}
+.photo_view .img_view .img_list .next {
+  background: url("https://www.uljin.go.kr/images/bbs/photo_next.gif") no-repeat
+    center center #fff;
+  right: 10px;
+}
+.photo_view .img_view .img_list ul {
+  overflow: hidden;
+  width: 75%;
+  margin: 0 auto;
+}
+.photo_view .img_view .img_list li {
+  float: left;
+  width: 50%;
+  text-align: center;
+  margin: 10px 0;
+}
+.photo_view .img_view .img_list li img {
+  border: 3px solid #f4f6fb;
+}
+.photo_view .img_view .img_list li.on img {
+  border: 3px solid #e4780b;
+}
+.photo_view .img_view .img_list img {
+  height: 50px;
+}
+.photo_view .bbs_con {
+  padding: 20px 10px;
+}
+
+.bbs_content img {
+  width: 100%;
+}
+
+.bbs_pw {
+  border: 1px solid #223e99;
+  padding: 50px 20px;
+  margin: 100px auto;
+  width: 80%;
+  text-align: center;
+}
+.bbs_pw * {
+  vertical-align: middle;
+}
+.bbs_pw label {
+  color: #000;
+  margin: 0 20px 0 0;
+}
+.bbs_pw .form_txt {
+  width: 30%;
+  height: 18px;
+  padding: 5px;
+  border: 1px solid #cdcdcd;
+  vertical-align: middle;
+}
+.bbs_pw .form_sm {
+  cursor: pointer;
+  width: 10%;
+  height: 30px;
+  background: #223e99;
+  color: #fff;
+  vertical-align: middle;
+}
+
+/*Write*/
+.bbs_write {
+  border-top: 1px solid #223e99;
+  width: 100%;
+}
+.bbs_write th,
+.bbs_write td {
+  vertical-align: middle;
+  border-bottom: 1px solid #cdcdcd;
+  padding: 15px 5px;
+}
+.bbs_write th *,
+.bbs_write td * {
+  vertical-align: middle;
+}
+.bbs_write th {
+  color: #223e99;
+  background: #f4f4f8;
+}
+.bbs_write td {
+}
+.bbs_write td label {
+  margin: 0 15px 0 0;
+}
+.w_star {
+  color: #ed1c24;
+}
+
+.bbs_write td a {
+  word-break: break-all;
+}
+
+.input_text {
+  border: 1px solid #e1e1e3;
+  padding: 5px 1px;
+  height: 20px;
+  width: 100%;
+}
+.input_sel {
+  border: 1px solid #e1e1e3;
+  padding: 5px 1px;
+  margin: 0;
+  height: 32px;
+  width: 100%;
+}
+
+.hide_m {
+  display: none;
+}
+.hide_t {
+  display: none;
+}
+
+/* Tablet */
+@media all and (min-width: 768px) {
+  .bbs_search .form_sel {
+    width: 70px;
+  }
+  .bbs_search .form_txt {
+    width: 300px;
+  }
+  .bbs_search .form_sm {
+    width: 70px;
+  }
+
+  .bbs_search2 {
+    overflow: hidden;
+    padding: 25px 20px;
+  }
+  .bbs_search2 .left {
+    float: left;
+    margin: 0;
+  }
+  .bbs_search2 .right {
+    float: right;
+    text-align: right;
+  }
+  .bbs_search2 .form_sel {
+    width: 70px;
+  }
+  .bbs_search2 .form_txt {
+    width: 200px;
+  }
+  .bbs_search2 .form_sm {
+    width: 70px;
+  }
+
+  .gg_search li ul {
+    overflow: hidden;
+  }
+  .gg_search li li {
+    margin: 0 20px 0 0;
+    display: inline;
+  }
+  .gg_search .form_sel {
+    width: 100px;
+  }
+  .gg_search .form_txt {
+    width: 100px;
+  }
+  .gg_search .form_sm {
+    width: 70px;
+  }
+
+  .jj_search ul {
+    overflow: hidden;
+  }
+  .jj_search li {
+    width: 45%;
+    margin: 0 5% 7px 0;
+    float: left;
+  }
+  .jj_search label {
+    display: inline-block;
+    width: 90px;
+  }
+  .jj_search .form_sel {
+    width: auto;
+  }
+  .jj_search .form_txt {
+    width: 50%;
+  }
+  .jj_search .wid50 {
+    width: 30%;
+  }
+  .jj_search li span {
+    display: inline;
+  }
+  .jj_search li.row1 {
+    width: 90%;
+  }
+  .jj_search li.row1 .wid50 {
+    width: 100px;
+  }
+  .jj_search .sch_row1 span {
+    display: inline-block;
+  }
+  .jj_search .sch_row1 .wid50 {
+    width: 100px;
+  }
+
+  .jj_title {
+    font-size: 18px;
+  }
+  .jj_title strong {
+    font-size: 36px;
+  }
+
+  .adm_list li a {
+    width: 95%;
+    margin: 0 0 0 5%;
+  }
+  .adm_list .adm_check {
+    top: 60px;
+  }
+
+  .photo_list li {
+    width: 50%;
+  }
+  .photo_list li span {
+    width: 80%;
+  }
+  .photo_list li span img {
+    height: 200px;
+  }
+
+  .news_list li a {
+    overflow: hidden;
+  }
+  .news_list .img {
+    float: left;
+    margin: 0 20px 0 0;
+    width: 230px;
+  }
+
+  .enquete_list li {
+    padding: 30px 250px 30px 0;
+    position: relative;
+  }
+  .enquete_list li em {
+    margin: 10px 0 0 0;
+  }
+  .enquete_list li p {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    margin: 0;
+  }
+  .enquete_list li p a {
+    margin: 0 0 0 10px;
+  }
+
+  .bbs_view .col li {
+    display: inline;
+    margin: 0 15px 0 0;
+  }
+  .bbs_write th,
+  .bbs_write td {
+    padding: 15px 10px;
+  }
+  .photo_view .col li {
+    display: inline;
+    margin: 0 15px 0 0;
+  }
+  .photo_view .img_view .img_big img {
+    height: 500px;
+  }
+  .photo_view .img_view .img_list {
+    height: 126px;
+  }
+  .photo_view .img_view .img_list button {
+    width: 50px;
+    padding: 100px 0 0 0;
+  }
+  .photo_view .img_view .img_list .prev {
+    left: 15px;
+  }
+  .photo_view .img_view .img_list .next {
+    right: 15px;
+  }
+  .photo_view .img_view .img_list ul {
+    width: 80%;
+  }
+  .photo_view .img_view .img_list li {
+    width: 33.333%;
+  }
+  .photo_view .img_view .img_list img {
+    height: 100px;
+  }
+
+  .input_wf {
+    width: 100%;
+  }
+  .input_w170 {
+    width: 170px;
+  }
+  .input_w60 {
+    width: 60px;
+  }
+
+  .bbs_btnr {
+    text-align: right;
+  }
+
+  .hide_m {
+    display: block;
+    display: table-cell;
+  }
+  .hide_t {
+    display: none;
+  }
+}
+
+/* Desktop */
+@media all and (min-width: 1023px) {
+  .photo_list li {
+    width: 29.333%;
+    height: 220px;
+    padding: 0 2%;
+  }
+  .photo_list li span {
+    width: 100%;
+  }
+  .photo_list li span img {
+    height: 140px;
+  }
+
+  .photo_view .img_view .img_list li {
+    width: 25%;
+  }
+
+  .hide_t {
+    display: block;
+    display: table-cell;
+  }
+}
+
+.ebook_list li {
+  text-align: center;
+  margin: 0 0 30px 0;
+  padding: 40px 0;
+  background: #f3f3f3;
+}
+.ebook_list li > span {
+  display: block;
+  border: 1px solid #c3cbe4;
+  width: 190px;
+  margin: 0 auto 10px auto;
+  height: 274px;
+}
+.ebook_list li > span img {
+  width: 100%;
+  height: 100%;
+}
+.ebook_list li strong {
+  display: block;
+  font-size: 16px;
+  color: #223e99;
+  margin: 0 0 5px 0;
+}
+@media all and (min-width: 768px) {
+  .ebook_list {
+    overflow: hidden;
+  }
+  .ebook_list li {
+    float: left;
+    width: 46%;
+    margin: 30px 2%;
+  }
+}
+@media all and (min-width: 1023px) {
+  .ebook_list li {
+    width: 31.3333%;
+    margin: 10px 1%;
+  }
+}
+
+.cal_search {
+  background: #f4f4f8;
+  padding: 25px 20px;
+  margin: 20px 0;
+}
+.cal_search li {
+  margin: 0 0 15px 0;
+}
+.cal_search li * {
+  vertical-align: middle;
+}
+.cal_search li span {
+  display: block;
+  margin: 5px 0 0 0;
+}
+.cal_search label {
+  display: block;
+  margin: 0 0 5px 0;
+  color: #333;
+  padding: 0 0 0 10px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/li02.png")
+    no-repeat 0 5px;
+}
+.cal_search p {
+  text-align: center;
+  margin: 10px 0 0 0;
+}
+.cal_search .form_sel {
+  width: 30%;
+  height: 30px;
+  border: 1px solid #cdcdcd;
+  vertical-align: middle;
+}
+.cal_search .form_txt {
+  width: 60%;
+  height: 18px;
+  padding: 5px 0;
+  border: 1px solid #cdcdcd;
+}
+.cal_search .wid50 {
+  width: 45%;
+}
+.cal_search button.type {
+  height: 30px;
+  border: 1px solid #cdcdcd;
+  background: #fff;
+}
+.cal_search button.reset {
+  width: 70px;
+  height: 30px;
+  background: #363636;
+  color: #fff;
+}
+.cal_search .form_sm {
+  cursor: pointer;
+  width: 70px;
+  height: 30px;
+  background: #223e99;
+  color: #fff;
+}
+.cal_search .sch_row1 {
+  margin: 0;
+}
+.cal_search .sch_row1 * {
+  vertical-align: middle;
+}
+.cal_search .sch_row1 span {
+  display: block;
+  margin: 0 0 5px 0;
+}
+
+@media all and (min-width: 768px) {
+  .cal_search ul {
+    overflow: hidden;
+  }
+  .cal_search li {
+    width: 45%;
+    margin: 0 5% 7px 0;
+    float: left;
+  }
+  .cal_search label {
+    display: inline-block;
+    width: 90px;
+  }
+  .cal_search .form_sel {
+    width: auto;
+  }
+  .cal_search .form_txt {
+    width: 70%;
+  }
+  .cal_search .wid50 {
+    width: 30%;
+  }
+  .cal_search li span {
+    display: inline;
+  }
+  .cal_search li.row1 {
+    width: 90%;
+  }
+  .cal_search li.row1 .wid50 {
+    width: 100px;
+  }
+  .cal_search .sch_row1 span {
+    display: inline-block;
+  }
+  .cal_search .sch_row1 .wid50 {
+    width: 100px;
+  }
+}
+
+/*new_photo190903*/
+
+.photo_list1 {
+  border-top: 1px solid #223e99;
+  border-bottom: 1px solid #cdcdcd;
+  padding: 20px 0 0 0;
+}
+.photo_list1 ul {
+  overflow: hidden;
+}
+.photo_list1 li {
+  float: left;
+  width: 100%;
+  margin: 0 0px 40px 0px;
+  text-align: center;
+}
+.photo_list1 li a {
+  font-size: 13px;
+  color: #777;
+  display: block;
+  padding-bottom: 10px;
+}
+.photo_list1 li span {
+  display: block;
+  width: 99%;
+  border: solid 1px #e6e6e6;
+  margin: 0 auto 10px auto;
+}
+.photo_list1 li span img {
+  width: 100%;
+}
+.photo_list1 li strong {
+  display: block;
+  color: #000;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+.photo_list1 li em {
+  display: block;
+  font-style: normal;
+}
+.photo_list1 li .gal_btn {
+  padding-top: 10px;
+}
+
+@media all and (min-width: 768px) {
+  .photo_list1 li {
+    width: 50%;
+  }
+  .photo_list1 li span {
+    width: 80%;
+  }
+  .photo_list1 li span img {
+    height: 200px;
+  }
+  .photo_list1 li a {
+    border: none;
+  }
+}
+
+@media all and (min-width: 1023px) {
+  .photo_list1 li {
+    width: 29.333%;
+    height: 290px;
+    padding: 0 2%; /* border: solid 1px #ccc; */
+    position: relative;
+  }
+  .photo_list1 li span {
+    width: 100%;
+  }
+  .photo_list1 li span img {
+    height: 150px;
+  }
+  .photo_list1 li a {
+    border: solid 1px #e6e6e6;
+    min-height: 290px;
+  }
+  .photo_view .img_view .img_list li {
+    width: 25%;
+  }
+  .photo_list1 li .date {
+    position: absolute;
+    bottom: 40px;
+    left: 36%;
+  }
+  .photo_list1 li .gal_btn {
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+    left: 46%;
+  }
+  .photo_list1 li strong {
+    height: 50px;
+    overflow: hidden;
+  }
+}
+/*new_pto190903*/
+.photo_view .c_bt button {
+  width: 30px;
+  height: 0;
+  padding: 50px 0 0 0;
+  overflow: hidden;
+  position: absolute;
+  top: 45%;
+  border: 1px solid #ddd;
+}
+.photo_view .c_bt .prev {
+  background: url("https://www.uljin.go.kr/images/bbs/photo_prev.gif") no-repeat
+    center center rgba(255, 255, 255, 0.8);
+  left: 5px;
+}
+.photo_view .c_bt .next {
+  background: url("https://www.uljin.go.kr/images/bbs/photo_next.gif") no-repeat
+    center center rgba(255, 255, 255, 0.8);
+  right: 5px;
+}
+
+.photo_view .count {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 12px 0;
+}
+.photo_view .count p {
+  text-align: center;
+  display: block;
+  width: 100%;
+  color: #fff;
+  font-weight: bold;
+}
+
+.photo_view .img_view .img_big .bbs_img {
+  position: relative;
+  padding: 30px;
+  background: #f4f4f4;
+}
+.photo_view .img_view .img_big a {
+  top: 30px;
+  right: 30px;
+}
+/* Tablet */
+
+@media all and (min-width: 768px) {
+  /*버튼*/
+  .photo_view .c_bt button {
+    width: 50px;
+    padding: 50px 0 0 0;
+  }
+  .photo_view .c_bt .prev {
+    left: 15px;
+  }
+  .photo_view .c_bt .next {
+    right: 15px;
+  }
+
+  .photo_view .count {
+  }
+  .photo_view .count p {
+  }
+}
+
+/* Desktop */
+@media all and (min-width: 1023px) {
+  .photo_view .count {
+  }
+  .photo_view .count p {
+  }
+}
+/*new_pto file*/
+.photo_view .view_app {
+  background: #f4f4f8;
+  border: solid 1px #cfcfcf;
+  padding: 10px;
+}
+.photo_view .view_app p span {
+  color: #f26522;
+}
+.photo_view .view_app div {
+  background: #fff;
+  padding: 10px;
+  margin-top: 10px;
+}
+.photo_view .view_app div li {
+  background: url("https://www.uljin.go.kr/images/01_potal/common/btn_down_b.png")
+    no-repeat left 6px;
+  padding: 0 0 3px 0;
+}
+.photo_view .view_app div a {
+  display: inline-block;
+  padding: 0 0 0 30px;
+  border: none;
+}
+.photo_view .view_app div a.viewer {
+  padding: 0;
+}
+.photo_view .view_app div a span {
+  display: inline-block;
+  height: 25px;
+  padding: 0 20px 0 0;
+  font-size: 13px;
+}
+.photo_view .view_app div a:hover,
+.photo_view .view_app div a:focus {
+  text-decoration: underline;
+}
+
+@media all and (min-width: 1400px) {
+  .photo_view .view_app div ul {
+    overflow: hidden;
+  }
+  .photo_view .view_app div ul li {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+  }
+}
+
+.basic_tab02 {
+  overflow: hidden;
+  margin: 0 0 30px 0;
+}
+.basic_tab02 li {
+  float: left;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px 0 0;
+  margin-bottom: 10px;
+}
+.basic_tab02 li a {
+  display: block;
+  padding: 10px 15px 0 10px;
+  box-sizing: border-box;
+  height: 40px;
+  background: url("https://www.uljin.go.kr/images/01_potal/common/tab02.png")
+    no-repeat right center;
+  border-bottom: solid 1px #cbcbcb;
+}
+.basic_tab02 li a:hover {
+  background: url("https://www.uljin.go.kr/images/01_potal/common/tab02_on.png")
+    no-repeat right center;
+  color: #00cbdd;
+  border: 1px solid #00cbdd;
+}
+.basic_tab02 li.on a {
+  background: url("https://www.uljin.go.kr/images/01_potal/common/tab02_on.png")
+    no-repeat right center;
+  color: #00cbdd;
+  border: 1px solid #00cbdd;
+}
+.basic_tab02 li.on a:hover {
+  background: url("https://www.uljin.go.kr/images/01_potal/common/tab02_on.png")
+    no-repeat right center;
+  color: #00cbdd;
+  border: 1px solid #00cbdd;
+}
+
+@media all and (min-width: 1023px) {
+  .pc_tab {
+    display: block;
+  }
+  .mobile_tab {
+    display: none;
+  }
+}
+
+.ui-draggable-handle {
+  -ms-touch-action: none;
+  touch-action: none;
+}
+.ui-helper-hidden {
+  display: none;
+}
+.ui-helper-hidden-accessible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+.ui-helper-reset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  line-height: 1.3;
+  text-decoration: none;
+  font-size: 100%;
+  list-style: none;
+}
+.ui-helper-clearfix:before,
+.ui-helper-clearfix:after {
+  content: "";
+  display: table;
+  border-collapse: collapse;
+}
+.ui-helper-clearfix:after {
+  clear: both;
+}
+.ui-helper-zfix {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  opacity: 0;
+  filter: Alpha(Opacity=0);
+}
+.ui-front {
+  z-index: 100;
+}
+.ui-state-disabled {
+  cursor: default !important;
+}
+.ui-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -0.25em;
+  position: relative;
+  text-indent: -99999px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+.ui-widget-icon-block {
+  left: 50%;
+  margin-left: -8px;
+  display: block;
+}
+.ui-widget-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.ui-resizable {
+  position: relative;
+}
+.ui-resizable-handle {
+  position: absolute;
+  font-size: 0.1px;
+  display: block;
+  -ms-touch-action: none;
+  touch-action: none;
+}
+.ui-resizable-disabled .ui-resizable-handle,
+.ui-resizable-autohide .ui-resizable-handle {
+  display: none;
+}
+.ui-resizable-n {
+  cursor: n-resize;
+  height: 7px;
+  width: 100%;
+  top: -5px;
+  left: 0;
+}
+.ui-resizable-s {
+  cursor: s-resize;
+  height: 7px;
+  width: 100%;
+  bottom: -5px;
+  left: 0;
+}
+.ui-resizable-e {
+  cursor: e-resize;
+  width: 7px;
+  right: -5px;
+  top: 0;
+  height: 100%;
+}
+.ui-resizable-w {
+  cursor: w-resize;
+  width: 7px;
+  left: -5px;
+  top: 0;
+  height: 100%;
+}
+.ui-resizable-se {
+  cursor: se-resize;
+  width: 12px;
+  height: 12px;
+  right: 1px;
+  bottom: 1px;
+}
+.ui-resizable-sw {
+  cursor: sw-resize;
+  width: 9px;
+  height: 9px;
+  left: -5px;
+  bottom: -5px;
+}
+.ui-resizable-nw {
+  cursor: nw-resize;
+  width: 9px;
+  height: 9px;
+  left: -5px;
+  top: -5px;
+}
+.ui-resizable-ne {
+  cursor: ne-resize;
+  width: 9px;
+  height: 9px;
+  right: -5px;
+  top: -5px;
+}
+.ui-selectable {
+  -ms-touch-action: none;
+  touch-action: none;
+}
+.ui-selectable-helper {
+  position: absolute;
+  z-index: 100;
+  border: 1px dotted black;
+}
+.ui-sortable-handle {
+  -ms-touch-action: none;
+  touch-action: none;
+}
+.ui-accordion .ui-accordion-header {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  margin: 2px 0 0 0;
+  padding: 0.5em 0.5em 0.5em 0.7em;
+  font-size: 100%;
+}
+.ui-accordion .ui-accordion-content {
+  padding: 1em 2.2em;
+  border-top: 0;
+  overflow: auto;
+}
+.ui-autocomplete {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: default;
+}
+.ui-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+  outline: 0;
+}
+.ui-menu .ui-menu {
+  position: absolute;
+}
+.ui-menu .ui-menu-item {
+  margin: 0;
+  cursor: pointer;
+  list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+}
+.ui-menu .ui-menu-item-wrapper {
+  position: relative;
+  padding: 3px 1em 3px 0.4em;
+}
+.ui-menu .ui-menu-divider {
+  margin: 5px 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  border-width: 1px 0 0 0;
+}
+.ui-menu .ui-state-focus,
+.ui-menu .ui-state-active {
+  margin: -1px;
+}
+.ui-menu-icons {
+  position: relative;
+}
+.ui-menu-icons .ui-menu-item-wrapper {
+  padding-left: 2em;
+}
+.ui-menu .ui-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0.2em;
+  margin: auto 0;
+}
+.ui-menu .ui-menu-icon {
+  left: auto;
+  right: 0;
+}
+.ui-button {
+  padding: 0.4em 1em;
+  display: inline-block;
+  position: relative;
+  line-height: normal;
+  margin-right: 0.1em;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: visible;
+}
+.ui-button,
+.ui-button:link,
+.ui-button:visited,
+.ui-button:hover,
+.ui-button:active {
+  text-decoration: none;
+}
+.ui-button-icon-only {
+  width: 2em;
+  box-sizing: border-box;
+  text-indent: -9999px;
+  white-space: nowrap;
+}
+input.ui-button.ui-button-icon-only {
+  text-indent: 0;
+}
+.ui-button-icon-only .ui-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -8px;
+  margin-left: -8px;
+}
+.ui-button.ui-icon-notext .ui-icon {
+  padding: 0;
+  width: 2.1em;
+  height: 2.1em;
+  text-indent: -9999px;
+  white-space: nowrap;
+}
+input.ui-button.ui-icon-notext .ui-icon {
+  width: auto;
+  height: auto;
+  text-indent: 0;
+  white-space: normal;
+  padding: 0.4em 1em;
+}
+input.ui-button::-moz-focus-inner,
+button.ui-button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+.ui-controlgroup {
+  vertical-align: middle;
+  display: inline-block;
+}
+.ui-controlgroup > .ui-controlgroup-item {
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+.ui-controlgroup > .ui-controlgroup-item:focus,
+.ui-controlgroup > .ui-controlgroup-item.ui-visual-focus {
+  z-index: 9999;
+}
+.ui-controlgroup-vertical > .ui-controlgroup-item {
+  display: block;
+  float: none;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: left;
+}
+.ui-controlgroup-vertical .ui-controlgroup-item {
+  box-sizing: border-box;
+}
+.ui-controlgroup .ui-controlgroup-label {
+  padding: 0.4em 1em;
+}
+.ui-controlgroup .ui-controlgroup-label span {
+  font-size: 80%;
+}
+.ui-controlgroup-horizontal .ui-controlgroup-label + .ui-controlgroup-item {
+  border-left: none;
+}
+.ui-controlgroup-vertical .ui-controlgroup-label + .ui-controlgroup-item {
+  border-top: none;
+}
+.ui-controlgroup-horizontal .ui-controlgroup-label.ui-widget-content {
+  border-right: none;
+}
+.ui-controlgroup-vertical .ui-controlgroup-label.ui-widget-content {
+  border-bottom: none;
+}
+.ui-controlgroup-vertical .ui-spinner-input {
+  width: 75%;
+  width: calc(100% - 2.4em);
+}
+.ui-controlgroup-vertical .ui-spinner .ui-spinner-up {
+  border-top-style: solid;
+}
+.ui-checkboxradio-label .ui-icon-background {
+  box-shadow: inset 1px 1px 1px #ccc;
+  border-radius: 0.12em;
+  border: none;
+}
+.ui-checkboxradio-radio-label .ui-icon-background {
+  width: 16px;
+  height: 16px;
+  border-radius: 1em;
+  overflow: visible;
+  border: none;
+}
+.ui-checkboxradio-radio-label.ui-checkboxradio-checked .ui-icon,
+.ui-checkboxradio-radio-label.ui-checkboxradio-checked:hover .ui-icon {
+  background-image: none;
+  width: 8px;
+  height: 8px;
+  border-width: 4px;
+  border-style: solid;
+}
+.ui-checkboxradio-disabled {
+}
+.ui-datepicker {
+  width: 17em;
+  padding: 0.2em 0.2em 0;
+  display: none;
+}
+.ui-datepicker .ui-datepicker-header {
+  position: relative;
+  padding: 0.2em 0;
+}
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+  position: absolute;
+  top: 2px;
+  width: 1.8em;
+  height: 1.8em;
+}
+.ui-datepicker .ui-datepicker-prev-hover,
+.ui-datepicker .ui-datepicker-next-hover {
+  top: 1px;
+}
+.ui-datepicker .ui-datepicker-prev {
+  left: 2px;
+}
+.ui-datepicker .ui-datepicker-next {
+  right: 2px;
+}
+.ui-datepicker .ui-datepicker-prev-hover {
+  left: 1px;
+}
+.ui-datepicker .ui-datepicker-next-hover {
+  right: 1px;
+}
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+  display: block;
+  position: absolute;
+  left: 50%;
+  margin-left: -8px;
+  top: 50%;
+  margin-top: -8px;
+}
+.ui-datepicker .ui-datepicker-title {
+  margin: 0 2.3em;
+  line-height: 1.8em;
+  text-align: center;
+}
+.ui-datepicker .ui-datepicker-title select {
+  font-size: 1em;
+  margin: 1px 0;
+}
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year {
+  width: 45%;
+}
+.ui-datepicker table {
+  width: 100%;
+  font-size: 0.9em;
+  border-collapse: collapse;
+  margin: 0 0 0.4em;
+}
+.ui-datepicker th {
+  padding: 0.7em 0.3em;
+  text-align: center;
+  font-weight: bold;
+  border: 0;
+}
+.ui-datepicker td {
+  border: 0;
+  padding: 1px;
+}
+.ui-datepicker td span,
+.ui-datepicker td a {
+  display: block;
+  padding: 0.2em;
+  text-align: right;
+  text-decoration: none;
+}
+.ui-datepicker .ui-datepicker-buttonpane {
+  background-image: none;
+  margin: 0.7em 0 0 0;
+  padding: 0 0.2em;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+.ui-datepicker .ui-datepicker-buttonpane button {
+  float: right;
+  margin: 0.5em 0.2em 0.4em;
+  cursor: pointer;
+  padding: 0.2em 0.6em 0.3em 0.6em;
+  width: auto;
+  overflow: visible;
+}
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+  float: left;
+}
+.ui-datepicker.ui-datepicker-multi {
+  width: auto;
+}
+.ui-datepicker-multi .ui-datepicker-group {
+  float: left;
+}
+.ui-datepicker-multi .ui-datepicker-group table {
+  width: 95%;
+  margin: 0 auto 0.4em;
+}
+.ui-datepicker-multi-2 .ui-datepicker-group {
+  width: 50%;
+}
+.ui-datepicker-multi-3 .ui-datepicker-group {
+  width: 33.3%;
+}
+.ui-datepicker-multi-4 .ui-datepicker-group {
+  width: 25%;
+}
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header,
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header {
+  border-left-width: 0;
+}
+.ui-datepicker-multi .ui-datepicker-buttonpane {
+  clear: left;
+}
+.ui-datepicker-row-break {
+  clear: both;
+  width: 100%;
+  font-size: 0;
+}
+.ui-datepicker-rtl {
+  direction: rtl;
+}
+.ui-datepicker-rtl .ui-datepicker-prev {
+  right: 2px;
+  left: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-next {
+  left: 2px;
+  right: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-prev:hover {
+  right: 1px;
+  left: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-next:hover {
+  left: 1px;
+  right: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-buttonpane {
+  clear: right;
+}
+.ui-datepicker-rtl .ui-datepicker-buttonpane button {
+  float: left;
+}
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current,
+.ui-datepicker-rtl .ui-datepicker-group {
+  float: right;
+}
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header,
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header {
+  border-right-width: 0;
+  border-left-width: 1px;
+}
+.ui-datepicker .ui-icon {
+  display: block;
+  text-indent: -99999px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  left: 0.5em;
+  top: 0.3em;
+}
+.ui-dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.2em;
+  outline: 0;
+}
+.ui-dialog .ui-dialog-titlebar {
+  padding: 0.4em 1em;
+  position: relative;
+}
+.ui-dialog .ui-dialog-title {
+  float: left;
+  margin: 0.1em 0;
+  white-space: nowrap;
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ui-dialog .ui-dialog-titlebar-close {
+  position: absolute;
+  right: 0.3em;
+  top: 50%;
+  width: 20px;
+  margin: -10px 0 0 0;
+  padding: 1px;
+  height: 20px;
+}
+.ui-dialog .ui-dialog-content {
+  position: relative;
+  border: 0;
+  padding: 0.5em 1em;
+  background: none;
+  overflow: auto;
+}
+.ui-dialog .ui-dialog-buttonpane {
+  text-align: left;
+  border-width: 1px 0 0 0;
+  background-image: none;
+  margin-top: 0.5em;
+  padding: 0.3em 1em 0.5em 0.4em;
+}
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+  float: right;
+}
+.ui-dialog .ui-dialog-buttonpane button {
+  margin: 0.5em 0.4em 0.5em 0;
+  cursor: pointer;
+}
+.ui-dialog .ui-resizable-n {
+  height: 2px;
+  top: 0;
+}
+.ui-dialog .ui-resizable-e {
+  width: 2px;
+  right: 0;
+}
+.ui-dialog .ui-resizable-s {
+  height: 2px;
+  bottom: 0;
+}
+.ui-dialog .ui-resizable-w {
+  width: 2px;
+  left: 0;
+}
+.ui-dialog .ui-resizable-se,
+.ui-dialog .ui-resizable-sw,
+.ui-dialog .ui-resizable-ne,
+.ui-dialog .ui-resizable-nw {
+  width: 7px;
+  height: 7px;
+}
+.ui-dialog .ui-resizable-se {
+  right: 0;
+  bottom: 0;
+}
+.ui-dialog .ui-resizable-sw {
+  left: 0;
+  bottom: 0;
+}
+.ui-dialog .ui-resizable-ne {
+  right: 0;
+  top: 0;
+}
+.ui-dialog .ui-resizable-nw {
+  left: 0;
+  top: 0;
+}
+.ui-draggable .ui-dialog-titlebar {
+  cursor: move;
+}
+.ui-progressbar {
+  height: 2em;
+  text-align: left;
+  overflow: hidden;
+}
+.ui-progressbar .ui-progressbar-value {
+  margin: -1px;
+  height: 100%;
+}
+.ui-progressbar .ui-progressbar-overlay {
+  background: url("data:image/gif;base64,R0lGODlhKAAoAIABAAAAAP///yH/C05FVFNDQVBFMi4wAwEAAAAh+QQJAQABACwAAAAAKAAoAAACkYwNqXrdC52DS06a7MFZI+4FHBCKoDeWKXqymPqGqxvJrXZbMx7Ttc+w9XgU2FB3lOyQRWET2IFGiU9m1frDVpxZZc6bfHwv4c1YXP6k1Vdy292Fb6UkuvFtXpvWSzA+HycXJHUXiGYIiMg2R6W459gnWGfHNdjIqDWVqemH2ekpObkpOlppWUqZiqr6edqqWQAAIfkECQEAAQAsAAAAACgAKAAAApSMgZnGfaqcg1E2uuzDmmHUBR8Qil95hiPKqWn3aqtLsS18y7G1SzNeowWBENtQd+T1JktP05nzPTdJZlR6vUxNWWjV+vUWhWNkWFwxl9VpZRedYcflIOLafaa28XdsH/ynlcc1uPVDZxQIR0K25+cICCmoqCe5mGhZOfeYSUh5yJcJyrkZWWpaR8doJ2o4NYq62lAAACH5BAkBAAEALAAAAAAoACgAAAKVDI4Yy22ZnINRNqosw0Bv7i1gyHUkFj7oSaWlu3ovC8GxNso5fluz3qLVhBVeT/Lz7ZTHyxL5dDalQWPVOsQWtRnuwXaFTj9jVVh8pma9JjZ4zYSj5ZOyma7uuolffh+IR5aW97cHuBUXKGKXlKjn+DiHWMcYJah4N0lYCMlJOXipGRr5qdgoSTrqWSq6WFl2ypoaUAAAIfkECQEAAQAsAAAAACgAKAAAApaEb6HLgd/iO7FNWtcFWe+ufODGjRfoiJ2akShbueb0wtI50zm02pbvwfWEMWBQ1zKGlLIhskiEPm9R6vRXxV4ZzWT2yHOGpWMyorblKlNp8HmHEb/lCXjcW7bmtXP8Xt229OVWR1fod2eWqNfHuMjXCPkIGNileOiImVmCOEmoSfn3yXlJWmoHGhqp6ilYuWYpmTqKUgAAIfkECQEAAQAsAAAAACgAKAAAApiEH6kb58biQ3FNWtMFWW3eNVcojuFGfqnZqSebuS06w5V80/X02pKe8zFwP6EFWOT1lDFk8rGERh1TTNOocQ61Hm4Xm2VexUHpzjymViHrFbiELsefVrn6XKfnt2Q9G/+Xdie499XHd2g4h7ioOGhXGJboGAnXSBnoBwKYyfioubZJ2Hn0RuRZaflZOil56Zp6iioKSXpUAAAh+QQJAQABACwAAAAAKAAoAAACkoQRqRvnxuI7kU1a1UU5bd5tnSeOZXhmn5lWK3qNTWvRdQxP8qvaC+/yaYQzXO7BMvaUEmJRd3TsiMAgswmNYrSgZdYrTX6tSHGZO73ezuAw2uxuQ+BbeZfMxsexY35+/Qe4J1inV0g4x3WHuMhIl2jXOKT2Q+VU5fgoSUI52VfZyfkJGkha6jmY+aaYdirq+lQAACH5BAkBAAEALAAAAAAoACgAAAKWBIKpYe0L3YNKToqswUlvznigd4wiR4KhZrKt9Upqip61i9E3vMvxRdHlbEFiEXfk9YARYxOZZD6VQ2pUunBmtRXo1Lf8hMVVcNl8JafV38aM2/Fu5V16Bn63r6xt97j09+MXSFi4BniGFae3hzbH9+hYBzkpuUh5aZmHuanZOZgIuvbGiNeomCnaxxap2upaCZsq+1kAACH5BAkBAAEALAAAAAAoACgAAAKXjI8By5zf4kOxTVrXNVlv1X0d8IGZGKLnNpYtm8Lr9cqVeuOSvfOW79D9aDHizNhDJidFZhNydEahOaDH6nomtJjp1tutKoNWkvA6JqfRVLHU/QUfau9l2x7G54d1fl995xcIGAdXqMfBNadoYrhH+Mg2KBlpVpbluCiXmMnZ2Sh4GBqJ+ckIOqqJ6LmKSllZmsoq6wpQAAAh+QQJAQABACwAAAAAKAAoAAAClYx/oLvoxuJDkU1a1YUZbJ59nSd2ZXhWqbRa2/gF8Gu2DY3iqs7yrq+xBYEkYvFSM8aSSObE+ZgRl1BHFZNr7pRCavZ5BW2142hY3AN/zWtsmf12p9XxxFl2lpLn1rseztfXZjdIWIf2s5dItwjYKBgo9yg5pHgzJXTEeGlZuenpyPmpGQoKOWkYmSpaSnqKileI2FAAACH5BAkBAAEALAAAAAAoACgAAAKVjB+gu+jG4kORTVrVhRlsnn2dJ3ZleFaptFrb+CXmO9OozeL5VfP99HvAWhpiUdcwkpBH3825AwYdU8xTqlLGhtCosArKMpvfa1mMRae9VvWZfeB2XfPkeLmm18lUcBj+p5dnN8jXZ3YIGEhYuOUn45aoCDkp16hl5IjYJvjWKcnoGQpqyPlpOhr3aElaqrq56Bq7VAAAOw==");
+  height: 100%;
+  filter: alpha(opacity=25);
+  opacity: 0.25;
+}
+.ui-progressbar-indeterminate .ui-progressbar-value {
+  background-image: none;
+}
+.ui-selectmenu-menu {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.ui-selectmenu-menu .ui-menu {
+  overflow: auto;
+  overflow-x: hidden;
+  padding-bottom: 1px;
+}
+.ui-selectmenu-menu .ui-menu .ui-selectmenu-optgroup {
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.5;
+  padding: 2px 0.4em;
+  margin: 0.5em 0 0 0;
+  height: auto;
+  border: 0;
+}
+.ui-selectmenu-open {
+  display: block;
+}
+.ui-selectmenu-text {
+  display: block;
+  margin-right: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ui-selectmenu-button.ui-button {
+  text-align: left;
+  white-space: nowrap;
+  width: 14em;
+}
+.ui-selectmenu-icon.ui-icon {
+  float: right;
+  margin-top: 0;
+}
+.ui-slider {
+  position: relative;
+  text-align: left;
+}
+.ui-slider .ui-slider-handle {
+  position: absolute;
+  z-index: 2;
+  width: 1.2em;
+  height: 1.2em;
+  cursor: default;
+  -ms-touch-action: none;
+  touch-action: none;
+}
+.ui-slider .ui-slider-range {
+  position: absolute;
+  z-index: 1;
+  font-size: 0.7em;
+  display: block;
+  border: 0;
+  background-position: 0 0;
+}
+.ui-slider.ui-state-disabled .ui-slider-handle,
+.ui-slider.ui-state-disabled .ui-slider-range {
+  filter: inherit;
+}
+.ui-slider-horizontal {
+  height: 0.8em;
+}
+.ui-slider-horizontal .ui-slider-handle {
+  top: -0.3em;
+  margin-left: -0.6em;
+}
+.ui-slider-horizontal .ui-slider-range {
+  top: 0;
+  height: 100%;
+}
+.ui-slider-horizontal .ui-slider-range-min {
+  left: 0;
+}
+.ui-slider-horizontal .ui-slider-range-max {
+  right: 0;
+}
+.ui-slider-vertical {
+  width: 0.8em;
+  height: 100px;
+}
+.ui-slider-vertical .ui-slider-handle {
+  left: -0.3em;
+  margin-left: 0;
+  margin-bottom: -0.6em;
+}
+.ui-slider-vertical .ui-slider-range {
+  left: 0;
+  width: 100%;
+}
+.ui-slider-vertical .ui-slider-range-min {
+  bottom: 0;
+}
+.ui-slider-vertical .ui-slider-range-max {
+  top: 0;
+}
+.ui-spinner {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  padding: 0;
+  vertical-align: middle;
+}
+.ui-spinner-input {
+  border: none;
+  background: none;
+  color: inherit;
+  padding: 0.222em 0;
+  margin: 0.2em 0;
+  vertical-align: middle;
+  margin-left: 0.4em;
+  margin-right: 2em;
+}
+.ui-spinner-button {
+  width: 1.6em;
+  height: 50%;
+  font-size: 0.5em;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  position: absolute;
+  cursor: default;
+  display: block;
+  overflow: hidden;
+  right: 0;
+}
+.ui-spinner a.ui-spinner-button {
+  border-top-style: none;
+  border-bottom-style: none;
+  border-right-style: none;
+}
+.ui-spinner-up {
+  top: 0;
+}
+.ui-spinner-down {
+  bottom: 0;
+}
+.ui-tabs {
+  position: relative;
+  padding: 0.2em;
+}
+.ui-tabs .ui-tabs-nav {
+  margin: 0;
+  padding: 0.2em 0.2em 0;
+}
+.ui-tabs .ui-tabs-nav li {
+  list-style: none;
+  float: left;
+  position: relative;
+  top: 0;
+  margin: 1px 0.2em 0 0;
+  border-bottom-width: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+  float: left;
+  padding: 0.5em 1em;
+  text-decoration: none;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+  margin-bottom: -1px;
+  padding-bottom: 1px;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,
+.ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,
+.ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
+  cursor: text;
+}
+.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+  cursor: pointer;
+}
+.ui-tabs .ui-tabs-panel {
+  display: block;
+  border-width: 0;
+  padding: 1em 1.4em;
+  background: none;
+}
+.ui-tooltip {
+  padding: 8px;
+  position: absolute;
+  z-index: 9999;
+  max-width: 300px;
+}
+body .ui-tooltip {
+  border-width: 2px;
+}
+.ui-widget {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+}
+.ui-widget .ui-widget {
+  font-size: 1em;
+}
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+}
+.ui-widget.ui-widget-content {
+  border: 1px solid #c5c5c5;
+}
+.ui-widget-content {
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+}
+.ui-widget-content a {
+  color: #333;
+}
+.ui-widget-header {
+  border: 1px solid #ddd;
+  background: #e9e9e9;
+  color: #333;
+  font-weight: bold;
+}
+.ui-widget-header a {
+  color: #333;
+}
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+  border: 1px solid #c5c5c5;
+  background: #f6f6f6;
+  font-weight: normal;
+  color: #454545;
+}
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited,
+a.ui-button,
+a:link.ui-button,
+a:visited.ui-button,
+.ui-button {
+  color: #454545;
+  text-decoration: none;
+}
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus,
+.ui-button:hover,
+.ui-button:focus {
+  border: 1px solid #ccc;
+  background: #ededed;
+  font-weight: normal;
+  color: #2b2b2b;
+}
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited,
+.ui-state-focus a,
+.ui-state-focus a:hover,
+.ui-state-focus a:link,
+.ui-state-focus a:visited,
+a.ui-button:hover,
+a.ui-button:focus {
+  color: #2b2b2b;
+  text-decoration: none;
+}
+.ui-visual-focus {
+  box-shadow: 0 0 3px 1px rgb(94, 158, 214);
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+  border: 1px solid #003eff;
+  background: #007fff;
+  font-weight: normal;
+  color: #fff;
+}
+.ui-icon-background,
+.ui-state-active .ui-icon-background {
+  border: #003eff;
+  background-color: #fff;
+}
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+  border: 1px solid #dad55e;
+  background: #fffa90;
+  color: #777620;
+}
+.ui-state-checked {
+  border: 1px solid #dad55e;
+  background: #fffa90;
+}
+.ui-state-highlight a,
+.ui-widget-content .ui-state-highlight a,
+.ui-widget-header .ui-state-highlight a {
+  color: #777620;
+}
+.ui-state-error,
+.ui-widget-content .ui-state-error,
+.ui-widget-header .ui-state-error {
+  border: 1px solid #f1a899;
+  background: #fddfdf;
+  color: #5f3f3f;
+}
+.ui-state-error a,
+.ui-widget-content .ui-state-error a,
+.ui-widget-header .ui-state-error a {
+  color: #5f3f3f;
+}
+.ui-state-error-text,
+.ui-widget-content .ui-state-error-text,
+.ui-widget-header .ui-state-error-text {
+  color: #5f3f3f;
+}
+.ui-priority-primary,
+.ui-widget-content .ui-priority-primary,
+.ui-widget-header .ui-priority-primary {
+  font-weight: bold;
+}
+.ui-priority-secondary,
+.ui-widget-content .ui-priority-secondary,
+.ui-widget-header .ui-priority-secondary {
+  opacity: 0.7;
+  filter: Alpha(Opacity=70);
+  font-weight: normal;
+}
+.ui-state-disabled,
+.ui-widget-content .ui-state-disabled,
+.ui-widget-header .ui-state-disabled {
+  opacity: 0.35;
+  filter: Alpha(Opacity=35);
+  background-image: none;
+}
+.ui-state-disabled .ui-icon {
+  filter: Alpha(Opacity=35);
+}
+.ui-icon {
+  width: 16px;
+  height: 16px;
+}
+.ui-icon,
+.ui-widget-content .ui-icon {
+  background-image: url("https://www.uljin.go.kr/js/01_potal/jquery-ui-1.12.1.custom/images/ui-icons_444444_256x240.png");
+}
+.ui-widget-header .ui-icon {
+  background-image: url("https://www.uljin.go.kr/js/01_potal/jquery-ui-1.12.1.custom/images/ui-icons_444444_256x240.png");
+}
+.ui-state-hover .ui-icon,
+.ui-state-focus .ui-icon,
+.ui-button:hover .ui-icon,
+.ui-button:focus .ui-icon {
+  background-image: url("https://www.uljin.go.kr/js/01_potal/jquery-ui-1.12.1.custom/images/ui-icons_555555_256x240.png");
+}
+.ui-state-active .ui-icon,
+.ui-button:active .ui-icon {
+  background-image: url("https://www.uljin.go.kr/js/01_potal/jquery-ui-1.12.1.custom/images/ui-icons_ffffff_256x240.png");
+}
+.ui-state-highlight .ui-icon,
+.ui-button .ui-state-highlight.ui-icon {
+  background-image: url("https://www.uljin.go.kr/js/01_potal/jquery-ui-1.12.1.custom/images/ui-icons_777620_256x240.png");
+}
+.ui-state-error .ui-icon,
+.ui-state-error-text .ui-icon {
+  background-image: url("https://www.uljin.go.kr/js/01_potal/jquery-ui-1.12.1.custom/images/ui-icons_cc0000_256x240.png");
+}
+.ui-button .ui-icon {
+  background-image: url("https://www.uljin.go.kr/js/01_potal/jquery-ui-1.12.1.custom/images/ui-icons_777777_256x240.png");
+}
+.ui-icon-blank {
+  background-position: 16px 16px;
+}
+.ui-icon-caret-1-n {
+  background-position: 0 0;
+}
+.ui-icon-caret-1-ne {
+  background-position: -16px 0;
+}
+.ui-icon-caret-1-e {
+  background-position: -32px 0;
+}
+.ui-icon-caret-1-se {
+  background-position: -48px 0;
+}
+.ui-icon-caret-1-s {
+  background-position: -65px 0;
+}
+.ui-icon-caret-1-sw {
+  background-position: -80px 0;
+}
+.ui-icon-caret-1-w {
+  background-position: -96px 0;
+}
+.ui-icon-caret-1-nw {
+  background-position: -112px 0;
+}
+.ui-icon-caret-2-n-s {
+  background-position: -128px 0;
+}
+.ui-icon-caret-2-e-w {
+  background-position: -144px 0;
+}
+.ui-icon-triangle-1-n {
+  background-position: 0 -16px;
+}
+.ui-icon-triangle-1-ne {
+  background-position: -16px -16px;
+}
+.ui-icon-triangle-1-e {
+  background-position: -32px -16px;
+}
+.ui-icon-triangle-1-se {
+  background-position: -48px -16px;
+}
+.ui-icon-triangle-1-s {
+  background-position: -65px -16px;
+}
+.ui-icon-triangle-1-sw {
+  background-position: -80px -16px;
+}
+.ui-icon-triangle-1-w {
+  background-position: -96px -16px;
+}
+.ui-icon-triangle-1-nw {
+  background-position: -112px -16px;
+}
+.ui-icon-triangle-2-n-s {
+  background-position: -128px -16px;
+}
+.ui-icon-triangle-2-e-w {
+  background-position: -144px -16px;
+}
+.ui-icon-arrow-1-n {
+  background-position: 0 -32px;
+}
+.ui-icon-arrow-1-ne {
+  background-position: -16px -32px;
+}
+.ui-icon-arrow-1-e {
+  background-position: -32px -32px;
+}
+.ui-icon-arrow-1-se {
+  background-position: -48px -32px;
+}
+.ui-icon-arrow-1-s {
+  background-position: -65px -32px;
+}
+.ui-icon-arrow-1-sw {
+  background-position: -80px -32px;
+}
+.ui-icon-arrow-1-w {
+  background-position: -96px -32px;
+}
+.ui-icon-arrow-1-nw {
+  background-position: -112px -32px;
+}
+.ui-icon-arrow-2-n-s {
+  background-position: -128px -32px;
+}
+.ui-icon-arrow-2-ne-sw {
+  background-position: -144px -32px;
+}
+.ui-icon-arrow-2-e-w {
+  background-position: -160px -32px;
+}
+.ui-icon-arrow-2-se-nw {
+  background-position: -176px -32px;
+}
+.ui-icon-arrowstop-1-n {
+  background-position: -192px -32px;
+}
+.ui-icon-arrowstop-1-e {
+  background-position: -208px -32px;
+}
+.ui-icon-arrowstop-1-s {
+  background-position: -224px -32px;
+}
+.ui-icon-arrowstop-1-w {
+  background-position: -240px -32px;
+}
+.ui-icon-arrowthick-1-n {
+  background-position: 1px -48px;
+}
+.ui-icon-arrowthick-1-ne {
+  background-position: -16px -48px;
+}
+.ui-icon-arrowthick-1-e {
+  background-position: -32px -48px;
+}
+.ui-icon-arrowthick-1-se {
+  background-position: -48px -48px;
+}
+.ui-icon-arrowthick-1-s {
+  background-position: -64px -48px;
+}
+.ui-icon-arrowthick-1-sw {
+  background-position: -80px -48px;
+}
+.ui-icon-arrowthick-1-w {
+  background-position: -96px -48px;
+}
+.ui-icon-arrowthick-1-nw {
+  background-position: -112px -48px;
+}
+.ui-icon-arrowthick-2-n-s {
+  background-position: -128px -48px;
+}
+.ui-icon-arrowthick-2-ne-sw {
+  background-position: -144px -48px;
+}
+.ui-icon-arrowthick-2-e-w {
+  background-position: -160px -48px;
+}
+.ui-icon-arrowthick-2-se-nw {
+  background-position: -176px -48px;
+}
+.ui-icon-arrowthickstop-1-n {
+  background-position: -192px -48px;
+}
+.ui-icon-arrowthickstop-1-e {
+  background-position: -208px -48px;
+}
+.ui-icon-arrowthickstop-1-s {
+  background-position: -224px -48px;
+}
+.ui-icon-arrowthickstop-1-w {
+  background-position: -240px -48px;
+}
+.ui-icon-arrowreturnthick-1-w {
+  background-position: 0 -64px;
+}
+.ui-icon-arrowreturnthick-1-n {
+  background-position: -16px -64px;
+}
+.ui-icon-arrowreturnthick-1-e {
+  background-position: -32px -64px;
+}
+.ui-icon-arrowreturnthick-1-s {
+  background-position: -48px -64px;
+}
+.ui-icon-arrowreturn-1-w {
+  background-position: -64px -64px;
+}
+.ui-icon-arrowreturn-1-n {
+  background-position: -80px -64px;
+}
+.ui-icon-arrowreturn-1-e {
+  background-position: -96px -64px;
+}
+.ui-icon-arrowreturn-1-s {
+  background-position: -112px -64px;
+}
+.ui-icon-arrowrefresh-1-w {
+  background-position: -128px -64px;
+}
+.ui-icon-arrowrefresh-1-n {
+  background-position: -144px -64px;
+}
+.ui-icon-arrowrefresh-1-e {
+  background-position: -160px -64px;
+}
+.ui-icon-arrowrefresh-1-s {
+  background-position: -176px -64px;
+}
+.ui-icon-arrow-4 {
+  background-position: 0 -80px;
+}
+.ui-icon-arrow-4-diag {
+  background-position: -16px -80px;
+}
+.ui-icon-extlink {
+  background-position: -32px -80px;
+}
+.ui-icon-newwin {
+  background-position: -48px -80px;
+}
+.ui-icon-refresh {
+  background-position: -64px -80px;
+}
+.ui-icon-shuffle {
+  background-position: -80px -80px;
+}
+.ui-icon-transfer-e-w {
+  background-position: -96px -80px;
+}
+.ui-icon-transferthick-e-w {
+  background-position: -112px -80px;
+}
+.ui-icon-folder-collapsed {
+  background-position: 0 -96px;
+}
+.ui-icon-folder-open {
+  background-position: -16px -96px;
+}
+.ui-icon-document {
+  background-position: -32px -96px;
+}
+.ui-icon-document-b {
+  background-position: -48px -96px;
+}
+.ui-icon-note {
+  background-position: -64px -96px;
+}
+.ui-icon-mail-closed {
+  background-position: -80px -96px;
+}
+.ui-icon-mail-open {
+  background-position: -96px -96px;
+}
+.ui-icon-suitcase {
+  background-position: -112px -96px;
+}
+.ui-icon-comment {
+  background-position: -128px -96px;
+}
+.ui-icon-person {
+  background-position: -144px -96px;
+}
+.ui-icon-print {
+  background-position: -160px -96px;
+}
+.ui-icon-trash {
+  background-position: -176px -96px;
+}
+.ui-icon-locked {
+  background-position: -192px -96px;
+}
+.ui-icon-unlocked {
+  background-position: -208px -96px;
+}
+.ui-icon-bookmark {
+  background-position: -224px -96px;
+}
+.ui-icon-tag {
+  background-position: -240px -96px;
+}
+.ui-icon-home {
+  background-position: 0 -112px;
+}
+.ui-icon-flag {
+  background-position: -16px -112px;
+}
+.ui-icon-calendar {
+  background-position: -32px -112px;
+}
+.ui-icon-cart {
+  background-position: -48px -112px;
+}
+.ui-icon-pencil {
+  background-position: -64px -112px;
+}
+.ui-icon-clock {
+  background-position: -80px -112px;
+}
+.ui-icon-disk {
+  background-position: -96px -112px;
+}
+.ui-icon-calculator {
+  background-position: -112px -112px;
+}
+.ui-icon-zoomin {
+  background-position: -128px -112px;
+}
+.ui-icon-zoomout {
+  background-position: -144px -112px;
+}
+.ui-icon-search {
+  background-position: -160px -112px;
+}
+.ui-icon-wrench {
+  background-position: -176px -112px;
+}
+.ui-icon-gear {
+  background-position: -192px -112px;
+}
+.ui-icon-heart {
+  background-position: -208px -112px;
+}
+.ui-icon-star {
+  background-position: -224px -112px;
+}
+.ui-icon-link {
+  background-position: -240px -112px;
+}
+.ui-icon-cancel {
+  background-position: 0 -128px;
+}
+.ui-icon-plus {
+  background-position: -16px -128px;
+}
+.ui-icon-plusthick {
+  background-position: -32px -128px;
+}
+.ui-icon-minus {
+  background-position: -48px -128px;
+}
+.ui-icon-minusthick {
+  background-position: -64px -128px;
+}
+.ui-icon-close {
+  background-position: -80px -128px;
+}
+.ui-icon-closethick {
+  background-position: -96px -128px;
+}
+.ui-icon-key {
+  background-position: -112px -128px;
+}
+.ui-icon-lightbulb {
+  background-position: -128px -128px;
+}
+.ui-icon-scissors {
+  background-position: -144px -128px;
+}
+.ui-icon-clipboard {
+  background-position: -160px -128px;
+}
+.ui-icon-copy {
+  background-position: -176px -128px;
+}
+.ui-icon-contact {
+  background-position: -192px -128px;
+}
+.ui-icon-image {
+  background-position: -208px -128px;
+}
+.ui-icon-video {
+  background-position: -224px -128px;
+}
+.ui-icon-script {
+  background-position: -240px -128px;
+}
+.ui-icon-alert {
+  background-position: 0 -144px;
+}
+.ui-icon-info {
+  background-position: -16px -144px;
+}
+.ui-icon-notice {
+  background-position: -32px -144px;
+}
+.ui-icon-help {
+  background-position: -48px -144px;
+}
+.ui-icon-check {
+  background-position: -64px -144px;
+}
+.ui-icon-bullet {
+  background-position: -80px -144px;
+}
+.ui-icon-radio-on {
+  background-position: -96px -144px;
+}
+.ui-icon-radio-off {
+  background-position: -112px -144px;
+}
+.ui-icon-pin-w {
+  background-position: -128px -144px;
+}
+.ui-icon-pin-s {
+  background-position: -144px -144px;
+}
+.ui-icon-play {
+  background-position: 0 -160px;
+}
+.ui-icon-pause {
+  background-position: -16px -160px;
+}
+.ui-icon-seek-next {
+  background-position: -32px -160px;
+}
+.ui-icon-seek-prev {
+  background-position: -48px -160px;
+}
+.ui-icon-seek-end {
+  background-position: -64px -160px;
+}
+.ui-icon-seek-start {
+  background-position: -80px -160px;
+}
+.ui-icon-seek-first {
+  background-position: -80px -160px;
+}
+.ui-icon-stop {
+  background-position: -96px -160px;
+}
+.ui-icon-eject {
+  background-position: -112px -160px;
+}
+.ui-icon-volume-off {
+  background-position: -128px -160px;
+}
+.ui-icon-volume-on {
+  background-position: -144px -160px;
+}
+.ui-icon-power {
+  background-position: 0 -176px;
+}
+.ui-icon-signal-diag {
+  background-position: -16px -176px;
+}
+.ui-icon-signal {
+  background-position: -32px -176px;
+}
+.ui-icon-battery-0 {
+  background-position: -48px -176px;
+}
+.ui-icon-battery-1 {
+  background-position: -64px -176px;
+}
+.ui-icon-battery-2 {
+  background-position: -80px -176px;
+}
+.ui-icon-battery-3 {
+  background-position: -96px -176px;
+}
+.ui-icon-circle-plus {
+  background-position: 0 -192px;
+}
+.ui-icon-circle-minus {
+  background-position: -16px -192px;
+}
+.ui-icon-circle-close {
+  background-position: -32px -192px;
+}
+.ui-icon-circle-triangle-e {
+  background-position: -48px -192px;
+}
+.ui-icon-circle-triangle-s {
+  background-position: -64px -192px;
+}
+.ui-icon-circle-triangle-w {
+  background-position: -80px -192px;
+}
+.ui-icon-circle-triangle-n {
+  background-position: -96px -192px;
+}
+.ui-icon-circle-arrow-e {
+  background-position: -112px -192px;
+}
+.ui-icon-circle-arrow-s {
+  background-position: -128px -192px;
+}
+.ui-icon-circle-arrow-w {
+  background-position: -144px -192px;
+}
+.ui-icon-circle-arrow-n {
+  background-position: -160px -192px;
+}
+.ui-icon-circle-zoomin {
+  background-position: -176px -192px;
+}
+.ui-icon-circle-zoomout {
+  background-position: -192px -192px;
+}
+.ui-icon-circle-check {
+  background-position: -208px -192px;
+}
+.ui-icon-circlesmall-plus {
+  background-position: 0 -208px;
+}
+.ui-icon-circlesmall-minus {
+  background-position: -16px -208px;
+}
+.ui-icon-circlesmall-close {
+  background-position: -32px -208px;
+}
+.ui-icon-squaresmall-plus {
+  background-position: -48px -208px;
+}
+.ui-icon-squaresmall-minus {
+  background-position: -64px -208px;
+}
+.ui-icon-squaresmall-close {
+  background-position: -80px -208px;
+}
+.ui-icon-grip-dotted-vertical {
+  background-position: 0 -224px;
+}
+.ui-icon-grip-dotted-horizontal {
+  background-position: -16px -224px;
+}
+.ui-icon-grip-solid-vertical {
+  background-position: -32px -224px;
+}
+.ui-icon-grip-solid-horizontal {
+  background-position: -48px -224px;
+}
+.ui-icon-gripsmall-diagonal-se {
+  background-position: -64px -224px;
+}
+.ui-icon-grip-diagonal-se {
+  background-position: -80px -224px;
+}
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-left,
+.ui-corner-tl {
+  border-top-left-radius: 3px;
+}
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-right,
+.ui-corner-tr {
+  border-top-right-radius: 3px;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-left,
+.ui-corner-bl {
+  border-bottom-left-radius: 3px;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-right,
+.ui-corner-br {
+  border-bottom-right-radius: 3px;
+}
+.ui-widget-overlay {
+  background: #aaa;
+  opacity: 0.3;
+  filter: Alpha(Opacity=30);
+}
+.ui-widget-shadow {
+  -webkit-box-shadow: 0 0 5px #666;
+  box-shadow: 0 0 5px #666;
+}
+
+/* reset(exclude white-space) */
+.nmap_lay_int_duppin,
+.nmap_lay_int_duppin div,
+.nmap_lay_int_duppin ul,
+.nmap_lay_int_duppin li,
+.nmap_lay_int_duppin span,
+.nmap_lay_int_duppin img,
+.nmap_lay_int_duppin a,
+.nmap_lay_htype1,
+.nmap_lay_htype1 .nmap_lay_c,
+.nmap_lay_htype1 .nmap_lay_r,
+.nmap_lay_htype1 .nmap_lay_c span,
+.nmap_lay_htype1 .nmap_lay_c strong {
+  float: none !important;
+  position: static;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  font: 11px / normal Dotum, sans-serif !important;
+  color: #333 !important;
+  letter-spacing: 0 !important;
+  text-align: left !important;
+  text-decoration: none !important;
+  text-indent: 0 !important;
+  vertical-align: baseline !important;
+  list-style: none !important;
+  word-spacing: 0;
+}
+.nmap_int_zoom {
+  float: none !important;
+  position: static;
+  margin: 0;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  font: 11px / normal Dotum, sans-serif !important;
+  color: #333 !important;
+  letter-spacing: 0 !important;
+  text-align: left !important;
+  text-decoration: none !important;
+  text-indent: 0 !important;
+  vertical-align: baseline !important;
+  white-space: normal !important;
+  list-style: none !important;
+  word-spacing: 0;
+}
+#nmap_openapi,
+.nmap {
+  overflow: hidden;
+  position: relative !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.nmap_movable_container {
+  position: absolute !important;
+}
+.nmap_static_container {
+  position: static !important;
+  zoom: 1;
+}
+img.nmap_int_scroll {
+  display: none;
+  position: absolute !important;
+}
+img.nmap_int_scroll_top {
+  margin-top: 3px !important;
+  margin-left: -14px !important;
+}
+img.nmap_int_scroll_bottom {
+  margin-top: -32px !important;
+  margin-left: -14px !important;
+}
+img.nmap_int_scroll_left {
+  margin-top: -14px !important;
+  margin-left: 13px !important;
+}
+img.nmap_int_scroll_right {
+  margin-top: -14px !important;
+  margin-right: 4px !important;
+}
+div.nmap_int_zoom {
+  display: none;
+  position: absolute !important;
+}
+.nmap_int_zoom span {
+  position: absolute !important;
+  width: 8px;
+  height: 8px;
+  background: url(http://static.naver.net/maps2/int_zoomin.gif) no-repeat !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+.nmap_int_zoomout span {
+  background: url(http://static.naver.net/maps2/int_zoomout.gif) no-repeat !important;
+}
+.nmap_int_zoom .nmap_bx_lt {
+  top: 0;
+  left: 0;
+  background-position: 0 0 !important;
+}
+.nmap_int_zoom .nmap_bx_rt {
+  top: 0;
+  right: 0;
+  background-position: -8px 0 !important;
+}
+.nmap_int_zoom .nmap_bx_lb {
+  left: 0;
+  bottom: 0;
+  background-position: 0 -8px !important;
+}
+.nmap_int_zoom .nmap_bx_rb {
+  right: 0;
+  bottom: 0;
+  background-position: -8px -8px !important;
+}
+
+/* spot title */
+.nmap_lay_htype1 {
+  position: absolute !important;
+  height: 27px;
+  white-space: nowrap !important;
+}
+.nmap_lay_htype1 .nmap_lay_c {
+  display: inline-block;
+  height: 27px;
+  padding: 0 2px 0 8px !important;
+  background: url(http://static.naver.net/maps2/bg_lay_htype7.png) no-repeat 0 0 !important;
+  _background: none !important;
+  vertical-align: top !important;
+  white-space: nowrap !important;
+  _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static.naver.net/maps2/bg_lay_htype7.png',sizingMethod='crop');
+}
+.nmap_lay_htype1 .nmap_lay_r {
+  display: inline-block;
+  width: 7px;
+  height: 27px !important;
+  background: url(http://static.naver.net/maps2/bg_lay_htype7_r.png) no-repeat 0
+    0 !important;
+  _background: none !important;
+  vertical-align: top !important;
+  white-space: nowrap !important;
+  _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static.naver.net/maps2/bg_lay_htype7_r.png',sizingMethod='crop');
+}
+.nmap_lay_htype1 .nmap_lay_c span {
+  display: inline-block;
+  padding-top: 7px !important;
+  font-size: 12px !important;
+  font-weight: bold !important;
+  color: #000 !important;
+  letter-spacing: -1px !important;
+  white-space: nowrap !important;
+}
+.nmap_lay_htype1 .nmap_lay_c strong {
+  font-size: 12px !important;
+  font-weight: bold !important;
+  letter-spacing: 0 !important;
+}
+
+/* infoWindow */
+.map_area {
+  width: 1200px;
+  height: 410px;
+  background: #efefef;
+}
+.map_area .info {
+  width: 250px;
+  height: 110px;
+  background: #fff;
+  border: 1px solid #aaa;
+  position: relative;
+}
+.map_area .info dl {
+  padding: 12px;
+  font-family: NanumGothicWeb, NanumGothic, "나눔고딕", MalgunGothic,
+    "맑은 고딕", Dotum, "돋움", sans-serif;
+}
+.map_area .info dl dt {
+  font-size: 17px;
+  font-weight: 600;
+  padding-bottom: 10px;
+  border-bottom: #ccc 1px solid;
+  margin-bottom: 15px;
+  color: #255fa6;
+}
+.map_area .info dl dd {
+  font-size: 13px;
+  padding-bottom: 5px;
+}
+.map_area .info p {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+}
