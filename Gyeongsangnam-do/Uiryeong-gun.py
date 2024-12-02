@@ -19,41 +19,49 @@ chrome_options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
 try:
-    region = "110090"
+    region = "110110"
+    link_list = list()
     current_list = list()
     result_data = []
 
     site_url = requests.get(f"{babya_server}/policy/site", params={"region": region})
     response_data = site_url.json()
     base_url = response_data["data"]["policySiteUrl"]
-    format_url = base_url.split("/index")[0]
 
     collected_site_data = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
     collected_list = [item["pageId"] for item in collected_site_data.json()["data"]]
     
-    url_data = [f"{format_url}/contents.do?key=1106", f"{format_url}/contents.do?key=1426"]
+    url = f"{base_url}?menuCd=DOM_000000204002003018"
+    driver.get(url)
+    time.sleep(2)
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
     
-    for url in url_data:
-        driver.get(url)
+    for i in soup.select("#contents > div.tap-box > ul.depth5 > li > a"):
+        for j in i.select("span"):
+            if j.text != "심뇌혈관질환예방관리" and j.text != "건강생활실천" and j.text != "금연":
+                id_item = i.get("href").split("?menuCd=")[1]
+                link_list.append(id_item)
+                
+    for link in link_list:
+        driver.get(f"{base_url}?menuCd={link}")
         time.sleep(2)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
-        elements = soup.select("div.tab")
+        elements = soup.select("#contents > div.tap-box > ul.depth6")
         
         if elements:
             for element in elements:
-                for i in element.select("ul.tab_list > li.tab_item > a"):
-                    id_item = i.get("href").split("?key=")[1]
+                for i in element.select("li > a"):
+                    id_item = i.get("href").split("?menuCd=")[1]
                     current_list.append(id_item)
-                
+                    
         else:
-            id_item = url.split("?key=")[1]
-            current_list.append(id_item)
+            current_list.append(link)
 
 
     page_list = set(current_list) - set(collected_list)
 
     for page_id in page_list:
-        page_url = f"{format_url}/contents.do?key={page_id}"
+        page_url = f"{base_url}?menuCd={page_id}"
         driver.get(page_url)
         time.sleep(2)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
@@ -82,10 +90,13 @@ try:
                 link["href"] = urllib.parse.urljoin(base_url, link_url)
                 styles.append(str(link))
                 
-        for title in soup.select("header.sub_head > div.sub_title > h2"):
+        for title in soup.select("#con-Tit"):
             data_dict["title"] = title.get_text()
         
         for content in soup.select("#contents"):
+            for tag in content.find_all(["div", "p"], class_=["tap-box", "gap50"]):
+                tag.extract()
+            
             for img in content.find_all('img'):
                 img_url = img.get("src")
                 if img_url:
