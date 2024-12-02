@@ -19,31 +19,52 @@ chrome_options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
 try:
-    region = "110070"
+    region = "110080"
+    link_list = list()
     current_list = list()
     result_data = []
 
     site_url = requests.get(f"{babya_server}/policy/site", params={"region": region})
     response_data = site_url.json()
     base_url = response_data["data"]["policySiteUrl"]
+    format_url = base_url.split("/main")[0]
 
     collected_site_data = requests.get(f"{babya_server}/policy/catalog", params={"site": base_url})
     collected_list = [item["pageId"] for item in collected_site_data.json()["data"]]
     
-    url = f"{base_url}?mnNo=50201000000"
+    url = f"{format_url}/life/00327/00563.web"
     driver.get(url)
     time.sleep(2)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-    for i in soup.select("#lm2 > ul.depth3 > li.lm_l3 > a"):
-        id_item = i.get("href").split("?mnNo=")[1]
-        current_list.append(id_item)
+    for i in soup.select("#cnb1 > ul.col-5 > li > a"):
+        if "00327/" in i.get("href"):
+            id_item = i.get("href").split("00327/")[1]
+            link_list.append(id_item)
+            
+        else:
+            id_item = i.get("href")
+            link_list.append(id_item)
+        
+    for link in link_list:
+        driver.get(f"{format_url}/life/00327/{link}")
+        time.sleep(2)
+        soup = BeautifulSoup(driver.page_source, 'html.parser')
+        elements = soup.select("#cnb2")
+        
+        if elements:
+            for i in soup.select("#cnb2 > ul > li > a"):
+                id_item = i.get("href").split("00327/")[1]
+                current_list.append(id_item)
+                    
+        else:
+            current_list.append(link)
 
 
     page_list = set(current_list) - set(collected_list)
 
     for page_id in page_list:
-        page_url = f"{base_url}?mnNo={page_id}"
+        page_url = f"{format_url}/life/00327/{page_id}"
         driver.get(page_url)
         time.sleep(2)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
@@ -57,7 +78,8 @@ try:
             "page": None
         }
         
-        styles = ["<style>*::before {content: none !important;} *::after {content: none !important;} .Text-bx {margin-left: 30px !important;}</style>"]
+        styles = []
+        elements = soup.select("#cnb2")
         
         for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
             comment.extract()
@@ -66,16 +88,24 @@ try:
             if meta.get("charset"):
                 styles.append(str(meta))
             
-        for link in soup.select("html > head > link"):
+        for link in soup.select("link"):
             if link.get("rel")[0] == "stylesheet":
                 link_url = link.get("href")
                 link["href"] = urllib.parse.urljoin(base_url, link_url)
                 styles.append(str(link))
                 
-        for title in soup.select("div.tit-wrap > h2.tit"):
-            data_dict["title"] = title.get_text()
+        if elements:
+            for title in soup.select("#body_content > h3.h2"):
+                data_dict["title"] = title.get_text()
+                
+        else:
+            for title in soup.select("#body_content > h2.h2"):
+                data_dict["title"] = title.get_text()
         
-        for content in soup.select("div.Subcontent-Box"):        
+        for content in soup.select("#body_content"):
+            for tag in content.find_all(["div", "div"], id=["cnb1", "cnb2"]):
+                tag.extract()
+            
             for img in content.find_all('img'):
                 img_url = img.get("src")
                 if img_url:
@@ -94,8 +124,8 @@ try:
             html_content = f"<!DOCTYPE html><html>{head_content}{body_content}</html>"
             data_dict["content"] = html_content
             
-        for edit_date in soup.select("div.cont-pm-box > div.command-box > ul.comm-ul > li.comm-li02 > span.comsp"):
-            data_dict["editDate"] = edit_date.get_text().rstrip(".").replace(".", "-")
+        for edit_date in soup.select("#charge1 > dl.update1 > dd"):
+            data_dict["editDate"] = edit_date.get_text().split(" ")[0]
         
         data_dict["pageId"] = page_id
         data_dict["site"] = base_url
